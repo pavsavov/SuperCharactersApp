@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.Reposito
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.Model", "SuperCharactersApp.Model\SuperCharactersApp.Model.csproj", "{473A669C-412B-4C4E-A7B5-03B0487B506A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.DataAccess", "SuperCharacterApp.DataAccess\SuperCharactersApp.DataAccess.csproj", "{3F4B7736-CFB5-45E8-88D6-EEC5A3B45BE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.DataAccess", "SuperCharactersApp.DataAccess\SuperCharactersApp.DataAccess.csproj", "{AFE488AB-A177-4B0A-8328-FD0F1DBC546E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{473A669C-412B-4C4E-A7B5-03B0487B506A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{473A669C-412B-4C4E-A7B5-03B0487B506A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{473A669C-412B-4C4E-A7B5-03B0487B506A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F4B7736-CFB5-45E8-88D6-EEC5A3B45BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F4B7736-CFB5-45E8-88D6-EEC5A3B45BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F4B7736-CFB5-45E8-88D6-EEC5A3B45BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F4B7736-CFB5-45E8-88D6-EEC5A3B45BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE488AB-A177-4B0A-8328-FD0F1DBC546E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE488AB-A177-4B0A-8328-FD0F1DBC546E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE488AB-A177-4B0A-8328-FD0F1DBC546E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE488AB-A177-4B0A-8328-FD0F1DBC546E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
