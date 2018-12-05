@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.Web", "SuperCharactersApp.Web\SuperCharactersApp.Web.csproj", "{296E13F9-5C30-4623-9C04-B9B73511FFA8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.Service", "SuperCharactersApp.Services\SuperCharactersApp.Service.csproj", "{84A6FF7B-B021-46E6-94FA-63B65AFE6740}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.Services", "SuperCharactersApp.Services\SuperCharactersApp.Services.csproj", "{84A6FF7B-B021-46E6-94FA-63B65AFE6740}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.Repository", "SuperCharactersApp.Repository\SuperCharactersApp.Repository.csproj", "{60B10593-23C6-4BEC-87C3-1E9F202ECFB3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.Model", "SuperCharactersApp.Model\SuperCharactersApp.Model.csproj", "{473A669C-412B-4C4E-A7B5-03B0487B506A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.Models", "SuperCharactersApp.Model\SuperCharactersApp.Models.csproj", "{473A669C-412B-4C4E-A7B5-03B0487B506A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.DataAccess", "SuperCharactersApp.DataAccess\SuperCharactersApp.DataAccess.csproj", "{AFE488AB-A177-4B0A-8328-FD0F1DBC546E}"
 EndProject
