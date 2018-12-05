@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SuperCharactersApp.DataAccess\SuperCharactersApp.DataAccess.csproj" />
+    <ProjectReference Include="..\SuperCharactersApp.Model\SuperCharactersApp.Models.csproj" />
   </ItemGroup>
 
 </Project>

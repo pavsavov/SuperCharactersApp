@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using SuperCharactersApp.Web.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SuperCharactersApp.Models.Models;
 
 namespace SuperCharactersApp.Web
 {
@@ -33,8 +34,9 @@ namespace SuperCharactersApp.Web
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<SuperCharactersAppDbContext>();
+            services.AddIdentity<SuperCharactersAppUser, IdentityRole>()
+                .AddEntityFrameworkStores<SuperCharactersAppDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
