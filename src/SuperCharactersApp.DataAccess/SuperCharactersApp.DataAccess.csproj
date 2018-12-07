@@ -5,10 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20181206152904_Initial.cs" />
+    <Compile Remove="Migrations\20181206215510_Initial.cs" />
+    <Compile Remove="Migrations\20181206215959_Initial.cs" />
+    <Compile Remove="Migrations\20181206220727_test.cs" />
+    <Compile Remove="Migrations\20181206224755_Initial.cs" />
+    <Compile Remove="Migrations\20181206224947_initial.cs" />
+    <Compile Remove="Migrations\20181206225709_initial.cs" />
+    <Compile Remove="Migrations\20181206230147_initial.cs" />
+    <Compile Remove="Migrations\20181206230853_Initial.cs" />
+    <Compile Remove="Migrations\20181206231410_Initial.cs" />
+    <Compile Remove="Migrations\20181206232300_Initial.cs" />
+    <Compile Remove="Migrations\20181206232925_Initial.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Owin" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
