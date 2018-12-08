@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />
   </ItemGroup>
@@ -13,6 +14,11 @@
   <ItemGroup>
     <ProjectReference Include="..\SuperCharactersApp.DataAccess\SuperCharactersApp.DataAccess.csproj" />
     <ProjectReference Include="..\SuperCharactersApp.Model\SuperCharactersApp.Models.csproj" />
+    <ProjectReference Include="..\SuperCharactersApp.Services\SuperCharactersApp.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>

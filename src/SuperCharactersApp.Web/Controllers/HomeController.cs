@@ -1,22 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using SuperCharactersApp.Web.Models;
-
-namespace SuperCharactersApp.Web.Controllers
+﻿namespace SuperCharactersApp.Web.Controllers
 {
+    using System.Diagnostics;
+    using Microsoft.AspNetCore.Mvc;
+    using SuperCharactersApp.Web.Models;
+    using SuperCharactersApp.Web.Data;
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly SuperCharactersAppDbContext context;
+
+        public HomeController(SuperCharactersAppDbContext context)
         {
-            return View();
+            this.context = context;
+        }
+        public IActionResult Index()
+        { 
+
+            return this.View();
         }
 
         public IActionResult About()
         {
+
+
             ViewData["Message"] = "Your application description page.";
 
             return View();
