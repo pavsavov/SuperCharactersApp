@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SuperCharactersApp.Repositories\SuperCharactersApp.Repository.csproj" />
+    <ProjectReference Include="..\..\Repositories\SuperCharactersApp.Repositories\SuperCharactersApp.Repository.csproj" />
   </ItemGroup>
 
 </Project>

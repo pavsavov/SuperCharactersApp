@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Data\SuperCharacters.DataAccess\SuperCharacters.DataAccess.csproj" />
-    <ProjectReference Include="..\Data\SuperCharacters.Models\SuperCharacters.Models.csproj" />
+    <ProjectReference Include="..\..\Data\SuperCharacters.DataAccess\SuperCharacters.DataAccess.csproj" />
+    <ProjectReference Include="..\..\Data\SuperCharacters.Models\SuperCharacters.Models.csproj" />
   </ItemGroup>
 
 </Project>
