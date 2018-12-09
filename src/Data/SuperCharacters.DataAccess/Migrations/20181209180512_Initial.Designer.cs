@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SuperCharacters.Web.Data;
+using SuperCharacters.DataAccess;
 
 namespace SuperCharacters.DataAccess.Migrations
 {
     [DbContext(typeof(SuperCharactersAppDbContext))]
-    partial class SuperCharactersDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181209180512_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -206,7 +208,7 @@ namespace SuperCharacters.DataAccess.Migrations
                     b.ToTable("SecretIdentities");
                 });
 
-            modelBuilder.Entity("SuperCharacters.Models.SuperCharacterUser", b =>
+            modelBuilder.Entity("SuperCharacters.Models.SuperCharactersUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -303,7 +305,7 @@ namespace SuperCharacters.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("SuperCharacters.Models.SuperCharacterUser")
+                    b.HasOne("SuperCharacters.Models.SuperCharactersUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -311,7 +313,7 @@ namespace SuperCharacters.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("SuperCharacters.Models.SuperCharacterUser")
+                    b.HasOne("SuperCharacters.Models.SuperCharactersUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -324,7 +326,7 @@ namespace SuperCharacters.DataAccess.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SuperCharacters.Models.SuperCharacterUser")
+                    b.HasOne("SuperCharacters.Models.SuperCharactersUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -332,7 +334,7 @@ namespace SuperCharacters.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("SuperCharacters.Models.SuperCharacterUser")
+                    b.HasOne("SuperCharacters.Models.SuperCharactersUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -352,7 +354,7 @@ namespace SuperCharacters.DataAccess.Migrations
                         .WithOne("Score")
                         .HasForeignKey("SuperCharacters.Models.Score", "CharacterScoreId");
 
-                    b.HasOne("SuperCharacters.Models.SuperCharacterUser", "PlayerScore")
+                    b.HasOne("SuperCharacters.Models.SuperCharactersUser", "PlayerScore")
                         .WithOne("Score")
                         .HasForeignKey("SuperCharacters.Models.Score", "PlayerScoreId");
 

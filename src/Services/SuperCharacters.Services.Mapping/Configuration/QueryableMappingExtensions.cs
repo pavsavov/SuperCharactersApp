@@ -1,10 +1,12 @@
-﻿using AutoMapper.QueryableExtensions;
-using System;
-using System.Linq;
-using System.Linq.Expressions;
-
-namespace SuperCharacters.Services.Mapping
+﻿namespace SuperCharacters.Services.Mapping
 {
+    using AutoMapper.QueryableExtensions;
+    using System;
+    using System.Linq;
+    using System.Linq.Expressions;
+    /// <summary>
+    /// Extensions for simplifing mapping methods.
+    /// </summary>
     public static class QueryableMappingExtensions
     {
         public static IQueryable<TDestination> To<TDestination>(

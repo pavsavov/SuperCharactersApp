@@ -22,6 +22,9 @@
     <Compile Remove="Migrations\20181208215838_eba7.cs" />
     <Compile Remove="Migrations\20181208220341_eba8.cs" />
     <Compile Remove="Migrations\20181208221122_eba9.cs" />
+    <Compile Remove="Migrations\20181208222709_Initial.cs" />
+    <Compile Remove="Migrations\20181208223707_InitialWithScoreTable.cs" />
+    <Compile Remove="Migrations\20181209173631_Initial.cs" />
   </ItemGroup>
 
   <ItemGroup>

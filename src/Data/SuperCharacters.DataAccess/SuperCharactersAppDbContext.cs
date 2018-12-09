@@ -1,4 +1,4 @@
-﻿namespace SuperCharacters.Web.Data
+﻿namespace SuperCharacters.DataAccess
 {
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;

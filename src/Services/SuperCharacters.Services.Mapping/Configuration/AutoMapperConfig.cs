@@ -1,13 +1,20 @@
-﻿using AutoMapper;
-using SuperCharacters.Services.Mapping.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-
-namespace SuperCharacters.Services.Mapping
+﻿namespace SuperCharacters.Services.Mapping
 {
+    using AutoMapper;
+    using SuperCharacters.Services.Mapping.Contracts;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+
+    /// <summary>
+    /// When method invoked in the Startup.cs it searches for every class which implements 
+    /// IMapFrom<T>,IMapTo<T> or IHaveCustomMappings. When classes are found are directly mapped to its <T> type.
+    /// IMapFrom<T> and IMapTo<T> are the both direction of mapping to and from T type.
+    /// IHaveCustomMappings deals with complex naming of properties.
+    /// </summary>
+    /// <param name="assemblies"></param>
+    /// 
     public class AutoMapperConfig
     {
         public static void RegisterMappings(params Assembly[] assemblies)

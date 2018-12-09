@@ -1,7 +1,8 @@
 ﻿namespace SuperCharactersApp.Repository
 {
+    using System.Linq;
     using Microsoft.EntityFrameworkCore;
-    using SuperCharacters.Web.Data;
+    using SuperCharacters.DataAccess;
     using SuperCharactersApp.Repository.Account.Contracts;
 
     /// <summary>
@@ -19,6 +20,11 @@
         {
             this.dbContext = dbContext;
             this.dbSet = dbContext.Set<TEntity>();
+        }
+
+        public IQueryable<TEntity> All()
+        {
+            return this.dbSet;  
         }
 
         public virtual void Create(TEntity entity)

@@ -2,7 +2,7 @@
 {
     using System;
     using SuperCharacters.Models;
-    using SuperCharacters.Web.Data;
+    using SuperCharacters.DataAccess;
     using SuperCharactersApp.Repository.Contracts;
 
     public class UnitOfWork : IUnitOfWork, IDisposable

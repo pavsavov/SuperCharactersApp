@@ -5,15 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="AccountServices.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="AccountServices.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Repositories\SuperCharactersApp.Repositories\SuperCharactersApp.Repository.csproj" />
+    <ProjectReference Include="..\SuperCharacters.Services.Mapping\SuperCharacters.Services.Mapping.csproj" />
   </ItemGroup>
 
 </Project>

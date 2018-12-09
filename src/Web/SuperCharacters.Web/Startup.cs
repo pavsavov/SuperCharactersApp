@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SuperCharacters.Web.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using SuperCharacters.Models;
-using SuperCharacters.Web.Middlewares;
-using SuperCharacters.Services.Mapping;
-using SuperCharactersApp.Repository.Account.Contracts;
-using SuperCharactersApp.Repository.Account;
-using SuperCharactersApp.Repository;
-using SuperCharactersApp.Repository.Contracts;
-
-namespace SuperCharacters.Web
+﻿namespace SuperCharacters.Web
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using SuperCharacters.DataAccess;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using SuperCharacters.Models;
+    using SuperCharacters.Web.Middlewares;
+    using SuperCharacters.Services.Mapping;
+    using SuperCharactersApp.Repository.Account.Contracts;
+    using SuperCharactersApp.Repository;
+    using SuperCharactersApp.Repository.Contracts;
+    using SuperCharacters.Web.ViewModels.Account;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -32,12 +27,10 @@ namespace SuperCharacters.Web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
@@ -45,6 +38,7 @@ namespace SuperCharacters.Web
             services.AddDbContext<SuperCharactersAppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
 
             services.AddIdentity<SuperCharactersUser, IdentityRole>(options =>
                {
@@ -59,17 +53,20 @@ namespace SuperCharacters.Web
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<SuperCharactersAppDbContext>();
 
-            // Data repositories
+            // Data repository
             services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
-            services.AddScoped<IUnitOfWork,UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-          //  AutoMapperConfig.RegisterMappings(typeof().GetTypeInfo().Assembly);
+            //Registration of type's assemblies in order to be mapped automatically by convention.
+            AutoMapperConfig.RegisterMappings(
+                typeof(LoginBindingModel).Assembly
+                );
+
 
             if (env.IsDevelopment())
             {
@@ -79,15 +76,18 @@ namespace SuperCharacters.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            // PowerUsers e.g. "Admin" and "Creator" seeded to database with their respective role.
             app.UsePowerUsersAndRolesSeeder();
+
             app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

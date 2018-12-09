@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SuperCharacters.Web.Controllers
 {
-    public class AccountController : Controller
+    public class CharacterController : Controller
     {
-        [HttpPost]
-        public IActionResult Login()
+        public IActionResult Index()
         {
             return View();
         }

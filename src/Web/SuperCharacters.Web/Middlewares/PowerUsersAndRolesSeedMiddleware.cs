@@ -14,8 +14,8 @@
         private readonly RequestDelegate next;
         private readonly Dictionary<string, SuperCharactersUser> powerUsers = new Dictionary<string, SuperCharactersUser>()
         {
-            {"Admin",new SuperCharactersUser{Email = "admin@admin.ad",PasswordHash="admin",UserName ="Admin" } },
-            {"Creator",new SuperCharactersUser{ Email="creator@creator.cr",PasswordHash="creator",UserName = "Creator"} },
+            {"Admin",new SuperCharactersUser{Email = "admin@admin.ad",PasswordHash="admin123",UserName ="Admin" } },
+            {"Creator",new SuperCharactersUser{ Email="creator@creator.cr",PasswordHash="creator123",UserName = "Creator"} },
         };
 
         public PowerUsersAndRolesSeedMiddleware(RequestDelegate next)
@@ -48,17 +48,6 @@
                     }
                 }
             }
-
-            var playerRole = "Player";
-            if (await roleManager.FindByNameAsync(playerRole) == null)
-            {
-                var result = await roleManager.CreateAsync(new IdentityRole(playerRole));
-                if (!result.Succeeded)
-                {
-                    ExceptionCatcher(result);
-                }
-            }
-
         }
 
         private async Task SeedUsers(UserManager<SuperCharactersUser> userManager)
