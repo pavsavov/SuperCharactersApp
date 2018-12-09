@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20181208172538_Initial.cs" />
+    <Compile Remove="Migrations\20181208173423_Initial.cs" />
+    <Compile Remove="Migrations\20181208175249_Initial2.cs" />
+    <Compile Remove="Migrations\20181208175427_Initial.cs" />
+    <Compile Remove="Migrations\20181208182217_Initial.cs" />
+    <Compile Remove="Migrations\20181208183423_Initial.cs" />
+    <Compile Remove="Migrations\20181208183836_ebimumamata.cs" />
+    <Compile Remove="Migrations\20181208184337_neznam.cs" />
+    <Compile Remove="Migrations\20181208190031_eba.cs" />
+    <Compile Remove="Migrations\20181208191015_eba2.cs" />
+    <Compile Remove="Migrations\20181208191706_eba3.cs" />
+    <Compile Remove="Migrations\20181208192046_eba4.cs" />
+    <Compile Remove="Migrations\20181208192441_eba5.cs" />
+    <Compile Remove="Migrations\20181208215442_eba6.cs" />
+    <Compile Remove="Migrations\20181208215838_eba7.cs" />
+    <Compile Remove="Migrations\20181208220341_eba8.cs" />
+    <Compile Remove="Migrations\20181208221122_eba9.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SuperCharacters.Models\SuperCharacters.Models.csproj" />
+  </ItemGroup>
+
+</Project>

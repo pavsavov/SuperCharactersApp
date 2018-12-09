@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-SuperCharacters.Web-1E564CDD-B57F-40EE-947F-1A609BD69796</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\SuperCharacters.DataAccess\SuperCharacters.DataAccess.csproj" />
+    <ProjectReference Include="..\..\Data\SuperCharacters.Models\SuperCharacters.Models.csproj" />
+    <ProjectReference Include="..\..\Services\SuperCharacters.Services.Mapping\SuperCharacters.Services.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>
