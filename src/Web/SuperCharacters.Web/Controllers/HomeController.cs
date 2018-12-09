@@ -13,19 +13,8 @@ namespace SuperCharacters.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IServiceProvider provider;
-        public HomeController(IServiceProvider provider)
-        {
-            this.provider = provider;
-        }
         public IActionResult Index()
         {
-            //Test
-            var dbcontext = provider.GetRequiredService<SuperCharactersDbContext>();
-
- 
-            dbcontext.Add(new SuperHero { Name = "Sashko", HitPoints = 133, Armour = 33, Damage = 33, Team= new Team { Name= "asdada"} });
-            dbcontext.SaveChanges();
             return this.View();
         }
 

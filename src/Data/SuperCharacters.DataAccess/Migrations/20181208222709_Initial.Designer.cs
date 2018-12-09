@@ -9,7 +9,7 @@ using SuperCharacters.Web.Data;
 
 namespace SuperCharacters.DataAccess.Migrations
 {
-    [DbContext(typeof(SuperCharactersDbContext))]
+    [DbContext(typeof(SuperCharactersAppDbContext))]
     [Migration("20181208222709_Initial")]
     partial class Initial
     {

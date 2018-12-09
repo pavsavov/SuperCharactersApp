@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SuperCharacters.Models
 {
-    public class SuperCharacterUser : IdentityUser
+    public class SuperCharactersUser : IdentityUser
     {
         public  Score Score { get; set; }
     }

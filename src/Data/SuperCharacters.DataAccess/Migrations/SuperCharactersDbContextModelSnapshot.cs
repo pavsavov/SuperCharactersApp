@@ -8,7 +8,7 @@ using SuperCharacters.Web.Data;
 
 namespace SuperCharacters.DataAccess.Migrations
 {
-    [DbContext(typeof(SuperCharactersDbContext))]
+    [DbContext(typeof(SuperCharactersAppDbContext))]
     partial class SuperCharactersDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

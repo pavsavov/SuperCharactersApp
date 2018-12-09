@@ -12,10 +12,10 @@
     public class PowerUsersAndRolesSeedMiddleware
     {
         private readonly RequestDelegate next;
-        private readonly Dictionary<string, SuperCharacterUser> powerUsers = new Dictionary<string, SuperCharacterUser>()
+        private readonly Dictionary<string, SuperCharactersUser> powerUsers = new Dictionary<string, SuperCharactersUser>()
         {
-            {"Admin",new SuperCharacterUser{Email = "admin@admin.ad",PasswordHash="admin",UserName ="Admin" } },
-            {"Creator",new SuperCharacterUser{ Email="creator@creator.cr",PasswordHash="creator",UserName = "Creator"} },
+            {"Admin",new SuperCharactersUser{Email = "admin@admin.ad",PasswordHash="admin",UserName ="Admin" } },
+            {"Creator",new SuperCharactersUser{ Email="creator@creator.cr",PasswordHash="creator",UserName = "Creator"} },
         };
 
         public PowerUsersAndRolesSeedMiddleware(RequestDelegate next)
@@ -26,7 +26,7 @@
         public async Task InvokeAsync(HttpContext context, IServiceProvider provider)
         {
             var roleManager = provider.GetRequiredService<RoleManager<IdentityRole>>();
-            var userManager = provider.GetRequiredService<UserManager<SuperCharacterUser>>();
+            var userManager = provider.GetRequiredService<UserManager<SuperCharactersUser>>();
 
             await SeedRoles(roleManager);
             await SeedUsers(userManager);
@@ -61,7 +61,7 @@
 
         }
 
-        private async Task SeedUsers(UserManager<SuperCharacterUser> userManager)
+        private async Task SeedUsers(UserManager<SuperCharactersUser> userManager)
         {
 
             foreach (var user in powerUsers)

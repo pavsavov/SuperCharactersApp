@@ -4,17 +4,21 @@
     using Microsoft.EntityFrameworkCore;
     using SuperCharacters.Models;
 
-    public class SuperCharactersDbContext : IdentityDbContext<SuperCharacterUser>
+    public class SuperCharactersAppDbContext : IdentityDbContext<SuperCharactersUser>
     {
         //public DbSet<Score> Scores { get; set; }
         public DbSet<SecretIdentity> SecretIdentities { get; set; }
-        public DbSet<SuperCharacterUser> AppUsers { get; set; }
+        public DbSet<SuperCharactersUser> AppUsers { get; set; }
         public DbSet<Character> Characters { get; set; }
         public DbSet<SuperPower> SuperPowers { get; set; }
         public DbSet<Team> Teams { get; set; }
+        
+        public SuperCharactersAppDbContext()
+        {
 
+        }
 
-        public SuperCharactersDbContext(DbContextOptions<SuperCharactersDbContext> options)
+        public SuperCharactersAppDbContext(DbContextOptions<SuperCharactersAppDbContext> options)
             : base(options)
         {
         }

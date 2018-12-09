@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="AccountServices.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="AccountServices.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SuperCharactersApp.Repositories\SuperCharactersApp.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

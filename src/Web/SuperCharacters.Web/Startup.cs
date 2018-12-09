@@ -16,6 +16,10 @@ using Microsoft.Extensions.DependencyInjection;
 using SuperCharacters.Models;
 using SuperCharacters.Web.Middlewares;
 using SuperCharacters.Services.Mapping;
+using SuperCharactersApp.Repository.Account.Contracts;
+using SuperCharactersApp.Repository.Account;
+using SuperCharactersApp.Repository;
+using SuperCharactersApp.Repository.Contracts;
 
 namespace SuperCharacters.Web
 {
@@ -38,11 +42,11 @@ namespace SuperCharacters.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<SuperCharactersDbContext>(options =>
+            services.AddDbContext<SuperCharactersAppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<SuperCharacterUser, IdentityRole>(options =>
+            services.AddIdentity<SuperCharactersUser, IdentityRole>(options =>
                {
                    options.Password.RequireDigit = false;
                    options.Password.RequiredLength = 3;
@@ -53,7 +57,11 @@ namespace SuperCharacters.Web
                })
                 .AddDefaultTokenProviders()
                 .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<SuperCharactersDbContext>();
+                .AddEntityFrameworkStores<SuperCharactersAppDbContext>();
+
+            // Data repositories
+            services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
+            services.AddScoped<IUnitOfWork,UnitOfWork>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

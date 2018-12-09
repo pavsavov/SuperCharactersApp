@@ -25,6 +25,6 @@
         public virtual Team TeamScore { get; set; }
         [ForeignKey("PlayerScore")]
         public string PlayerScoreId { get; set; }
-        public virtual SuperCharacterUser PlayerScore { get; set; }
+        public virtual SuperCharactersUser PlayerScore { get; set; }
     }
 }
