@@ -1,23 +1,19 @@
 ﻿namespace SuperCharactersApp.Services.Account
 {
-    using SuperCharacters.Models;
     using SuperCharactersApp.Services.Account.Contracts;
     using System;
     using SuperCharactersApp.Repository;
-    using SuperCharacters.Web.ViewModels.Account;
-    using SuperCharacters.Services.Mapping;
-    using System.Linq;
     using SuperCharactersApp.Services.Account.ViewModels.Contracts;
 
-    public class AccountServices : IAccountServices
+    public class CharacterServices : IService<IViewModel>
     {
         private readonly UnitOfWork unitOfWork;
 
-        public AccountServices(UnitOfWork unitOfWork)
+        public CharacterServices(UnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
-        public void Create(SuperCharactersUser user)
+        public void Create(IViewModel user) //Map viewModel to DbModel 
         {
             throw new NotImplementedException();
         }
@@ -27,7 +23,7 @@
             throw new NotImplementedException();
         }
 
-        public IViewModel GetById(string id)
+        public IViewModel GetById(string id) //Map DbModel to ViewModel
         {
 
             throw new NotImplementedException();
@@ -38,10 +34,10 @@
             //    .To<LoginBindingModel>()
             //    .FirstOrDefault();
         }
-
-        public void Update(SuperCharactersUser userToUpdate)
+        
+        public void Update(IViewModel userToUpdate)   //Map viewModel to DbModel
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); 
         }
     }
 }

@@ -3,23 +3,23 @@
     using System;
     using SuperCharacters.Models;
     using SuperCharacters.DataAccess;
-    using SuperCharactersApp.Repository.Contracts;
+    using Contracts;
 
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly SuperCharactersAppDbContext dbContext = new SuperCharactersAppDbContext();
-        private RepositoryGeneric<SuperCharactersUser> accountRepository;
+        private RepositoryGeneric<Character> characterRepository;
 
-        public RepositoryGeneric<SuperCharactersUser> AccountRepository
+        public RepositoryGeneric<Character> AccountRepository
         {
             get
             {
-                if (this.accountRepository == null)
+                if (this.characterRepository == null)
                 {
-                    this.accountRepository = new RepositoryGeneric<SuperCharactersUser>(dbContext);
+                    this.characterRepository = new RepositoryGeneric<Character>(dbContext);
                 }
 
-                return accountRepository;
+                return characterRepository;
             }
         }
 

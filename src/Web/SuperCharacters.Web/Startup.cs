@@ -12,11 +12,9 @@
     using Microsoft.Extensions.DependencyInjection;
     using SuperCharacters.Models;
     using SuperCharacters.Web.Middlewares;
-    using SuperCharacters.Services.Mapping;
     using SuperCharactersApp.Repository.Account.Contracts;
     using SuperCharactersApp.Repository;
     using SuperCharactersApp.Repository.Contracts;
-    using SuperCharacters.Web.ViewModels.Account;
 
     public class Startup
     {
@@ -63,9 +61,9 @@
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             //Registration of type's assemblies in order to be mapped automatically by convention.
-            AutoMapperConfig.RegisterMappings(
-                typeof(LoginBindingModel).Assembly
-                );
+            //AutoMapperConfig.RegisterMappings(
+            //    typeof(LoginBindingModel).Assembly
+            //    );
 
 
             if (env.IsDevelopment())

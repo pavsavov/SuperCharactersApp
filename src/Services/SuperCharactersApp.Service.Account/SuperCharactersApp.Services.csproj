@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\SuperCharactersApp.ViewModels\SuperCharactersApp.ViewModels.csproj" />
     <ProjectReference Include="..\..\Repositories\SuperCharactersApp.Repositories\SuperCharactersApp.Repository.csproj" />
     <ProjectReference Include="..\SuperCharacters.Services.Mapping\SuperCharacters.Services.Mapping.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Battle.Services\" />
   </ItemGroup>
 
 </Project>

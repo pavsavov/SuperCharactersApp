@@ -3,11 +3,11 @@
     using SuperCharacters.Models;
     using SuperCharactersApp.Services.Account.ViewModels.Contracts;
 
-    public interface IAccountServices
+    public interface IService<T>
     {
         IViewModel GetById(string id);
-        void Create(SuperCharactersUser user);
-        void Update(SuperCharactersUser userToUpdate);
+        void Create(T user);
+        void Update(T userToUpdate);
         void DeleteById(string id);
     }
 }

@@ -1,0 +1,58 @@
+﻿@model SuperCharactersApp.ViewModels.DTO.CharacterViewModels.CharacterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<main class="mt-3">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+    <hr class="hr-2 eventure-bg-color half-width" />
+    <form class="register-form mx-auto half-width text-center d-flex flex-wrap justify-content-between" method="post" asp-controller="Users" asp-action="Register">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="CharacterType">@Model.CharacterType</label>
+            <input asp-for="CharacterType" type="text" class="form-control" placeholder="Username..." `>
+            <span asp-validation-for="CharacterType" class="text-danger field-validation-valid"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Armour">@Model.Armour</label>
+            <input asp-for="Armour" type="email" class="form-control" placeholder="Email...">
+            <span asp-validation-for="Armour" class="text-danger field-validation-valid"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HitPoints">@Model.HitPoints</label>
+            <input asp-for="HitPoints" type="password" class="form-control" placeholder="Password...">
+            <span asp-validation-for="HitPoints" class="text-danger field-validation-valid"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Damage">@Model.Damage</label>
+            <input asp-for="Damage" type="password" class="form-control" placeholder="Confirm Password...">
+            <span asp-validation-for="Damage" class="text-danger field-validation-valid"></span>
+        </div>
+        <hr class="hr-2 eventure-bg-color full-width" />
+        <div class="form-group">
+            <label asp-for="Name">@Model.Name</label>
+            <input asp-for="Name" type="text" class="form-control" placeholder="First Name...">
+            <span asp-validation-for="Name" class="text-danger field-validation-valid"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Team">@Model.Team</label>
+            <input asp-for="Team" type="text" class="form-control" placeholder="Last Name..."> @*Dropdown of teams or CreateNew Team at the begining*@
+            <span asp-validation-for="Team" class="text-danger field-validation-valid"></span>
+        </div>
+        <div class="form-group full-width">
+            <label asp-for="SecretIdentity">@Model.SecretIdentity</label>
+            <input asp-for="SecretIdentity" type="text" class="form-control" placeholder="UCN...">
+            <span asp-validation-for="SecretIdentity" class="text-danger field-validation-valid"></span>
+        </div>
+        <div class="form-group full-width">
+            <label asp-for="SuperPowers">@Model.SuperPowers</label>
+            <input asp-for="SuperPowers" type="text" class="form-control" placeholder="UCN...">      @*Dropdown of teams or CreateNew Team at the begining*@
+            <span asp-validation-for="SuperPowers" class="text-danger field-validation-valid"></span>
+        </div>
+        <hr class="hr-2 eventure-bg-color full-width" />
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn eventure-bg-color">Create</button>
+        </div>
+    </form>
+</main>
