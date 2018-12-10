@@ -12,9 +12,15 @@
     using Microsoft.Extensions.DependencyInjection;
     using SuperCharacters.Models;
     using SuperCharacters.Web.Middlewares;
-    using SuperCharactersApp.Repository.Account.Contracts;
     using SuperCharactersApp.Repository;
     using SuperCharactersApp.Repository.Contracts;
+    using SuperCharactersApp.Services;
+    using SuperCharacters.Services.Mapping;
+    using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
+    using SuperCharactersApp.Repository.Account.Contracts;
+    using SuperCharactersApp.ViewModels.Contracts;
+    using SuperCharactersApp.Services.CRUD.Services.Contracts;
+    using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
 
     public class Startup
     {
@@ -51,9 +57,13 @@
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<SuperCharactersAppDbContext>();
 
-            // Data repository
+            //// Data repository
             services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            ////Services
+            services.AddScoped<CharacterServices>();
+            services.AddScoped<TeamServices>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -61,9 +71,10 @@
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             //Registration of type's assemblies in order to be mapped automatically by convention.
-            //AutoMapperConfig.RegisterMappings(
-            //    typeof(LoginBindingModel).Assembly
-            //    );
+            AutoMapperConfig.RegisterMappings(
+                typeof(CharacterViewModel).Assembly,
+                typeof(CreateTeamViewModel).Assembly
+                );
 
 
             if (env.IsDevelopment())

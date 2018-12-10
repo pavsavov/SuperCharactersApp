@@ -2,9 +2,39 @@
 
 @{
     ViewData["Title"] = "ListCharacters";
+    var cnt = 0;
 }
 
-@foreach(var character in @Model)
-{
-    <h1>character</h1>
-}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Character type</th>
+            <th scope="col">Armour</th>
+            <th scope="col">Damage</th>
+            <th scope="col">HitPoints</th>
+            <th scope="col">Secret identity</th>
+            <th scope="col">SuperPowers</th>
+            <th scope="col">Team</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var character in Model)
+        {
+            cnt++;
+
+        <tr>
+            <th scope="row">@cnt</th>
+            <td>@character.Name</td>
+            <td>@character.CharacterType</td>
+            <td>@character.Armour</td>
+            <td>@character.Damage</td>
+            <td>@character.HitPoints</td>
+            <td>@character.SecretIdentity</td>
+            <td>@character.SuperPowers</td>
+            <td>@character.Team.Name</td>
+        </tr>
+        }
+    </tbody>
+</table>

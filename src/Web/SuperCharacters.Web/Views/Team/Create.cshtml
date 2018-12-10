@@ -1,0 +1,25 @@
+﻿@model SuperCharactersApp.ViewModels.DTO.TeamViewModels.CreateTeamViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<main class="mt-3">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+    @*<hr class="hr-2 eventure-bg-color half-width" />*@
+    <form class="register-form mx-auto half-width text-center d-flex flex-wrap justify-content-between" method="post" asp-controller="Team" asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="form-group ">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" placeholder="Team name..." `>
+                <span asp-validation-for="Name" class="text-danger field-validation-valid"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn eventure-bg-color">Create</button>
+            </div>
+        </div>
+    </form>
+</main>

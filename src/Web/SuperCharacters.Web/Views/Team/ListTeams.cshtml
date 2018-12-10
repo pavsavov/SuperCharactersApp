@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SuperCharactersApp.ViewModels.DTO.TeamViewModels.CreateTeamViewModel>
+ 
+@{
+    ViewData["Title"] = "ListTeams";
+    var cnt = 0;
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Team Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model)
+        {
+            cnt++;
+
+            <tr>
+                <th scope="row">@cnt</th>
+                <td>@team.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

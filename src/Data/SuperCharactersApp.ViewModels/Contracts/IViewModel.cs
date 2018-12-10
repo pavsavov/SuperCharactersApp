@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SuperCharactersApp.Services.Account.ViewModels.Contracts
+﻿namespace SuperCharactersApp.ViewModels.Contracts
 {
     public interface IViewModel
     {

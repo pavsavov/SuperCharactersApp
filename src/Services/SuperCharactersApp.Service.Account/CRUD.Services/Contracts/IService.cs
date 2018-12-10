@@ -1,13 +1,14 @@
-﻿namespace SuperCharactersApp.Services.Account.Contracts
-{
-    using SuperCharacters.Models;
-    using SuperCharactersApp.Services.Account.ViewModels.Contracts;
+﻿using System.Collections.Generic;
 
+
+namespace SuperCharactersApp.Services.CRUD.Services.Contracts
+{
     public interface IService<T>
     {
-        IViewModel GetById(string id);
-        void Create(T user);
-        void Update(T userToUpdate);
+        IEnumerable<T> GetAll();
+        T GetById(string id);
+        void Create(T model);
+        void Update(T modelToUpdate);
         void DeleteById(string id);
     }
 }

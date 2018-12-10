@@ -3,55 +3,56 @@
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
     using SuperCharacters.DataAccess;
-    using SuperCharactersApp.Repository.Account.Contracts;
+
 
     /// <summary>
     /// Generic Repository with IRepositoryGeneric interface implementation
     /// for perfoming CRUD operations within Database;
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class RepositoryGeneric<TEntity> : IRepositoryGeneric<TEntity>
+    public class RepositoryGeneric<TEntity> : Account.Contracts.IRepositoryGeneric<TEntity>
         where TEntity : class
     {
-        internal SuperCharactersAppDbContext dbContext;
-        internal DbSet<TEntity> dbSet;
+        private readonly SuperCharactersAppDbContext _dbContext;
+        private readonly DbSet<TEntity> _dbSet;
 
         public RepositoryGeneric(SuperCharactersAppDbContext dbContext )
         {
-            this.dbContext = dbContext;
-            this.dbSet = dbContext.Set<TEntity>();
+            _dbContext = dbContext;
+            _dbSet = _dbContext.Set<TEntity>();
         }
 
-        public IQueryable<TEntity> All()
+        public IQueryable<TEntity> GetAll()
         {
-            return this.dbSet;  
+            return this._dbSet;  
         }
 
         public virtual void Create(TEntity entity)
         {
-            dbSet.Add(entity);
+            _dbSet.Add(entity);
+
         }
 
         public virtual void DeleteById(string id)
         {
-            TEntity entityToDelete = dbSet.Find(id);
+            TEntity entityToDelete = _dbSet.Find(id);
 
-            if (dbContext.Entry(entityToDelete).State == EntityState.Detached)
+            if (_dbContext.Entry(entityToDelete).State == EntityState.Detached)
             {
-                dbSet.Attach(entityToDelete);
+                _dbSet.Attach(entityToDelete);
             }
-            dbSet.Remove(entityToDelete);
+            _dbSet.Remove(entityToDelete);
         }
 
         public virtual TEntity GetById(string id)
         {
-            return dbSet.Find(id);
+            return _dbSet.Find(id);
         }
 
         public virtual void Update(TEntity entityToUpdate)
         {
-            dbSet.Attach(entityToUpdate);
-            dbContext.Entry(entityToUpdate).State = EntityState.Modified;
+            _dbSet.Attach(entityToUpdate);
+            _dbContext.Entry(entityToUpdate).State = EntityState.Modified;
         }
     }
 }

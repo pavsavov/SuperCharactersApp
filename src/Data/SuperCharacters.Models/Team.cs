@@ -9,7 +9,7 @@ namespace SuperCharacters.Models
     {
         public Team()
         {
-            this.TeamMembers = new List<Character>();
+            this.TeamMembers = new HashSet<Character>();
         }
 
         [Key]

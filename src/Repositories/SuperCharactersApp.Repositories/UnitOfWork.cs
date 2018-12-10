@@ -7,25 +7,46 @@
 
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly SuperCharactersAppDbContext dbContext = new SuperCharactersAppDbContext();
-        private RepositoryGeneric<Character> characterRepository;
+        private readonly SuperCharactersAppDbContext _dbContext;
+        private RepositoryGeneric<Character> _characterRepository;
+        private RepositoryGeneric<Team> _teamRepository;
+        // private RepositoryGeneric<SuperPower> _superpowers;
 
-        public RepositoryGeneric<Character> AccountRepository
+        public UnitOfWork(SuperCharactersAppDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public RepositoryGeneric<Character> CharacterRepository
         {
             get
             {
-                if (this.characterRepository == null)
+                if (_characterRepository == null)
                 {
-                    this.characterRepository = new RepositoryGeneric<Character>(dbContext);
+                    _characterRepository = new RepositoryGeneric<Character>(_dbContext);
                 }
 
-                return characterRepository;
+                return _characterRepository;
+            }
+
+        }
+
+        public RepositoryGeneric<Team> TeamRepository
+        {
+            get
+            {
+                if (_teamRepository == null)
+                {
+                    _teamRepository = new RepositoryGeneric<Team>(_dbContext);
+                }
+
+                return _teamRepository;
             }
         }
 
         public void Save()
         {
-            dbContext.SaveChanges();
+            _dbContext.SaveChanges();
         }
 
         private bool disposed = false;
@@ -35,7 +56,7 @@
             {
                 if (disposing)
                 {
-                    dbContext.Dispose();
+                    _dbContext.Dispose();
                 }
             }
             this.disposed = true;

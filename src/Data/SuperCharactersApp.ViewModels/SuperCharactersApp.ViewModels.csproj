@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services\SuperCharacters.Services.Mapping\SuperCharacters.Services.Mapping.csproj" />
+    <ProjectReference Include="..\SuperCharacters.Models\SuperCharacters.Models.csproj" />
+  </ItemGroup>
+
 </Project>
