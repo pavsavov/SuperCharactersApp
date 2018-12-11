@@ -9,8 +9,9 @@
     using System.Collections.Generic;
     using AutoMapper;
     using SuperCharactersApp.Repository.Contracts;
+    using SuperCharactersApp.ViewModels.Contracts;
 
-    public class CharacterServices : IService<CharacterViewModel>
+    public class CharacterServices : IService<ICharacterViewModel>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -18,10 +19,23 @@
         {
             _unitOfWork = unitOfWork;
         }
-        public void Create(CharacterViewModel model) //Map viewModel to DbModel 
+        public void Create(ICharacterViewModel model) //Map viewModel to DbModel 
         {
+            Character character = new Character();
+            character = Mapper.Map<SuperHero>(model);
+            //if (model.CharacterType == "Superhero")
+            //{
+            //    
 
-            var character = Mapper.Map<Character>(model);
+            //}
+            //else if (model.CharacterType == "Supervillain")
+            //{
+            //    character = Mapper.Map<SuperVillain>(model);
+            //}
+
+            var team = _unitOfWork.TeamRepository.GetById(character.TeamId);
+
+            character.Team = team;
 
             _unitOfWork.CharacterRepository.Create(character);
 
@@ -34,7 +48,7 @@
             throw new NotImplementedException();
         }
 
-        public IEnumerable<CharacterViewModel> GetAll()
+        public IEnumerable<ICharacterViewModel> GetAll()
         {
             return _unitOfWork.CharacterRepository
                 .GetAll()
@@ -42,7 +56,7 @@
                 .ToList();
         }
 
-        public CharacterViewModel GetById(string id) //Map DbModel to ViewModel
+        public ICharacterViewModel GetById(string id) //Map DbModel to ViewModel
         {
 
             throw new NotImplementedException();
@@ -54,7 +68,7 @@
             //    .FirstOrDefault();
         }
 
-        public void Update(CharacterViewModel modelToUpdate)   //Map viewModel to DbModel
+        public void Update(ICharacterViewModel modelToUpdate)   //Map viewModel to DbModel
         {
             throw new NotImplementedException();
         }

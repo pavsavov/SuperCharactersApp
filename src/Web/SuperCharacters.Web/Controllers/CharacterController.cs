@@ -1,12 +1,10 @@
-﻿using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
-
-namespace SuperCharacters.Web.Controllers
+﻿namespace SuperCharacters.Web.Controllers
 {
-
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services;
     using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
+    using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -15,40 +13,65 @@ namespace SuperCharacters.Web.Controllers
     {
         private readonly CharacterServices _characterServices;
         private readonly TeamServices _teamServices;
+        //private readonly SuperCharactersAppDbContext _dbcontext;
         public CharacterController(CharacterServices characterServices,
-            TeamServices teamServices)
+            TeamServices teamServices
+            /*,SuperCharactersAppDbContext dbcontext*/)
         {
+            //_dbcontext = dbcontext;
             _teamServices = teamServices;
             _characterServices = characterServices;
         }
 
         public IActionResult ListCharacters()
         {
+
             var characters = _characterServices.GetAll();
-           
+
             return this.View(characters);
         }
 
         public IActionResult Create()
         {
+            //dummy
+
             var teams = _teamServices.GetAll().ToList();
 
-            var createViewModel = new CharacterViewModel
+            var characterViewModel = new CharacterViewModel
             {
-
-                Teams = teams
+                Teams = teams,
+                SuperPowers = new List<CreateSuperPowerViewModel>()
+                    {
+                        new CreateSuperPowerViewModel { Name = "IronLady", Type = "Armour", Value = 22 },
+                        new CreateSuperPowerViewModel { Name = "PowerfullSmite", Type = "Damage", Value = 133 },
+                        new CreateSuperPowerViewModel { Name = "BringDeadPeopleAlive", Type = "Heal", Value = 3.3 }
+                    },
             };
 
-            return View(createViewModel);
+            //var secreteIdentity = new SecretIdentity { FirstName = "Ohlio", LastName = "Bohlio" };
+            //var typeOfSuperPowers = (SuperPowerType)Enum.Parse(typeof(SuperPowerType), "Heal");
+            //var createViewModel = new CharacterViewModel
+            //{
+            //    SuperPowers = new List<CreateSuperPowerViewModel>()
+            //    {
+            //        new CreateSuperPowerViewModel { Name = "IronLady", Type = "Armour", Value = 22 },
+            //        new CreateSuperPowerViewModel { Name = "PowerfullSmite", Type = "Damage", Value = 133 },
+            //        new CreateSuperPowerViewModel { Name = "BringDeadPeopleAlive", Type = "Heal", Value = 3.3 }
+            //    },
+            //    SecretIdentity = secreteIdentity,
+            //    Teams = teams
+            //};
+
+            return View(characterViewModel);
         }
 
         [HttpPost]
-        public IActionResult Create(CharacterViewModel viewModel)
+        public IActionResult Create(CharacterCreateViewModel viewModel)
         {
-            if (!ModelState.IsValid)
-            {
-                return this.Json(ModelState.ValidationState.ToString());
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return this.Json(ModelState.ValidationState.ToString());
+            //}
 
             _characterServices.Create(viewModel);
 

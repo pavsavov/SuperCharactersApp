@@ -12,7 +12,7 @@
         public DbSet<Character> Characters { get; set; }
         public DbSet<SuperPower> SuperPowers { get; set; }
         public DbSet<Team> Teams { get; set; }
-        
+
         public SuperCharactersAppDbContext()
         {
 
@@ -26,6 +26,14 @@
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            //Configuring Discriminator using Fluent API
+            builder.Entity<Character>()
+                .HasDiscriminator<string>("CharacterType")
+                .HasValue<Character>("character_base")
+                .HasValue<SuperHero>("Superhero")
+                .HasValue<SuperVillain>("Supervillain");
+
 
             //builder.Entity<TeamsCharacters>().HasKey(tc => new { tc.CharacterId, tc.TeamId });
 

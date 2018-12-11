@@ -1,18 +1,14 @@
 ﻿namespace SuperCharacters.Models
 {
-
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    /// <summary>
+    /// DataModel for keeping the Scores of all three entities - Character(Supervillain or Superhero),Team and Player(user)
+    /// </summary>
     public class Score
     {
-        //public Score()
-        //{
-
-        //}
-
         [Key]
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public int Wins { get; set; }

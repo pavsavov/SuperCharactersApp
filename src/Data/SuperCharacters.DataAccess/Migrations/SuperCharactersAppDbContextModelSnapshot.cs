@@ -136,6 +136,9 @@ namespace SuperCharacters.DataAccess.Migrations
 
                     b.Property<int>("Armour");
 
+                    b.Property<string>("CharacterType")
+                        .IsRequired();
+
                     b.Property<int>("Damage");
 
                     b.Property<string>("Name")
@@ -150,6 +153,8 @@ namespace SuperCharacters.DataAccess.Migrations
                     b.HasIndex("TeamId");
 
                     b.ToTable("Characters");
+
+                    b.HasDiscriminator<string>("CharacterType").HasValue("character_base");
                 });
 
             modelBuilder.Entity("SuperCharacters.Models.Score", b =>
@@ -291,6 +296,25 @@ namespace SuperCharacters.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Teams");
+                });
+
+            modelBuilder.Entity("SuperCharacters.Models.SuperHero", b =>
+                {
+                    b.HasBaseType("SuperCharacters.Models.Character");
+
+                    b.Property<double>("HitPoints");
+
+                    b.HasDiscriminator().HasValue("Superhero");
+                });
+
+            modelBuilder.Entity("SuperCharacters.Models.SuperVillain", b =>
+                {
+                    b.HasBaseType("SuperCharacters.Models.Character");
+
+                    b.Property<int>("HitPoints")
+                        .HasColumnName("SuperVillain_HitPoints");
+
+                    b.HasDiscriminator().HasValue("Supervillain");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

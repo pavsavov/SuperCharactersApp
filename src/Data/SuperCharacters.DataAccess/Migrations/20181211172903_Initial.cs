@@ -173,7 +173,10 @@ namespace SuperCharacters.DataAccess.Migrations
                     Armour = table.Column<int>(nullable: false),
                     Damage = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
-                    TeamId = table.Column<string>(nullable: false)
+                    TeamId = table.Column<string>(nullable: false),
+                    CharacterType = table.Column<string>(nullable: false),
+                    HitPoints = table.Column<double>(nullable: true),
+                    SuperVillain_HitPoints = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {

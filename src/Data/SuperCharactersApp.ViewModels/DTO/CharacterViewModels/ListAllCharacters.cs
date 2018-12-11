@@ -1,9 +1,9 @@
 ﻿namespace SuperCharactersApp.ViewModels.DTO.CharacterViewModels
 {
     using System.Collections.Generic;
-    public class List
+    public class ListAllCharacters
     {
-        public List()
+        public ListAllCharacters()
         {
             this.AllCharacters = new List<CharacterViewModel>();
         }
