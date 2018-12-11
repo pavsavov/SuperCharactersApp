@@ -9,7 +9,6 @@
     /// Generic Repository with IRepositoryGeneric interface implementation
     /// for perfoming CRUD operations within Database;
     /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
     public class RepositoryGeneric<TEntity> : Account.Contracts.IRepositoryGeneric<TEntity>
         where TEntity : class
     {

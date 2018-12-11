@@ -1,16 +1,20 @@
-﻿using AutoMapper;
-using SuperCharacters.Models;
-using SuperCharacters.Services.Mapping;
-using SuperCharactersApp.Repository.Contracts;
-using SuperCharactersApp.Services.CRUD.Services.Contracts;
-using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SuperCharactersApp.Services
+﻿namespace SuperCharactersApp.Services
 {
+    using AutoMapper;
+    using SuperCharacters.Models;
+    using SuperCharacters.Services.Mapping;
+    using SuperCharactersApp.Repository.Contracts;
+    using SuperCharactersApp.Services.CRUD.Services.Contracts;
+    using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    /// <summary>
+    /// This class is responsible for all CRUD operations on Teams Entity.
+    /// It receives input from respective controller and forwards parameters to the GenericRepository class with registered type
+    /// in the UnitOfWork class. Also when needed, here happens the actual mapping from ViewModel to real Db model using Automapper.
+    /// </summary>
     public class TeamServices : IService<CreateTeamViewModel>
     {
         private readonly IUnitOfWork _unitOfWork;

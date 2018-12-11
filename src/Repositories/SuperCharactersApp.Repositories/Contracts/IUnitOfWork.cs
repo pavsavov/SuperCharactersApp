@@ -1,14 +1,16 @@
-﻿using SuperCharacters.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SuperCharactersApp.Repository.Contracts
+﻿namespace SuperCharactersApp.Repository.Contracts
 {
-    public interface IUnitOfWork    
+    using SuperCharacters.Models;
+
+    /// <summary>
+    /// The following interface describes all the properties,
+    /// that implements the generic repository
+    /// </summary>
+    public interface IUnitOfWork
     {
         RepositoryGeneric<Character> CharacterRepository { get; }
         RepositoryGeneric<Team> TeamRepository { get; }
+        RepositoryGeneric<SuperPower> SuperPowerRepository { get; }
         void Save();
     }
 }

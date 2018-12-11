@@ -1,7 +1,9 @@
 ﻿namespace SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels
 {
+    using SuperCharacters.Models;
+    using SuperCharacters.Services.Mapping.Contracts;
     using System.ComponentModel.DataAnnotations;
-    public class CreateSuperPowerViewModel
+    public class CreateSuperPowerViewModel : IMapTo<SuperPower>, IMapFrom<SuperPower>
     {
         [Required]
         public string Name { get; set; }

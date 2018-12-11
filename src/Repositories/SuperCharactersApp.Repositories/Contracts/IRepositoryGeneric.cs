@@ -1,7 +1,6 @@
-﻿using System.Linq;
-
-namespace SuperCharactersApp.Repository.Account.Contracts
+﻿namespace SuperCharactersApp.Repository.Account.Contracts
 {
+    using System.Linq;
     public interface IRepositoryGeneric<TEntity>
         where TEntity : class
     {
