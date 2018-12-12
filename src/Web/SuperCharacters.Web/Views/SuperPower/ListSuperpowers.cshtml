@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowersListingViewModel>
+
+@{
+    ViewData["Title"] = "ListSuperpowers";
+    var cnt = 0;
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td align="center"></td>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var superpower in Model)
+        {
+            cnt++;
+
+            <tr>
+                <td align="center"></td>
+                <th scope="row">@cnt</th>
+                <td>@superpower.Name</td>
+                <td>@superpower.Type</td>
+                <td>@superpower.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

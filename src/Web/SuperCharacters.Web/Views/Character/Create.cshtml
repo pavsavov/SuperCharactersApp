@@ -17,11 +17,11 @@
             <div class="form-group col-md-3">
                 <label asp-for="Armour"></label>
                 <input asp-for="Armour" type="number" class="form-control" name="armour" placeholder="Armour...">
-             
+
             </div>
             <div class="form-group col-md-3">
                 <label asp-for="HitPoints"></label>
-                <input asp-for="HitPoints" type="number" class="form-control" placeholder="Hitpoints...">
+                <input asp-for="HitPoints" type="number" step="0.1" class="form-control" placeholder="Hitpoints...">
             </div>
             <div class="form-group col-md-3">
                 <label asp-for="Damage"></label>
@@ -31,7 +31,7 @@
         <div class="row col-md-12">
             <div class="form-group col-md-3">
                 <label asp-for="Name"></label>
-                <input asp-for="Name" type="text" class="form-control" placeholder="Name...">
+                <input asp-for="Name" data-val-required="The name is required" type="text" class="form-control" placeholder="Name...">
             </div>
             <div class="form-group col-md-3">
                 <label for="Team">Select Team</label>
@@ -61,8 +61,8 @@
                 }
             </div>
         </div>
-            <div class="button-holder">
-                <button type="submit" id="submit" class="btn eventure-bg-color">Create</button>
-            </div>
+        <div class="button-holder">
+            <button type="submit" id="submit" class="btn eventure-bg-color">Create</button>
+        </div>
     </form>
 </main>

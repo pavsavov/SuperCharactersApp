@@ -1,4 +1,4 @@
-﻿namespace SuperCharactersApp.Services
+﻿namespace SuperCharactersApp.Services.CRUD.Services
 {
     using System;
     using System.Linq;

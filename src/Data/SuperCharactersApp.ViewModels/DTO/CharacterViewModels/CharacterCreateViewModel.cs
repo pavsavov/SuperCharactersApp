@@ -13,7 +13,7 @@
     {
         public CharacterCreateViewModel()
         {
-            this.SuperPowers = new HashSet<CreateSuperPowerViewModel>();
+            this.SuperPowers = new HashSet<SuperPowersListingViewModel>();
             this.Teams = new HashSet<CreateTeamViewModel>();
         }
 
@@ -32,7 +32,7 @@
         [Required]
         public string TeamId { get; set; }
 
-        public ICollection<CreateSuperPowerViewModel> SuperPowers { get; set; }
+        public ICollection<SuperPowersListingViewModel> SuperPowers { get; set; }
         public ICollection<CreateTeamViewModel> Teams { get; set; }
     }
 }

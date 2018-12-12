@@ -14,13 +14,12 @@
     using SuperCharacters.Web.Middlewares;
     using SuperCharactersApp.Repository;
     using SuperCharactersApp.Repository.Contracts;
-    using SuperCharactersApp.Services;
     using SuperCharacters.Services.Mapping;
     using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
     using SuperCharactersApp.Repository.Account.Contracts;
-    using SuperCharactersApp.ViewModels.Contracts;
-    using SuperCharactersApp.Services.CRUD.Services.Contracts;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
+    using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
+    using SuperCharactersApp.Services.CRUD.Services;
 
     public class Startup
     {
@@ -64,6 +63,7 @@
             ////Services
             services.AddScoped<CharacterServices>();
             services.AddScoped<TeamServices>();
+            services.AddScoped<SuperpowerServices>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -73,7 +73,11 @@
             //Registration of type's assemblies in order to be mapped automatically by convention.
             AutoMapperConfig.RegisterMappings(
                 typeof(CharacterViewModel).Assembly,
-                typeof(CreateTeamViewModel).Assembly
+                typeof(CharacterCreateViewModel).Assembly,
+                typeof(ListAllCharacters).Assembly,
+                typeof(CreateTeamViewModel).Assembly,
+                typeof(CreateSuperPowerViewModel).Assembly,
+                typeof(SuperPowersListingViewModel).Assembly
                 );
 
 

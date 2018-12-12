@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using SuperCharactersApp.Services;
+    using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
 
     [Authorize]
