@@ -30,13 +30,8 @@
             //Configuring Discriminator using Fluent API
             builder.Entity<Character>()
                 .HasDiscriminator<string>("CharacterType")
-                .HasValue<Character>("character_base")
                 .HasValue<SuperHero>("Superhero")
                 .HasValue<SuperVillain>("Supervillain");
-
-
-            //builder.Entity<TeamsCharacters>().HasKey(tc => new { tc.CharacterId, tc.TeamId });
-
 
         }
     }

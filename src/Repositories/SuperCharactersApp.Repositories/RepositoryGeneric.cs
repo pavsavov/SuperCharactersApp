@@ -23,7 +23,7 @@
 
         public IQueryable<TEntity> GetAll()
         {
-            return this._dbSet;  
+            return this._dbSet.OfType<TEntity>();  
         }
 
         public virtual void Create(TEntity entity)

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuperCharacters.DataAccess;
 
 namespace SuperCharacters.DataAccess.Migrations
 {
     [DbContext(typeof(SuperCharactersAppDbContext))]
-    partial class SuperCharactersAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181212122308_BaseCharacterTableUpdate")]
+    partial class BaseCharacterTableUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -303,7 +305,7 @@ namespace SuperCharacters.DataAccess.Migrations
                 {
                     b.HasBaseType("SuperCharacters.Models.Character");
 
-                    b.Property<double>("HitPoints");
+                    b.Property<double>("SuperheroHitPoints");
 
                     b.HasDiscriminator().HasValue("Superhero");
                 });
@@ -312,8 +314,7 @@ namespace SuperCharacters.DataAccess.Migrations
                 {
                     b.HasBaseType("SuperCharacters.Models.Character");
 
-                    b.Property<int>("HitPoints")
-                        .HasColumnName("SuperVillain_HitPoints");
+                    b.Property<int>("SupervillainHitPoints");
 
                     b.HasDiscriminator().HasValue("Supervillain");
                 });

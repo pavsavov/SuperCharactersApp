@@ -1,8 +1,7 @@
 ﻿namespace SuperCharacters.Models
 {
-    using SuperCharacters.Models.Contracts;
     using System.ComponentModel.DataAnnotations;
-    public class SuperHero : Character, ICharacter<double>
+    public class SuperHero : Character
     {
         [Required]
         [Range(100, 200)]

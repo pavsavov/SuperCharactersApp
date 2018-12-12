@@ -9,7 +9,8 @@
     using SuperCharacters.Models;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
 
-    public class CharacterViewModel : ICharacterViewModel, IMapFrom<Character>, IMapTo<Character>      
+    public class CharacterViewModel : ICharacterViewModel, IMapFrom<SuperHero>, IMapTo<SuperHero>
+        ,IMapFrom<SuperVillain>, IMapTo<SuperVillain>
     {
 
         public CharacterViewModel()
@@ -21,7 +22,8 @@
         [Required]
         public string CharacterType { get; set; }
         [Required]
-        public int HitPoints { get; set; }
+        public double HitPoints { get; set; }
+        //public int SuperVillains_HitPoints { get; set; }
         [Required]
         public int Armour { get; set; }
         [Required]

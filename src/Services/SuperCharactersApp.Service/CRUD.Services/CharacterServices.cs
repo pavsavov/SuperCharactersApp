@@ -21,9 +21,15 @@
         }
         public void Create(ICharacterViewModel model) //Map viewModel to DbModel 
         {
-            Character character = new Character();
-
-            character = Mapper.Map<SuperHero>(model);
+            Character character = null;
+            if (model.CharacterType == "Superhero")
+            {
+                character = Mapper.Map<SuperHero>(model);
+            }
+            else if (model.CharacterType == "Supervillain")
+            {
+                character = Mapper.Map<SuperVillain>(model);
+            }  
 
             var team = _unitOfWork.TeamRepository.GetById(character.TeamId);
 

@@ -27,8 +27,6 @@
             
             var superpower = Mapper.Map<SuperPower>(model);
 
-            
-
             _unitOfWork.SuperPowerRepository.Create(superpower);
 
             _unitOfWork.Save();

@@ -20,7 +20,7 @@
         [Required]
         public string CharacterType { get; set; }
         [Required]
-        public int HitPoints { get; set; }
+        public double HitPoints { get; set; }
         [Required]
         [Range(1,100)]
         public int Armour { get; set; }

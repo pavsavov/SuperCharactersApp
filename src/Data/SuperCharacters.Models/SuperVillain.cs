@@ -1,16 +1,11 @@
-﻿using SuperCharacters.Models.Contracts;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace SuperCharacters.Models
+﻿namespace SuperCharacters.Models
 {
-    public class SuperVillain : Character, ICharacter<int>
+    using System.ComponentModel.DataAnnotations;
+    public class SuperVillain : Character
     {
 
         [Required]
-        [Range(100,200)]
+        [Range(100, 200)]
         public int HitPoints { get; set; }
         //public override Score Score { get; set; }
     }
