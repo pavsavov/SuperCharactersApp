@@ -1,4 +1,4 @@
-﻿@model SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.CreateSuperPowerViewModel
+﻿@model SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowerViewModel
 @{
     ViewData["Title"] = "Create";
     ;
@@ -6,7 +6,6 @@
 
 <main class="mt-3">
     <h1 class="text-center">@ViewData["Title"]</h1>
-    @*<hr class="hr-2 eventure-bg-color half-width" />*@
     <form class="register-form mx-auto half-width text-center d-flex flex-wrap justify-content-between" method="post" asp-controller="Superpower" asp-action="Create">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="row col-md-12">
@@ -17,10 +16,10 @@
             <div class="form-group col-md-4">
                 <label for="Type">Select type of superpower</label>
                 <select asp-for="Type">
-                    <option value="1">Damage</option>
-                    <option value="2">Heal</option>
-                    <option value="3">Armour</option>
-                    <option value="4">Damage Multiplier</option>
+                    <option value="Damage">Damage</option>
+                    <option value="Heal">Heal</option>
+                    <option value="Armour">Armour</option>
+                    <option value="Damage Multiplier">Damage Multiplier</option>
                 </select>
             </div>
             <div class="form-group col-md-4 ">

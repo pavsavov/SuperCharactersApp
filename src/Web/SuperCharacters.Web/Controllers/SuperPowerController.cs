@@ -28,7 +28,7 @@
 
             }
 
-            return RedirectToAction("ListAll", "SuperPower");
+            return RedirectToAction("ListSuperpowers", "SuperPower");
         }
 
         public IActionResult ListSuperpowers()

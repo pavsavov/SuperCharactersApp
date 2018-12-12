@@ -1,7 +1,10 @@
 ﻿namespace SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels
 {
     using SuperCharacters.Models;
+    using SuperCharacters.Models.Enums;
     using SuperCharacters.Services.Mapping.Contracts;
+    using System.ComponentModel.DataAnnotations;
+
     public class SuperPowersListingViewModel : IMapTo<SuperPower>, IMapFrom<SuperPower>
     {
         public string Name { get; set; }

@@ -30,6 +30,10 @@
     <Compile Remove="Migrations\20181211164500_Initial.cs" />
     <Compile Remove="Migrations\20181211164810_Initial.cs" />
     <Compile Remove="Migrations\20181211172110_Initial.cs" />
+    <Compile Remove="Migrations\20181212171301_SuperPowerTypeDataType.cs" />
+    <Compile Remove="Migrations\20181212171526_MinorBugFix.cs" />
+    <Compile Remove="Migrations\20181212180202_superpowerAttempt.cs" />
+    <Compile Remove="Migrations\20181212184413_pf.cs" />
   </ItemGroup>
 
   <ItemGroup>

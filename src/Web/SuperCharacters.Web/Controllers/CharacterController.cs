@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
+    using System;
     using System.Linq;
 
     [Authorize]
@@ -60,13 +61,26 @@
 
         public IActionResult Edit()
         {
-            return this.View();
+            throw new NotImplementedException();
         }
 
         [HttpPost]
-        public IActionResult Edit(CharacterViewModel viewModel)
+        public IActionResult Edit(string viewModel)
         {
-            return this.View();
+            throw new NotImplementedException();
+
+        }
+
+        public IActionResult Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(string id)
+        {
+            throw new NotImplementedException();
+
         }
     }
 }

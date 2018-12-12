@@ -27,6 +27,8 @@
             
             var superpower = Mapper.Map<SuperPower>(model);
 
+            
+
             _unitOfWork.SuperPowerRepository.Create(superpower);
 
             _unitOfWork.Save();
@@ -39,9 +41,9 @@
 
         public IEnumerable<SuperPowersListingViewModel> GetAll()
         {
-            var teams = _unitOfWork.SuperPowerRepository.GetAll();
+            var superpowers = _unitOfWork.SuperPowerRepository.GetAll();
 
-            return teams.AsQueryable()
+            return superpowers.AsQueryable()
                 .To<SuperPowersListingViewModel>()
                 .ToList(); ;
         }

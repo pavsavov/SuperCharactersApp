@@ -48,6 +48,7 @@
 
         public IEnumerable<ICharacterViewModel> GetAll()
         {
+
             return _unitOfWork.CharacterRepository
                 .GetAll()
                 .To<CharacterViewModel>()

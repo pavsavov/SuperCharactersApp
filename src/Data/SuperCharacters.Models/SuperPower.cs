@@ -1,5 +1,6 @@
 ﻿namespace SuperCharacters.Models
 {
+    using SuperCharacters.Models.Enums;
     using System;
     using System.ComponentModel.DataAnnotations;
     public class SuperPower
