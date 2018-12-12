@@ -7,19 +7,19 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
-    using SuperCharacters.DataAccess;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using SuperCharacters.Models;
     using SuperCharacters.Web.Middlewares;
-    using SuperCharactersApp.Repository;
-    using SuperCharactersApp.Repository.Contracts;
     using SuperCharacters.Services.Mapping;
     using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
-    using SuperCharactersApp.Repository.Account.Contracts;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
     using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
     using SuperCharactersApp.Services.CRUD.Services;
+    using SuperCharacters.DataAccess;
+    using SuperCharacters.Models;
+    using SuperCharactersApp.Repository.Account.Contracts;
+    using SuperCharactersApp.Repository;
+    using SuperCharactersApp.Repository.Contracts;
 
     public class Startup
     {

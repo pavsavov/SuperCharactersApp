@@ -15,7 +15,8 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Services\SuperCharactersApp.Service.Account\SuperCharactersApp.Services.csproj" />
+    <ProjectReference Include="..\..\Data\SuperCharactersApp.ViewModels\SuperCharactersApp.ViewModels.csproj" />
+    <ProjectReference Include="..\..\Services\SuperCharactersApp.Service\SuperCharactersApp.Services.csproj" />
   </ItemGroup>
 
 </Project>
