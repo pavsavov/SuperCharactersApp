@@ -43,10 +43,22 @@
                     }
                 </select>
             </div>
+
+
+
+
             <div class="form-group col-md-3">
                 <label asp-for="SuperPowers"></label>
-                <input asp-for="SuperPowers" type="number" class="form-control" placeholder="Superpowers...">
+                <input asp-for="SuperPowers" method="post" list="superpowers" name="superpower" type="text" class="form-control">
+                <datalist id="superpowers">
+                    <option value="">--Select Superpower--</option>
+                    @foreach (var superpower in @Model.SuperPowers)
+                    {
+                        <option value="@superpower.Id" name="Superpower">@superpower.Name.ToString()</option>
+                    }
+                </datalist>
             </div>
+
             <div class="form-group col-md-3">
                 <label asp-for="SecretIdentity"></label>
                 @if (Model.SecretIdentity != null)
