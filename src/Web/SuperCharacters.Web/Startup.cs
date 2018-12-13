@@ -20,6 +20,7 @@
     using SuperCharactersApp.Repository.Account.Contracts;
     using SuperCharactersApp.Repository;
     using SuperCharactersApp.Repository.Contracts;
+    using SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels;
 
     public class Startup
     {
@@ -70,13 +71,16 @@
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //Registration of type's assemblies in order to be mapped automatically by convention.
+            /*Registration of types which implement IMapFrom <> and IMapTo<> interfaces
+            assemblies in order to be mapped automatically by convention.*/
+
             AutoMapperConfig.RegisterMappings(
                 typeof(CharacterViewModel).Assembly,
                 typeof(CharacterCreateViewModel).Assembly,
                 typeof(ListAllCharacters).Assembly,
                 typeof(CreateTeamViewModel).Assembly,
-                typeof(SuperPowerViewModel).Assembly
+                typeof(SuperPowerViewModel).Assembly,
+                typeof(SecretIdentityViewModel).Assembly
                 );
 
 

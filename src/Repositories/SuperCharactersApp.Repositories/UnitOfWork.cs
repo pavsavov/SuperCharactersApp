@@ -18,6 +18,7 @@
         private RepositoryGeneric<Character> _characterRepository;
         private RepositoryGeneric<Team> _teamRepository;
         private RepositoryGeneric<SuperPower> _superpowers;
+        private RepositoryGeneric<SecretIdentity> _secretIdentity;
 
         public UnitOfWork(SuperCharactersAppDbContext dbContext)
         {
@@ -60,6 +61,19 @@
                 }
 
                 return _superpowers;
+            }
+        }
+
+        public RepositoryGeneric<SecretIdentity> SecretIdentityRepository
+        {
+            get
+            {
+                if (_secretIdentity == null)
+                {
+                    _secretIdentity = new RepositoryGeneric<SecretIdentity>(_dbContext);
+                }
+
+                return _secretIdentity;
             }
         }
         /// <summary>

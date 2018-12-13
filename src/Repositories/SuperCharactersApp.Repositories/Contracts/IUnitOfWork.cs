@@ -11,6 +11,8 @@
         RepositoryGeneric<Character> CharacterRepository { get; }
         RepositoryGeneric<Team> TeamRepository { get; }
         RepositoryGeneric<SuperPower> SuperPowerRepository { get; }
+        RepositoryGeneric<SecretIdentity> SecretIdentityRepository { get; }
+     //   RepositoryGeneric<Battle> BattleRepository { get; }
         void Save();
     }
 }

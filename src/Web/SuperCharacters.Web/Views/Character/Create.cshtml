@@ -12,7 +12,11 @@
         <div class="row col-md-12">
             <div class="form-group col-md-3 ">
                 <label asp-for="CharacterType"></label>
-                <input asp-for="CharacterType" type="text" class="form-control" placeholder="Character type..." `>
+                <input method="post" list="characterTypes" name="characterType" type="text" class="form-control" placeholder="Character type...">
+                <datalist id="characterTypes">
+                    <option value="Superhero" name="Superhero"></option>
+                    <option value="Supervillain" name="Supervillain"></option>
+                </datalist>
             </div>
             <div class="form-group col-md-3">
                 <label asp-for="Armour"></label>
@@ -34,22 +38,18 @@
                 <input asp-for="Name" data-val-required="The name is required" type="text" class="form-control" placeholder="Name...">
             </div>
             <div class="form-group col-md-3">
-                <label for="Team">Select Team</label>
-                <select class="form-control" id="Team" name="TeamId">
-                    <option value="">-- Select Team --</option>
+                <label asp-for="Team"></label>
+                <input method="post" list="teams" name="team" type="text" class="form-control" placeholder="Choose Team...">
+                <datalist id="teams">
                     @foreach (var team in @Model.Teams)
                     {
-                        <option value="@team.Id" name="TeamId">@team.Name</option>
+                        <option value="@team.Name" name="TeamId"></option>
                     }
-                </select>
+                </datalist>
             </div>
-
-
-
-
             <div class="form-group col-md-3">
                 <label asp-for="SuperPowers"></label>
-                <input method="post" list="superpowers" name="superpower" type="text" class="form-control" placeholder="Superpowers...">
+                <input method="post" list="superpowers" name="superpower" type="text" class="form-control" placeholder="Choose Superpower...">
                 <datalist id="superpowers">
                     <option value="">--Select Superpower--</option>
                     @foreach (var superpower in @Model.SuperPowers)
