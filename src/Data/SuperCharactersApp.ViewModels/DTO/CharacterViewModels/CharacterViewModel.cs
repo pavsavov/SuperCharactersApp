@@ -8,9 +8,10 @@
     using SuperCharacters.Services.Mapping.Contracts;
     using SuperCharacters.Models;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
+    using AutoMapper;
 
     public class CharacterViewModel : ICharacterViewModel, IMapFrom<SuperHero>, IMapTo<SuperHero>,
-        IMapFrom<SuperVillain>, IMapTo<SuperVillain>
+        IHaveCustomMappings, IMapTo<SuperVillain>
 
     {
 
@@ -37,5 +38,22 @@
         public ICollection<SuperPowersListingViewModel> SuperPowers { get; set; }
         public ICollection<CreateTeamViewModel> Teams { get; set; }
 
+        /// <summary>
+        /// Custom mapping which performs casting of Characters into SuperVillain or SuperHero 
+        /// in order Automapper to correctly map int to int and double to double.
+        /// </summary>
+        /// <param name="configuration"></param>
+
+        public void CreateMappings(IMapperConfigurationExpression configuration)
+        {
+            configuration
+                .CreateMap<Character, CharacterViewModel>()
+                .ForMember(cvm => cvm.HitPoints, cvm => cvm.MapFrom(x =>
+                                                    x is SuperVillain
+                                                    ? (double)((SuperVillain)x).HitPoints
+                                                    : (x is SuperHero
+                                                       ? ((SuperHero)x).HitPoints
+                                                       : 0D)));
+        }
     }
 }

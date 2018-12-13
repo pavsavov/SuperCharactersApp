@@ -49,12 +49,12 @@
 
             <div class="form-group col-md-3">
                 <label asp-for="SuperPowers"></label>
-                <input asp-for="SuperPowers" method="post" list="superpowers" name="superpower" type="text" class="form-control">
+                <input method="post" list="superpowers" name="superpower" type="text" class="form-control" placeholder="Superpowers...">
                 <datalist id="superpowers">
                     <option value="">--Select Superpower--</option>
                     @foreach (var superpower in @Model.SuperPowers)
                     {
-                        <option value="@superpower.Id" name="Superpower">@superpower.Name.ToString()</option>
+                        <option value="@superpower.Type" name="Superpower">@superpower.Name</option>
                     }
                 </datalist>
             </div>

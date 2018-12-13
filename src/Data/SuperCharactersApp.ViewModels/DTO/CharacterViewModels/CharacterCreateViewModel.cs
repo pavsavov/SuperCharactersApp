@@ -1,5 +1,6 @@
 ﻿namespace SuperCharactersApp.ViewModels.DTO.CharacterViewModels
 {
+    using AutoMapper;
     using SuperCharacters.Models;
     using SuperCharacters.Services.Mapping.Contracts;
     using SuperCharactersApp.ViewModels.Contracts;

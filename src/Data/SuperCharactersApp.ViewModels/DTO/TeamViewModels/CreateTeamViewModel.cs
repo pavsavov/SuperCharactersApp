@@ -9,7 +9,6 @@
         [Key]
         public string Id { get; set; }
         public string Name { get; set; }
-        //public ICollection<CharacterViewModel> TeamMembers { get; set; }
 
     }
 }
