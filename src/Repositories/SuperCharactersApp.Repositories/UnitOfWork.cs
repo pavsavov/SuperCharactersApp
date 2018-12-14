@@ -6,9 +6,13 @@
     using Contracts;
 
     /// <summary>
-    /// This UnitOfWork class,part of the same nammed pattern,
+    /// Although EntityFramework itself implements unit of work pattern, this class provide centralized approach 
+    /// on CRUD operations. The level of abstraction that comes from it, guarantees better code maintenance, readability
+    /// and control over application data flow.
+    /// ================================================================================================================
+    /// This UnitOfWork class, following unit of work pattern,
     /// is responsible for registering and accessing the main GenericRepository.
-    /// This class wraps the repository as an additional level of
+    /// The class wraps the GenericRepository as an additional level of
     /// an abstraction and stands in the middle between service and repository layers.
     /// Every property represents repository layer of its kind to the respective entity.
     /// </summary>

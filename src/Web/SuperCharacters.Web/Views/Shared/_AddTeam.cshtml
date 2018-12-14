@@ -1,0 +1,50 @@
+﻿@model SuperCharactersApp.ViewModels.DTO.CharacterViewModels.CharacterViewModel
+
+<div class="form-group col-md-3"></div>
+<form id="addTeamForm" class="register-form mx-auto half-width text-center d-flex flex-wrap justify-content-between" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row col-md-12">
+        <div class="form-group col-md-6 ">
+            <label asp-for="Name" >Add new team</label>
+            <input asp-for="Name" type="text" id="Name" class="form-control" placeholder="Team name..." `>
+        </div>
+    </div>
+    <div class="button-holder col-md-6">
+        <button id="addTeam" class="btn">Create</button>
+    </div>
+</form>
+
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }*@
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+
+    $("#addTeam").click(function (event) {
+        event.preventDefault();
+        var teamName = $("#addTeamForm").val();
+        $.ajax({
+            type: 'POST',
+            url: '/Team/Create',
+            //beforeSend: function (xhr) {
+            //    xhr.setRequestHeader("XSRF-TOKEN",
+            //        $('input:hidden[name="__RequestVerificationToken"]').val());
+            //},
+            data: { teamName: teamName },
+            success: function (data) {
+                $("#teams").html(data);
+                $("#Name").val(data.teamName);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+                alert(jqXHR.status + ' ' + textStatus + ' - ' + errorThrown);
+
+            },
+        });
+    });
+
+
+</script>

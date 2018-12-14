@@ -16,19 +16,19 @@
 
         public IActionResult Create()
         {
-            return View("_Create");
+            return View("Create");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CreateTeamViewModel viewModel)
+        public  IActionResult Create(CreateTeamViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
                 return this.Json("Invalid team name");
             }
 
-            _teamServices.Create(viewModel);
+             _teamServices.Create(viewModel);
 
             return this.RedirectToAction("Index", "Home");
         }

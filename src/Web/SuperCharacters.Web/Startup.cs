@@ -65,8 +65,10 @@
             services.AddScoped<CharacterServices>();
             services.AddScoped<TeamServices>();
             services.AddScoped<SuperpowerServices>();
+            services.AddScoped<SecretIdentity>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

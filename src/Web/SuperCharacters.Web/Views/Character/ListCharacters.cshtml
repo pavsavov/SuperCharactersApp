@@ -9,13 +9,14 @@
     <thead>
         <tr>
             <td align="center"></td>
+            <th scope="col">Operations</th>
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Character type</th>
             <th scope="col">Armour</th>
             <th scope="col">Damage</th>
             <th scope="col">HitPoints</th>
-            <th scope="col">Secret identity</th>
+            <th scope="col">Secret identity</th>    
             <th scope="col">SuperPowers</th>
             <th scope="col">Team</th>
         </tr>
@@ -25,18 +26,40 @@
         {
             cnt++;
 
-        <tr>
-            <td align="center"></td>         
-            <th scope="row">@cnt</th>
-            <td>@character.Name</td>
-            <td>@character.CharacterType</td>
-            <td>@character.Armour</td>
-            <td>@character.Damage</td>
-            <td>@character.HitPoints</td>
-            <td>@character.SecretIdentity</td>
-            <td>@character.SuperPowers.Count()</td>
-            <td>@character.Team.Name</td>
-        </tr>
+            <tr>
+                <td align="center"></td>
+                <th scope="row">
+                    <div class="btn-group" role="group">
+                        <a href="#" class="btn btn-light  btn-sm">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            <span>Edit</span>
+                        </a>
+                        <a href="#" class="btn btn-info  btn-sm">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <span>View</span>
+                        </a>
+
+                        <button type="button" class="btn btn-danger btn-sm"
+                                data-toggle="modal" data-target="#confirmDeleteModal">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <span>Delete</span>
+                        </button>
+                        <partial name="_ReusableModal"
+                                 model='character.Id' />
+                        </div>
+                </th>
+                <th scope="row">@cnt</th>
+                <td>@character.Name</td>
+                <td>@character.CharacterType</td>
+                <td>@character.Armour</td>
+                <td>@character.Damage</td>
+                <td>@character.HitPoints</td>
+                <td>@character.SecretIdentity</td>
+                <td>@character.SuperPowers.Count()</td>
+                <td>@character.Team.Name</td>
+            </tr>
         }
     </tbody>
 </table>
+
+

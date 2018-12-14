@@ -42,11 +42,12 @@
                 Teams = teams,
                 SuperPowers = superpowers
             };
-            
+
             return View(characterViewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(CharacterCreateViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -65,22 +66,29 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(string viewModel)
         {
             throw new NotImplementedException();
 
         }
 
-        public IActionResult Delete()
-        {
-            throw new NotImplementedException();
-        }
-
         [HttpPost]
-        public IActionResult Delete(string id)
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteById(string Id)
         {
-            throw new NotImplementedException();
+            var character = _characterServices.GetById(Id);
 
+            if (character != null)
+            {
+                _characterServices.DeleteById(Id);
+                return View("ListCharacters", "Character");
+                
+            }
+            else
+            {
+                return Json("Invalid Id.Try again");
+            }
         }
     }
 }

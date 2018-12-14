@@ -15,7 +15,7 @@
         private readonly SuperCharactersAppDbContext _dbContext;
         private readonly DbSet<TEntity> _dbSet;
 
-        public RepositoryGeneric(SuperCharactersAppDbContext dbContext )
+        public RepositoryGeneric(SuperCharactersAppDbContext dbContext)
         {
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<TEntity>();
@@ -23,7 +23,7 @@
 
         public IQueryable<TEntity> GetAll()
         {
-            return this._dbSet.OfType<TEntity>();  
+            return this._dbSet.OfType<TEntity>();
         }
 
         public virtual void Create(TEntity entity)
@@ -40,7 +40,9 @@
             {
                 _dbSet.Attach(entityToDelete);
             }
+
             _dbSet.Remove(entityToDelete);
+
         }
 
         public virtual TEntity GetById(string id)
@@ -52,6 +54,7 @@
         {
             _dbSet.Attach(entityToUpdate);
             _dbContext.Entry(entityToUpdate).State = EntityState.Modified;
+            _dbContext.SaveChanges();
         }
     }
 }

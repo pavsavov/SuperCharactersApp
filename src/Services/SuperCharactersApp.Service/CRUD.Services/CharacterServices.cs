@@ -29,7 +29,7 @@
             else if (model.CharacterType == "Supervillain")
             {
                 character = Mapper.Map<SuperVillain>(model);
-            }  
+            }
 
             var team = _unitOfWork.TeamRepository.GetById(character.TeamId);
 
@@ -43,7 +43,9 @@
 
         public void DeleteById(string id)
         {
-            throw new NotImplementedException();
+            _unitOfWork.CharacterRepository.DeleteById(id);
+
+            _unitOfWork.Save();
         }
 
         public IEnumerable<ICharacterViewModel> GetAll()
@@ -55,16 +57,19 @@
                 .ToList();
         }
 
-        public ICharacterViewModel GetById(string id) //Map DbModel to ViewModel
+        public ICharacterViewModel GetById(string Id) //Map DbModel to ViewModel
         {
+            if (Id == null)
+            {
+                throw new ArgumentNullException();
+            }
 
-            throw new NotImplementedException();
-            //return
-            //     this.unitOfWork.AccountRepository
-            //    .All()
-            //    .Where(x => x.Id == id)
-            //    .To<LoginBindingModel>()
-            //    .FirstOrDefault();
+            return
+                 _unitOfWork.CharacterRepository
+                .GetAll()
+                .Where(x => x.Id == Id)
+                .To<CharacterViewModel>()
+                .FirstOrDefault();
         }
 
         public void Update(ICharacterViewModel modelToUpdate)   //Map viewModel to DbModel
