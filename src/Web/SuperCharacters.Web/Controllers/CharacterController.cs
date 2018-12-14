@@ -74,14 +74,14 @@
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteById(string Id)
+        //[ValidateAntiForgeryToken]
+        public IActionResult DeleteById(string formModal)
         {
-            var character = _characterServices.GetById(Id);
+            var character = _characterServices.GetById(formModal);
 
             if (character != null)
             {
-                _characterServices.DeleteById(Id);
+                _characterServices.DeleteById(formModal);
                 return View("ListCharacters", "Character");
                 
             }
