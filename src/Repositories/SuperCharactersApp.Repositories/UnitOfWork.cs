@@ -81,7 +81,7 @@
             }
         }
         /// <summary>
-        /// Directly calls .SaveChanges() and it is used when changes are made to the Db. 
+        /// Calling .SaveChanges() from dbContext.
         /// </summary>
         public void Save()
         {

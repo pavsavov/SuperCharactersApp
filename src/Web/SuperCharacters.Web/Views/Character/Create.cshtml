@@ -35,17 +35,17 @@
         <div class="row col-md-12">
             <div class="form-group col-md-3">
                 <label asp-for="Name"></label>
-                <input asp-for="Name" data-val-required="The name is required" type="text" class="form-control" placeholder="Name...">
+                <input asp-for="Name"  type="text" class="form-control" placeholder="Name...">
             </div>
             <div class="form-group col-md-3">
-                <label asp-for="Teams">Select Team</label>
-                <input method="post" list="teams" name="team" type="text" class="form-control" placeholder="Select team...">
-                <datalist id="teams">
+                <label asp-for="Team">Select Team</label>
+                <select class="form-control" id="Team" name="TeamId">
+                    <option  value="">--Select team--</option>
                     @foreach (var team in @Model.Teams)
                     {
-                        <option name="TeamId">@team.Name</option>
+                        <option value="@team.Id" name="TeamId">@team.Name</option>
                     }
-                </datalist>
+                </select>
             </div>
 
             <div class="form-group col-md-3">
@@ -80,7 +80,7 @@
 
     <hr />
 
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron ">
         <div class="container">
             <p class="lead">If you can't find your favourite team, you can easily create new team with name of your choice.</p>
             <hr />
@@ -89,9 +89,20 @@
     </div>
 
     <hr />
-    <partial name="~/Views/Shared/_AddTeam.cshtml"
-             model="new SuperCharactersApp.ViewModels.DTO.TeamViewModels.CreateTeamViewModel()">
+    <div class="row col-md-12">
+        <div class="col-md-6">
+            <partial name="~/Views/Shared/_AddTeam.cshtml"
+                     model="new SuperCharactersApp.ViewModels.DTO.TeamViewModels.CreateTeamViewModel()">
+        </div>
 
+        <div class="jumbotron jumbotron-fluid col-md-6 jumbo-bg-colour" >
+            <div class="container">
+                <p class="lead">Note: </p>
+                <hr />
+                <p class="lead">Adding new team or new superpower will reaload the page.</p>
+            </div>
+        </div>
+    </div>
         <hr />
 
         <partial name="~/Views/Shared/_AddSuperPower.cshtml"

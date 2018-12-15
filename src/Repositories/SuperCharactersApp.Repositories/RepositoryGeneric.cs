@@ -36,13 +36,9 @@
         {
             TEntity entityToDelete = _dbSet.Find(id);
 
-            if (_dbContext.Entry(entityToDelete).State == EntityState.Detached)
-            {
-                _dbSet.Attach(entityToDelete);
-            }
+            _dbContext.Entry(entityToDelete).State = EntityState.Deleted;
 
-            _dbSet.Remove(entityToDelete);
-
+            _dbContext.SaveChanges();
         }
 
         public virtual TEntity GetById(string id)

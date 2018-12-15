@@ -11,6 +11,9 @@
     using SuperCharactersApp.Repository.Contracts;
     using SuperCharactersApp.ViewModels.Contracts;
 
+    /// <summary>
+    /// Business logic for perfoming CRUD operations   the Character DbSet and it's derivatives.
+    /// </summary>
     public class CharacterServices : IService<ICharacterViewModel>
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -43,14 +46,17 @@
 
         public void DeleteById(string id)
         {
-            _unitOfWork.CharacterRepository.DeleteById(id);
+            if (_unitOfWork.CharacterRepository.GetById(id) != null)
+            {
+                _unitOfWork.CharacterRepository.DeleteById(id);
 
-            _unitOfWork.Save();
+                _unitOfWork.Save();
+            }
+
         }
 
         public IEnumerable<ICharacterViewModel> GetAll()
         {
-
             return _unitOfWork.CharacterRepository
                 .GetAll()
                 .To<CharacterViewModel>()
