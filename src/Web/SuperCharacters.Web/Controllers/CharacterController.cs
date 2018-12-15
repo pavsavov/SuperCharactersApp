@@ -47,7 +47,7 @@
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public IActionResult Create(CharacterCreateViewModel viewModel)
         {
             //if (!ModelState.IsValid)

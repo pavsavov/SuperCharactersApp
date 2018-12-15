@@ -38,21 +38,20 @@
                 <input asp-for="Name" data-val-required="The name is required" type="text" class="form-control" placeholder="Name...">
             </div>
             <div class="form-group col-md-3">
-                <label for="Team">Select Team</label>
-                <select class="form-control" id="Team" name="TeamId">
-                    <option value="">-- Select Team --</option>
+                <label asp-for="Teams">Select Team</label>
+                <input method="post" list="teams" name="team" type="text" class="form-control" placeholder="-- Select Team --">
+                <datalist id="teams">
                     @foreach (var team in @Model.Teams)
                     {
-                        <option value="@team.Id" name="TeamId">@team.Name</option>
+                        <option name="TeamId">@team.Name</option>
                     }
-                </select>
+                </datalist>
             </div>
 
             <div class="form-group col-md-3">
                 <label asp-for="SuperPowers"></label>
-                <input method="post" list="superpowers" name="superpower" type="text" class="form-control" placeholder="Superpowers...">
+                <input method="post" list="superpowers" name="superpower" type="text" class="form-control" placeholder="--Select Superpower--">
                 <datalist id="superpowers">
-                    <option value="">--Select Superpower--</option>
                     @foreach (var superpower in @Model.SuperPowers)
                     {
                         <option value="@superpower.Type" name="Superpower">@superpower.Name</option>
@@ -78,5 +77,9 @@
             <button type="submit" id="submit" class="btn">Create</button>
         </div>
     </form>
-    @*<partial name="~/Views/Shared/_AddTeam.cshtml">*@
+
+    <partial name="~/Views/Shared/_AddTeam.cshtml"
+             model="new SuperCharactersApp.ViewModels.DTO.TeamViewModels.CreateTeamViewModel()">
+        <partial name="~/Views/Shared/_AddSuperPower.cshtml"
+                 model="new SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowerViewModel()">
 </main>

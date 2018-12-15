@@ -30,7 +30,7 @@
 
              _teamServices.Create(viewModel);
 
-            return this.RedirectToAction("Index", "Home");
+            return this.RedirectToAction("Create", "Character");
         }
 
         public IActionResult ListTeams()

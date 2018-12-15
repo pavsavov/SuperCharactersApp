@@ -1,46 +1,18 @@
-﻿@model SuperCharactersApp.ViewModels.DTO.CharacterViewModels.CharacterViewModel
+﻿@model SuperCharactersApp.ViewModels.DTO.TeamViewModels.CreateTeamViewModel
 
 <div class="form-group col-md-3"></div>
-<form id="addTeamForm" class="register-form mx-auto half-width text-center d-flex flex-wrap justify-content-between" method="post">
+<form id="addTeamForm" class="register-form mx-auto half-width text-center d-flex flex-wrap justify-content-between"
+ asp-controller="Team" asp-action="Create" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="row col-md-12">
         <div class="form-group col-md-6 ">
-            <label asp-for="Name" >Add new team</label>
-            <input asp-for="Name" type="text" id="Name" class="form-control" placeholder="Team name..." `>
+            <label asp-for="Name" >Add new team to the list</label>
+            <input asp-for="Name" type="text" class="form-control" placeholder="Team name..." `>
         </div>
     </div>
     <div class="button-holder col-md-6">
-        <button id="addTeam" class="btn">Create</button>
+        <button id="addTeam" class="btn btn-outline-secondary">Add</button>
     </div>
 </form>
 
 
-<script src="~/lib/jquery/dist/jquery.js"></script>
-
-@*<script>
-
-    $("#addTeam").click(function (event) {
-        event.preventDefault();
-        var teamName = $("#addTeamForm").val();
-        $.ajax({
-            type: 'POST',
-            url: '/Team/Create',
-            //beforeSend: function (xhr) {
-            //    xhr.setRequestHeader("XSRF-TOKEN",
-            //        $('input:hidden[name="__RequestVerificationToken"]').val());
-            //},
-            data: { teamName: teamName },
-            success: function (data) {
-                $("#teams").html(data);
-                $("#Name").val(data.teamName);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-                alert(jqXHR.status + ' ' + textStatus + ' - ' + errorThrown);
-
-            },
-        });
-    });
-
-
-</script>*@
