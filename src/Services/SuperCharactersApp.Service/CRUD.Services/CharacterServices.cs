@@ -12,7 +12,7 @@
     using SuperCharactersApp.ViewModels.Contracts;
 
     /// <summary>
-    /// Business logic for perfoming CRUD operations   the Character DbSet and it's derivatives.
+    /// Business logic for perfoming CRUD operations with the Character DbSet and it's derivatives.
     /// </summary>
     public class CharacterServices : IService<ICharacterViewModel>
     {
@@ -25,6 +25,7 @@
         public void Create(ICharacterViewModel model) //Map viewModel to DbModel 
         {
             Character character = null;
+
             if (model.CharacterType == "Superhero")
             {
                 character = Mapper.Map<SuperHero>(model);
@@ -33,6 +34,8 @@
             {
                 character = Mapper.Map<SuperVillain>(model);
             }
+
+            //if(character.se)
 
             var team = _unitOfWork.TeamRepository.GetById(character.TeamId);
 

@@ -24,7 +24,7 @@
 
             </div>
             <div class="form-group col-md-3">
-                <label asp-for="HitPoints"></label>
+                <label asp-for="HitPoints">Hit points</label>
                 <input asp-for="HitPoints" type="number" step="0.1" class="form-control" placeholder="Hitpoints...">
             </div>
             <div class="form-group col-md-3">
@@ -35,12 +35,12 @@
         <div class="row col-md-12">
             <div class="form-group col-md-3">
                 <label asp-for="Name"></label>
-                <input asp-for="Name"  type="text" class="form-control" placeholder="Name...">
+                <input asp-for="Name" type="text" class="form-control" placeholder="Name...">
             </div>
             <div class="form-group col-md-3">
                 <label asp-for="Team">Select Team</label>
                 <select class="form-control" id="Team" name="TeamId">
-                    <option  value="">--Select team--</option>
+                    <option value="">Select team...</option>
                     @foreach (var team in @Model.Teams)
                     {
                         <option value="@team.Id" name="TeamId">@team.Name</option>
@@ -60,17 +60,13 @@
             </div>
 
             <div class="form-group col-md-3">
-                <label asp-for="SecretIdentity"></label>
-                @if (Model.SecretIdentity != null)
-                {
-                    <input asp-for="SecretIdentity" type="text" class="form-control" name="SecretIdentity" placeholder="Secret identity..."
-                           value="@Model.SecretIdentity.FirstName @Model.SecretIdentity.LastName">
-                }
-                else
-                {
-                    <input asp-for="SecretIdentity" type="text" class="form-control" placeholder="Secret Identity..." />
-
-                }
+                <label asp-for="SecretIdentity">Secret identity names</label>
+                <div class="col-md-12">
+                    <input asp-for="SecretIdentity.FirstName" type="text" class="form-control" placeholder="First name..." />
+                </div>
+                <div class="col-md-12">
+                    <input asp-for="SecretIdentity.LastName" type="text" class="form-control" placeholder="Last name..." />
+                </div>
             </div>
         </div>
         <div class="button-holder">
@@ -87,15 +83,13 @@
             <p class="lead"> Also if you'd like to, you can add new super powers with your own custom values and names.</p>
         </div>
     </div>
-
     <hr />
     <div class="row col-md-12">
         <div class="col-md-6">
             <partial name="~/Views/Shared/_AddTeam.cshtml"
                      model="new SuperCharactersApp.ViewModels.DTO.TeamViewModels.CreateTeamViewModel()">
         </div>
-
-        <div class="jumbotron jumbotron-fluid col-md-6 jumbo-bg-colour" >
+        <div class="jumbotron jumbotron-fluid col-md-6 jumbo-bg-colour">
             <div class="container">
                 <p class="lead">Note: </p>
                 <hr />
@@ -103,8 +97,7 @@
             </div>
         </div>
     </div>
-        <hr />
-
-        <partial name="~/Views/Shared/_AddSuperPower.cshtml"
-                 model="new SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowerViewModel()">
+    <hr />
+    <partial name="~/Views/Shared/_AddSuperPower.cshtml"
+             model="new SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowerViewModel()">
 </main>

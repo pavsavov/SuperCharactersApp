@@ -33,6 +33,9 @@
         public string TeamId { get; set; }
         [Required]
         public virtual Team Team { get; set; }
+        [ForeignKey("SecretIdentity")]
+        public string SecretIdentityId { get; set; }
+        public virtual SecretIdentity SecretIdentity { get; set; }
         public virtual ICollection<SuperPower> SuperPowers { get; set; }
         public Score Score { get; set; }
 

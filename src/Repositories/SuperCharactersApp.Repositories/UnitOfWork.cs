@@ -80,6 +80,7 @@
                 return _secretIdentity;
             }
         }
+        
         /// <summary>
         /// Calling .SaveChanges() from dbContext.
         /// </summary>
