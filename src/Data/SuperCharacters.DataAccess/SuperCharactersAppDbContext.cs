@@ -27,12 +27,16 @@
         {
             base.OnModelCreating(builder);
 
-            //Configuring Discriminator using Fluent API
+            //Configured Discriminator using Fluent API
             builder.Entity<Character>()
                 .HasDiscriminator<string>("CharacterType")
                 .HasValue<SuperHero>("Superhero")
                 .HasValue<SuperVillain>("Supervillain");
 
+            builder.Entity<Team>()
+                .HasMany(c => c.TeamMembers)
+                .WithOne(c => c.Team)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

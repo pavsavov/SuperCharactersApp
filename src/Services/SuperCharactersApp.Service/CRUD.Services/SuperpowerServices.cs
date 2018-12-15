@@ -1,5 +1,6 @@
 ﻿namespace SuperCharactersApp.Services.CRUD.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
@@ -11,8 +12,9 @@
 
     /// <summary>
     /// This class is responsible for all CRUD operations on SuperPowers Entity.
-    /// It receives input from respective controller and forwards parameters to the GenericRepository class with registered type
-    /// in the UnitOfWork class. Also when needed, here happens the actual mapping from ViewModel to real Db model using Automapper.
+    /// It receives input from respective controller and forwards parameters to the
+    /// GenericRepository class with registered type in the UnitOfWork class.
+    /// Also when is required, here happens the actual mapping from ViewModel to real Db model using Automapper.
     /// </summary>
     public class SuperpowerServices : IService<SuperPowersListingViewModel>
     {
@@ -24,17 +26,22 @@
 
         public void Create(SuperPowersListingViewModel model)
         {
-            
-            var superpower = Mapper.Map<SuperPower>(model);           
+            var superpower = Mapper.Map<SuperPower>(model);
 
             _unitOfWork.SuperPowerRepository.Create(superpower);
 
             _unitOfWork.Save();
         }
 
-        public void DeleteById(string id)
+        public bool DeleteById(string id)
         {
-            throw new System.NotImplementedException();
+            if (id != null)
+            {
+                _unitOfWork.SuperPowerRepository.DeleteById(id);
+                return true;
+            }
+
+            return false;
         }
 
         public IEnumerable<SuperPowersListingViewModel> GetAll()
@@ -48,12 +55,22 @@
 
         public SuperPowersListingViewModel GetById(string id)
         {
-            throw new System.NotImplementedException();
+            if (id == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            var superPower = _unitOfWork.CharacterRepository
+                .GetById(id);
+
+            var mappedSuperPower = Mapper.Map<SuperPowersListingViewModel>(superPower);
+
+            return mappedSuperPower;
         }
 
         public void Update(SuperPowersListingViewModel modelToUpdate)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

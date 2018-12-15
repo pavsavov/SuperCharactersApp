@@ -35,7 +35,7 @@
             _unitOfWork.Save();
         }
 
-        public void DeleteById(string id)
+        public bool DeleteById(string id)
         {
             throw new NotImplementedException();
         }

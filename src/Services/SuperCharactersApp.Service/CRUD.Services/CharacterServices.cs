@@ -53,18 +53,22 @@
 
             _unitOfWork.CharacterRepository.Create(character);
 
+
             _unitOfWork.Save();
 
         }
 
-        public void DeleteById(string id)
+        public bool DeleteById(string id)
         {
             if (_unitOfWork.CharacterRepository.GetById(id) != null)
             {
                 _unitOfWork.CharacterRepository.DeleteById(id);
 
                 _unitOfWork.Save();
+
+                return true;
             }
+            return false;
         }
 
         public IEnumerable<ICharacterViewModel> GetAll()

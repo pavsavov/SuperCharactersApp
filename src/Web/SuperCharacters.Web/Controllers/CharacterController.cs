@@ -83,7 +83,9 @@
             if (character != null)
             {
                 _characterServices.DeleteById(formModal);
-                return View("ListCharacters", "Character");
+
+                var currentCharacters = _characterServices.GetAll();
+                return RedirectToAction("ListCharacters", currentCharacters);
                 
             }
             else

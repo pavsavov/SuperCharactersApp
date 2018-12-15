@@ -18,6 +18,7 @@
         {
             _unitOfWork = unitOfWork;
         }
+
         public void Create(SecretIdentityViewModel model) //Map viewModel to DbModel 
         {
             if (model.FirstName != null && model.LastName != null)
@@ -28,13 +29,17 @@
 
                 _unitOfWork.Save();
             }
-
-
         }
 
-        public void DeleteById(string id)
+        public bool DeleteById(string id)
         {
-            throw new NotImplementedException();
+            if (id != null)
+            {
+                _unitOfWork.SecretIdentityRepository.DeleteById(id);
+                return true;
+            }
+
+            return false;
         }
 
         public IEnumerable<SecretIdentityViewModel> GetAll()
@@ -47,14 +52,17 @@
 
         public SecretIdentityViewModel GetById(string id) //Map DbModel to ViewModel
         {
+            if (id == null)
+            {
+                throw new NullReferenceException();
+            }
 
-            throw new NotImplementedException();
-            //return
-            //     this.unitOfWork.AccountRepository
-            //    .All()
-            //    .Where(x => x.Id == id)
-            //    .To<LoginBindingModel>()
-            //    .FirstOrDefault();
+            var secretIdentity = _unitOfWork.SecretIdentityRepository
+                .GetById(id);
+
+            var mappedSecretIdentity = Mapper.Map<SecretIdentityViewModel>(secretIdentity);
+
+            return mappedSecretIdentity;
         }
 
         public void Update(SecretIdentityViewModel modelToUpdate)   //Map viewModel to DbModel

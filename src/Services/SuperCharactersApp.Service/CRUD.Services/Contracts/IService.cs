@@ -9,6 +9,6 @@ namespace SuperCharactersApp.Services.CRUD.Services.Contracts
         T GetById(string id);
         void Create(T model);
         void Update(T modelToUpdate);
-        void DeleteById(string id);
+        bool DeleteById(string id);
     }
 }
