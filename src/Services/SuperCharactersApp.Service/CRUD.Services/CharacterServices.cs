@@ -35,7 +35,12 @@
                 character = Mapper.Map<SuperVillain>(model);
             }
 
-            //if(character.se)
+            if (character.SecretIdentity != null)
+            {
+
+                _unitOfWork.SecretIdentityRepository.Create(character.SecretIdentity);
+                _unitOfWork.Save();
+            }
 
             var team = _unitOfWork.TeamRepository.GetById(character.TeamId);
 

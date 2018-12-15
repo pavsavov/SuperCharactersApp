@@ -9,6 +9,7 @@
     using SuperCharacters.Models;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
     using AutoMapper;
+    using SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels;
 
     public class CharacterViewModel : ICharacterViewModel, IMapFrom<SuperHero>, IMapTo<SuperHero>,
         IHaveCustomMappings, IMapTo<SuperVillain>
@@ -31,7 +32,7 @@
         public int Damage { get; set; }
         [Required]
         public string Name { get; set; }
-        public SecretIdentity SecretIdentity { get; set; }
+        public SecretIdentityViewModel SecretIdentity { get; set; }
         [Required]
         public Team Team { get; set; }
       //  public string TeamId { get; set; }

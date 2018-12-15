@@ -25,9 +25,7 @@
         public void Create(SuperPowersListingViewModel model)
         {
             
-            var superpower = Mapper.Map<SuperPower>(model);
-
-            
+            var superpower = Mapper.Map<SuperPower>(model);           
 
             _unitOfWork.SuperPowerRepository.Create(superpower);
 

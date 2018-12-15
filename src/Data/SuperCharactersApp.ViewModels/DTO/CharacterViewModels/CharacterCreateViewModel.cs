@@ -4,6 +4,7 @@
     using SuperCharacters.Models;
     using SuperCharacters.Services.Mapping.Contracts;
     using SuperCharactersApp.ViewModels.Contracts;
+    using SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels;
     using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
     using System.Collections.Generic;
@@ -29,7 +30,7 @@
         public int Damage { get; set; }
         [Required]
         public string Name { get; set; }
-        public SecretIdentity SecretIdentity { get; set; }
+        public SecretIdentityViewModel SecretIdentity { get; set; }
         [Required]
         public string TeamId { get; set; }
 

@@ -20,11 +20,15 @@
         }
         public void Create(SecretIdentityViewModel model) //Map viewModel to DbModel 
         {
-            var secretIdentity = Mapper.Map<SecretIdentity>(model);
+            if (model.FirstName != null && model.LastName != null)
+            {
+                var secretIdentity = Mapper.Map<SecretIdentity>(model);
 
-            _unitOfWork.SecretIdentityRepository.Create(secretIdentity);
+                _unitOfWork.SecretIdentityRepository.Create(secretIdentity);
 
-            _unitOfWork.Save();
+                _unitOfWork.Save();
+            }
+
 
         }
 
@@ -40,14 +44,6 @@
                 .To<SecretIdentityViewModel>()
                 .ToList();
         }
-
-        //public IEnumerable<SecretIdentityViewModel> GetAll()
-        //{
-        //    return _unitOfWork.SecretIdentityRepository
-        //        .GetAll()
-        //        .To<SecretIdentityViewModel>()
-        //        .ToList();
-        //}
 
         public SecretIdentityViewModel GetById(string id) //Map DbModel to ViewModel
         {

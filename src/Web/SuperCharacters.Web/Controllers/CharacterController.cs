@@ -25,7 +25,6 @@
 
         public IActionResult ListCharacters()
         {
-
             var characters = _characterServices.GetAll();
 
             return this.View(characters);
@@ -47,7 +46,7 @@
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(CharacterCreateViewModel viewModel)
         {
             //if (!ModelState.IsValid)
@@ -74,7 +73,7 @@
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public IActionResult DeleteById(string formModal)
         {
             var character = _characterServices.GetById(formModal);
