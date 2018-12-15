@@ -50,10 +50,10 @@
         [ValidateAntiForgeryToken]
         public IActionResult Create(CharacterCreateViewModel viewModel)
         {
-            if (!ModelState.IsValid)
-            {
-                return this.Json(ModelState.ValidationState.ToString());
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return this.Json(ModelState.ValidationState.ToString());
+            //}
 
             _characterServices.Create(viewModel);
 

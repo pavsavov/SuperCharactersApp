@@ -34,7 +34,7 @@
         public SecretIdentity SecretIdentity { get; set; }
         [Required]
         public Team Team { get; set; }
-        public string TeamId { get; set; }
+      //  public string TeamId { get; set; }
         public ICollection<SuperPowersListingViewModel> SuperPowers { get; set; }
         public ICollection<CreateTeamViewModel> Teams { get; set; }
 
