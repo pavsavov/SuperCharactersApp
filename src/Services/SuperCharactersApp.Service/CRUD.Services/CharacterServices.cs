@@ -35,11 +35,16 @@
                 character = Mapper.Map<SuperVillain>(model);
             }
 
-            if (character.SecretIdentity != null)
+            if (character.SecretIdentity.FirstName != null ||
+                character.SecretIdentity.LastName != null)
             {
 
                 _unitOfWork.SecretIdentityRepository.Create(character.SecretIdentity);
                 _unitOfWork.Save();
+            }
+            else
+            {
+                character.SecretIdentity = null;
             }
 
             var team = _unitOfWork.TeamRepository.GetById(character.TeamId);
@@ -60,7 +65,6 @@
 
                 _unitOfWork.Save();
             }
-
         }
 
         public IEnumerable<ICharacterViewModel> GetAll()

@@ -54,6 +54,8 @@
             //    return this.Json(ModelState.ValidationState.ToString());
             //}
 
+            
+
             _characterServices.Create(viewModel);
 
             return this.RedirectToAction("ListCharacters");

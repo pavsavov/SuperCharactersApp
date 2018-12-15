@@ -10,7 +10,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class CharacterCreateViewModel : ICharacterViewModel,IMapFrom<SuperHero>, IMapFrom<SuperVillain>,
+    public class CharacterCreateViewModel : ICharacterViewModel, IMapFrom<SuperHero>, IMapFrom<SuperVillain>,
         IMapTo<SuperHero>, IMapTo<SuperVillain>
     {
         public CharacterCreateViewModel()
@@ -24,13 +24,15 @@
         [Required]
         public double HitPoints { get; set; }
         [Required]
-        [Range(1,100)]
+        [Range(1, 100)]
         public int Armour { get; set; }
         [Required]
         public int Damage { get; set; }
         [Required]
         public string Name { get; set; }
         public SecretIdentityViewModel SecretIdentity { get; set; }
+        //public string SecretIdentityFirstName { get; set; }
+        //public string SecretIdentityLastName { get; set; }
         [Required]
         public string TeamId { get; set; }
 

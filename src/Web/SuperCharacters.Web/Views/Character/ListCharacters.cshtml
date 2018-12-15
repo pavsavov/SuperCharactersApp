@@ -56,11 +56,15 @@
                 <td>@character.Armour</td>
                 <td>@character.Damage</td>
                 <td>@character.HitPoints</td>
-                <td>
-                    @(String.IsNullOrEmpty(character.SecretIdentity.FirstName)
-                        ? noSecretIdentity
-                        : character.SecretIdentity.FirstName) @character.SecretIdentity.LastName
-                </td>
+                @if (character.SecretIdentity == null)
+                {
+                    <td>@noSecretIdentity</td>
+                }
+                else
+                {
+                    <td>@(character.SecretIdentity.FirstName) @(character.SecretIdentity.LastName)</td>
+                }
+
                 <td>@character.SuperPowers.Count()</td>
                 <td>@character.Team.Name</td>
             </tr>
