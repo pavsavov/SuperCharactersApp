@@ -1,15 +1,16 @@
 ﻿namespace SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels
 {
     using SuperCharacters.Models;
-    using SuperCharacters.Models.Enums;
     using SuperCharacters.Services.Mapping.Contracts;
-    using System.ComponentModel.DataAnnotations;
+    using SuperCharactersApp.ViewModels.Contracts;
+    using SuperCharactersApp.ViewModels.DTO.ReusableModalModel;
 
-    public class SuperPowersListingViewModel : IMapTo<SuperPower>, IMapFrom<SuperPower>
+    public class SuperPowersListingViewModel :IReusableModalViewModel, IMapTo<SuperPower>, IMapFrom<SuperPower>
     {
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public double Value { get; set; }
+        public ModalViewModel ModalView { get; set; }
     }
 }

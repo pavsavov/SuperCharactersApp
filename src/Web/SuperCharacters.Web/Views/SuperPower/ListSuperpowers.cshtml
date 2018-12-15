@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "ListSuperpowers";
     var cnt = 0;
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
 }
 
 <table class="table table-striped">
@@ -21,6 +22,31 @@
             cnt++;
 
             <tr>
+                <td align="center"></td>
+                <th scope="row">
+                    <div class="btn-group" role="group">
+                        <a href="#" class="btn btn-light  btn-sm">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            <span>Edit</span>
+                        </a>
+                        <a href="#" class="btn btn-info  btn-sm">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <span>View</span>
+                        </a>
+
+                        <button type="button" class="btn btn-danger btn-sm"
+                                data-toggle="modal" data-target="#modalDelete">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <span>Delete</span>
+                        </button>
+                        <partial name="_ReusableModal"
+                                 model='new SuperCharactersApp
+                                                              .ViewModels
+                                                              .DTO.ReusableModalModel
+                                                              .ModalViewModel { Id = superpower.Id 
+                                                              ,Controller= controller};' />
+                    </div>
+                </th>
                 <td align="center"></td>
                 <th scope="row">@cnt</th>
                 <td>@superpower.Name</td>

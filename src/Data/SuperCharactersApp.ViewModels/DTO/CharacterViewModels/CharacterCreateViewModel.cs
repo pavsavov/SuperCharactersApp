@@ -4,6 +4,7 @@
     using SuperCharacters.Models;
     using SuperCharacters.Services.Mapping.Contracts;
     using SuperCharactersApp.ViewModels.Contracts;
+    using SuperCharactersApp.ViewModels.DTO.ReusableModalModel;
     using SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels;
     using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
@@ -38,5 +39,6 @@
 
         public ICollection<SuperPowerViewModel> SuperPowers { get; set; }
         public ICollection<CreateTeamViewModel> Teams { get; set; }
+        public ModalViewModel ModalView { get; set; }
     }
 }

@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
+    using System;
 
     [Authorize]
     public class SuperpowerController : Controller
@@ -33,10 +34,16 @@
 
         public IActionResult ListSuperpowers()
         {
-
             var superpowers = _superpowerServices.GetAll();
 
             return View(superpowers);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(string id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

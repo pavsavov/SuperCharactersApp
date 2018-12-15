@@ -1,9 +1,8 @@
-﻿using SuperCharacters.Models;
-
-namespace SuperCharactersApp.ViewModels.Contracts
+﻿namespace SuperCharactersApp.ViewModels.Contracts
 {
-    public interface ICharacterViewModel
+    public interface ICharacterViewModel : IReusableModalViewModel
     {
         string CharacterType { get; set; }
+
     }
 }

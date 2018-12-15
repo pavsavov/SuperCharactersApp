@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
+    using SuperCharactersApp.ViewModels.DTO.ReusableModalModel;
     using System;
     using System.Linq;
 
@@ -54,7 +55,7 @@
             //    return this.Json(ModelState.ValidationState.ToString());
             //}
 
-            
+
 
             _characterServices.Create(viewModel);
 
@@ -76,17 +77,18 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteById(string formModal)
+        public IActionResult Delete(string formModal)
         {
-            var character = _characterServices.GetById(formModal);
+            var id = formModal;
+
+            var character = _characterServices.GetById(id);
 
             if (character != null)
             {
-                _characterServices.DeleteById(formModal);
+                _characterServices.DeleteById(id);
 
                 var currentCharacters = _characterServices.GetAll();
                 return RedirectToAction("ListCharacters", currentCharacters);
-                
             }
             else
             {

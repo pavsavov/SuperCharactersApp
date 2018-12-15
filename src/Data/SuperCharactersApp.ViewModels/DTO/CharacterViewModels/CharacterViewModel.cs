@@ -10,6 +10,7 @@
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
     using AutoMapper;
     using SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels;
+    using SuperCharactersApp.ViewModels.DTO.ReusableModalModel;
 
     public class CharacterViewModel : ICharacterViewModel, IMapFrom<SuperHero>, IMapTo<SuperHero>,
         IHaveCustomMappings, IMapTo<SuperVillain>
@@ -38,6 +39,7 @@
       //  public string TeamId { get; set; }
         public ICollection<SuperPowersListingViewModel> SuperPowers { get; set; }
         public ICollection<CreateTeamViewModel> Teams { get; set; }
+        public ModalViewModel ModalView { get; set; }
 
         /// <summary>
         /// Custom mapping which performs casting of Characters into SuperVillain or SuperHero 
