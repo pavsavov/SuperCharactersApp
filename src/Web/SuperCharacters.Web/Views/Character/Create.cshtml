@@ -39,7 +39,7 @@
             </div>
             <div class="form-group col-md-3">
                 <label asp-for="Teams">Select Team</label>
-                <input method="post" list="teams" name="team" type="text" class="form-control" placeholder="-- Select Team --">
+                <input method="post" list="teams" name="team" type="text" class="form-control" placeholder="Select team...">
                 <datalist id="teams">
                     @foreach (var team in @Model.Teams)
                     {
@@ -50,7 +50,7 @@
 
             <div class="form-group col-md-3">
                 <label asp-for="SuperPowers"></label>
-                <input method="post" list="superpowers" name="superpower" type="text" class="form-control" placeholder="--Select Superpower--">
+                <input method="post" list="superpowers" name="superpower" type="text" class="form-control" placeholder="Select superpower...">
                 <datalist id="superpowers">
                     @foreach (var superpower in @Model.SuperPowers)
                     {
@@ -63,7 +63,7 @@
                 <label asp-for="SecretIdentity"></label>
                 @if (Model.SecretIdentity != null)
                 {
-                    <input asp-for="SecretIdentity" type="text" class="form-control" name="SecretIdentity" placeholder="Secret Identity..."
+                    <input asp-for="SecretIdentity" type="text" class="form-control" name="SecretIdentity" placeholder="Secret identity..."
                            value="@Model.SecretIdentity.FirstName @Model.SecretIdentity.LastName">
                 }
                 else
@@ -74,12 +74,26 @@
             </div>
         </div>
         <div class="button-holder">
-            <button type="submit" id="submit" class="btn">Create</button>
+            <button type="submit" id="submit" class="btn btn-outline-primary">Create</button>
         </div>
     </form>
 
+    <hr />
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <p class="lead">If you can't find your favourite team, you can easily create new team with name of your choice.</p>
+            <hr />
+            <p class="lead"> Also if you'd like to, you can add new super powers with your own custom values and names.</p>
+        </div>
+    </div>
+
+    <hr />
     <partial name="~/Views/Shared/_AddTeam.cshtml"
              model="new SuperCharactersApp.ViewModels.DTO.TeamViewModels.CreateTeamViewModel()">
+
+        <hr />
+
         <partial name="~/Views/Shared/_AddSuperPower.cshtml"
                  model="new SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowerViewModel()">
 </main>

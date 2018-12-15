@@ -1,8 +1,8 @@
 ﻿@model SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowerViewModel
 
 <div class="form-group col-md-3"></div>
-<form class="register-form mx-auto half-width text-center d-flex flex-wrap justify-content-between" method="post"
- asp-controller="Superpower" asp-action="Create">
+<form class="register-form mx-auto half-width  d-flex flex-wrap justify-content-between" method="post"
+      asp-controller="Superpower" asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="row col-md-12">
         <div class="form-group col-md-4 ">
@@ -10,20 +10,21 @@
             <input asp-for="Name" type="text" class="form-control" placeholder="Name..." `>
         </div>
         <div class="form-group col-md-4">
-            <label for="Type">Select type of superpower</label>
-            <select asp-for="Type">
-                <option value="Damage">Damage</option>
+            <label asp-for="Type">Select type of superpower</label>
+            <input method="post" list="superTowersTypes" name="superpower" type="text" class="form-control" placeholder="Select Superpower Type...">
+            <datalist id="superTowersTypes">
+                <option value="Damage" name="Type">Damage</option>
                 <option value="Heal">Heal</option>
                 <option value="Armour">Armour</option>
                 <option value="Damage Multiplier">Damage Multiplier</option>
-            </select>
+            </datalist>
         </div>
         <div class="form-group col-md-4 ">
             <label asp-for="Value"></label>
             <input asp-for="Value" type="number" step="0.1" class="form-control" placeholder="Value..." `>
         </div>
-    </div>
-    <div class="button-holder col-md-6">
-        <button type="submit" class="btn eventure-bg-color">Create</button>
+        <div class="button-holder col-md-1">
+            <button type="submit" class="btn btn-outline-secondary">Add</button>
+        </div>
     </div>
 </form>
