@@ -11,5 +11,6 @@
 
         public string Type { get; set; }
         public double Value { get; set; }
+        public virtual Character Character { get; set; }
     }
 }

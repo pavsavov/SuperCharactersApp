@@ -37,6 +37,7 @@
                 .HasMany(c => c.TeamMembers)
                 .WithOne(c => c.Team)
                 .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }
