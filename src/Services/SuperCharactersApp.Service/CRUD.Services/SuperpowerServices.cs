@@ -55,12 +55,8 @@
 
         public SuperPowersListingViewModel GetById(string id)
         {
-            if (id == null)
-            {
-                throw new NullReferenceException();
-            }
 
-            var superPower = _unitOfWork.CharacterRepository
+            var superPower = _unitOfWork.SuperPowerRepository
                 .GetById(id);
 
             var mappedSuperPower = Mapper.Map<SuperPowersListingViewModel>(superPower);

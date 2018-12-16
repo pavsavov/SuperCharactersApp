@@ -47,9 +47,23 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(string id)
+        public IActionResult Delete(string formModal)
         {
-            throw new NotImplementedException();
+            var id = formModal;
+
+            var superpower = _superpowerServices.GetById(id);
+
+            if (superpower != null)
+            {
+                _superpowerServices.DeleteById(id);
+
+                var currentSuperPowers = _superpowerServices.GetAll();
+                return RedirectToAction("ListSuperpowers", currentSuperPowers);
+            }
+            else
+            {
+                return Json("Invalid Id.Try again");
+            }
         }
     }
 }
