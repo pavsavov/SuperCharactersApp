@@ -1,7 +1,7 @@
 ﻿@model SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowerViewModel
 
 <div class="form-group col-md-3"></div>
-<form class="register-form mx-auto half-width  d-flex flex-wrap justify-content-between" method="post"
+<form id="addSuperPowerForm"class="register-form mx-auto half-width  d-flex flex-wrap justify-content-between" method="post"
       asp-controller="Superpower" asp-action="Create">
     <div class="row col-md-12">
         <div class="form-group col-md-4 ">
@@ -24,9 +24,6 @@
             <label asp-for="Value"></label>
             <input asp-for="Value" type="number" step="0.1" class="form-control" placeholder="Value..." `>
             <span asp-validation-for="Value" class="text-danger"></span>
-        </div>
-        <div class="button-holder col-md-1">
-            <button type="submit" class="btn btn-outline-secondary">Add</button>
         </div>
     </div>
 </form>

@@ -7,7 +7,7 @@
 
 <main class="mt-3">
     <h1 class="text-center">@ViewData["Title"]</h1>
-    <form class="register-form form-row text-center" name="createCharacter" method="post" asp-controller="Character" asp-action="Create">
+    <form id="createCharacterForm" class="register-form form-row text-center" name="createCharacter" method="post" asp-controller="Character" asp-action="Create">
         <div class="row col-md-12">
             <div class="form-group col-md-3 ">
                 <label asp-for="CharacterType">Character type</label>
@@ -54,15 +54,15 @@
 
             <div class="form-group col-md-3">
                 <label asp-for="SuperPowers">Superpowers</label>
-               @for (int i = 0; i < 3; i++)
-               {
-                <select id="superpowers" class="form-control" name="SuperPower">
-                    @foreach (var superpower in @Model.SuperPowers)
-                    {
-                        <option value="@superpower.Type" name="Superpower">@superpower.SuperPowerName</option>
-                    }
-                </select>
-               }
+                @for (int i = 0; i < 3; i++)
+                {
+                    <select id="superpowers" class="form-control" name="SuperPower">
+                        @foreach (var superpower in @Model.SuperPowers)
+                        {
+                            <option value="@superpower.Type" name="Superpower">@superpower.SuperPowerName</option>
+                        }
+                    </select>
+                }
             </div>
 
             <div class="form-group col-md-3">
@@ -77,7 +77,10 @@
             </div>
         </div>
         <div class="button-holder">
-            <button type="submit" id="submit" class="btn btn-outline-primary">Create</button>
+            <button type="submit" id="submit" class="btn btn-outline-primary" onclick="submitForms()">Create</button>
+        </div>
+        <div class="button-holder">
+            <button type="button" id="cancel" class="btn btn-outline-secondary" onclick="cancelForm()">Cancel</button>
         </div>
     </form>
     <hr />
@@ -98,15 +101,30 @@
             <div class="container">
                 <p class="lead">Note: </p>
                 <hr />
-                <p class="lead">Adding new team or new superpower will reaload the page.</p>
+                <p class="lead">The following field will create new team once "Create" button is clicked.</p>
             </div>
         </div>
     </div>
     <hr />
+    <p class="lead">Create super power for your needs.</p>
+
     <partial name="~/Views/Shared/_AddSuperPower.cshtml"
              model="new SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowerViewModel()">
 </main>
 
-@section Scripts{ 
+@section Scripts{
     <partial name="_ValidationScriptsPartial" />
+
 }
+<script>
+    submitForms = function () {
+        document.forms["addTeamForm"].submit();
+        document.forms["addSuperPowerForm"].submit();
+        document.forms["createCharacterForm"].submit();
+        return true;
+    };
+
+    cancelForm = function () {
+        window.location.replace('/Home/Index')
+    }
+</script>
