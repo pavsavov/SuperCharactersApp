@@ -2,7 +2,7 @@
 
 <div class="form-group col-md-3"></div>
 <form id="addTeamForm" class="register-form mx-auto half-width text-center d-flex flex-wrap justify-content-between"
-      asp-controller="Team" asp-action="Create" method="post">
+ asp-controller="Team" asp-action="Create" method="post">
     <div class="row col-md-12">
         <div class="form-group col-md-6 ">
             <label asp-for="TeamName">Add new team to the list</label>
@@ -10,8 +10,9 @@
             <span asp-validation-for="TeamName" class="text-danger"></span>
         </div>
     </div>
+    <div class="button-holder col-md-1">
+        <button id="addTeam" class="btn btn-outline-secondary">Add</button>
+    </div>
 </form>
 
-@section Scripts{
-    <partial name="_ValidationScriptsPartial" />
-}
+

@@ -101,7 +101,7 @@
             }
         }
 
-        #region loadAdditionalDataMethods
+        #region LoadAdditionalData
 
         private ICollection<CreateTeamViewModel> LoadTeams()
         {
@@ -112,6 +112,7 @@
         {
             return _superPowerServices.GetAll().ToList();
         }
+
         #endregion
     }
 }
