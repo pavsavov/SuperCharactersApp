@@ -25,28 +25,9 @@
 
         public void Create(ICharacterViewModel model) //Map viewModel to DbModel 
         {
-            Character character = null;
+            Character character = CharacterMapping(model.CharacterType, model);
 
-            if (model.CharacterType == "Superhero")
-            {
-                character = Mapper.Map<SuperHero>(model);
-            }
-            else if (model.CharacterType == "Supervillain")
-            {
-                character = Mapper.Map<SuperVillain>(model);
-            }
-
-            if (character.SecretIdentity.FirstName != null ||
-                character.SecretIdentity.LastName != null)
-            {
-
-                _unitOfWork.SecretIdentityRepository.Create(character.SecretIdentity);
-                _unitOfWork.Save();
-            }
-            else
-            {
-                character.SecretIdentity = null;
-            }
+            CreateCharacterSecretIdentityIfAny(character);
 
             var team = _unitOfWork.TeamRepository.GetById(character.TeamId);
 
@@ -99,5 +80,42 @@
         {
             throw new NotImplementedException();
         }
+
+        #region AdditionalServices
+        private Character CharacterMapping(string charType, ICharacterViewModel model)
+        {
+            Character character;
+            if (charType == "Superhero")
+            {
+                return character = Mapper.Map<SuperHero>(model);
+            }
+            else
+            {
+                return character = Mapper.Map<SuperVillain>(model);
+            }
+
+        }
+
+        private bool CreateCharacterSecretIdentityIfAny(Character character)
+        {
+            bool createdCharacter;
+
+            if (character.SecretIdentity.FirstName != null ||
+                character.SecretIdentity.LastName != null)
+            {
+
+                _unitOfWork.SecretIdentityRepository.Create(character.SecretIdentity);
+                _unitOfWork.Save();
+                createdCharacter = true;
+            }
+            else
+            {
+                character.SecretIdentity = null;
+                createdCharacter = false;
+            }
+
+            return createdCharacter;
+        }
+        #endregion
     }
 }

@@ -26,11 +26,11 @@
         }
         public string Id { get; set; }
         [Required]
-        [Display(Name="Character type")]
+        [Display(Name = "Character type")]
         public string CharacterType { get; set; }
         [Required]
         [Range(100, 200)]
-        [Display(Name="Hitpoints")]
+        [Display(Name = "Hitpoints")]
         public double HitPoints { get; set; }
         [Required]
         [Range(0, 100)]
@@ -45,6 +45,7 @@
         [Required]
         [Display(Name = "Select team")]
         public Team Team { get; set; }
+        public ICollection<string> SuperPowersId { get; set; }
         public ICollection<SuperPowersListingViewModel> SuperPowers { get; set; }
         public ICollection<CreateTeamViewModel> Teams { get; set; }
         public ModalViewModel ModalView { get; set; }

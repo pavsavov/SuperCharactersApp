@@ -54,12 +54,12 @@
         [ValidateAntiForgeryToken]
         public IActionResult Create(CharacterCreateViewModel viewModel)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    viewModel.Teams = LoadTeams();
-            //    viewModel.SuperPowers = LoadSuperPowers();
-            //    return View("Create", viewModel);
-            //}
+            if (!ModelState.IsValid)
+            {
+                viewModel.Teams = LoadTeams();
+                viewModel.SuperPowers = LoadSuperPowers();
+                return View("Create", viewModel);
+            }
 
             _characterServices.Create(viewModel);
 
