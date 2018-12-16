@@ -5,7 +5,10 @@
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
     using System;
-
+  
+    /// <summary>
+    /// Controller responsible for CRUD operation on SuperPower Entity.
+    /// </summary>
     [Authorize]
     public class SuperpowerController : Controller
     {
@@ -15,6 +18,8 @@
         {
             _superpowerServices = superpowerServices;
         }
+
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -23,15 +28,16 @@
         [HttpPost]
         public IActionResult Create(SuperPowersListingViewModel viewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _superpowerServices.Create(viewModel);
-
+                return RedirectToAction("Create", "Character");
             }
 
-            return RedirectToAction("ListSuperpowers", "SuperPower");
-        }
+            _superpowerServices.Create(viewModel);
 
+            return RedirectToAction("ListSuperpowers");
+        }
+        [HttpGet]
         public IActionResult ListSuperpowers()
         {
             var superpowers = _superpowerServices.GetAll();

@@ -13,25 +13,22 @@
     /// </summary>
     public class Character
     {
+        //Metadata purpose
         private const int MaxSuperPowersPerCharacter = 3;
         public Character()
         {
-            this.SuperPowers = new List<SuperPower>(MaxSuperPowersPerCharacter);
+            this.SuperPowers = new HashSet<SuperPower>(MaxSuperPowersPerCharacter);
         }
         [Key]
         public string Id { get; set; } = Guid.NewGuid().ToString();
-        [Required]
-        [Range(0, 100)]
+
         public int Armour { get; set; }
-        [Required]
-        [Range(10, 50)]
+
         public int Damage { get; set; }
-        [Required]
-        [StringLength(100, MinimumLength = 1)]
+
         public string Name { get; set; }
         [ForeignKey("Team")]
         public string TeamId { get; set; }
-        [Required]
         public virtual Team Team { get; set; }
         [ForeignKey("SecretIdentity")]
         public string SecretIdentityId { get; set; }

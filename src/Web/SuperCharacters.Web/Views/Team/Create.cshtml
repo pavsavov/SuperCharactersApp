@@ -7,11 +7,11 @@
 <main class="mt-3">
     <h1 class="text-center">@ViewData["Title"]</h1>
     <form class="register-form mx-auto half-width text-center d-flex flex-wrap justify-content-between" method="post" asp-controller="Team" asp-action="Create">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="row col-md-12">
             <div class="form-group col-md-6 ">
-                <label asp-for="Name"></label>
-                <input asp-for="Name" type="text" class="form-control" placeholder="Team name..." `>
+                <label asp-for="TeamName"></label>
+                <input asp-for="TeamName" type="text" class="form-control" placeholder="Team name..." `>
             </div>
         </div>
         <div class="button-holder col-md-6">

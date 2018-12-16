@@ -4,7 +4,10 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
-
+    /// <summary>
+    /// Controller responsible for CRUD operation on Team Entity.
+    /// </summary>
+    /// 
     [Authorize]
     public class TeamController : Controller
     {
@@ -14,9 +17,10 @@
             _teamServices = teamServices;
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
-            return View("Create");
+            return View();
         }
 
         [HttpPost]
@@ -25,7 +29,7 @@
         {
             if (!ModelState.IsValid)
             {
-                return this.Json("Invalid team name");
+                return View(viewModel);
             }
 
              _teamServices.Create(viewModel);
@@ -33,6 +37,7 @@
             return this.RedirectToAction("Create", "Character");
         }
 
+        [HttpGet]
         public IActionResult ListTeams()
         {
             var allTeams = _teamServices.GetAll();

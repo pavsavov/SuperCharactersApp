@@ -22,6 +22,7 @@
         {
             _unitOfWork = unitOfWork;
         }
+
         public void Create(ICharacterViewModel model) //Map viewModel to DbModel 
         {
             Character character = null;

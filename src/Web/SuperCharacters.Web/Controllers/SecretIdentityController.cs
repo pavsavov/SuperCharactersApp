@@ -4,6 +4,9 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services.CRUD.Services.Contracts;
     using SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels;
+    /// <summary>
+    /// Controller responsible for CRUD operation on Secretidentity Entity.
+    /// </summary>
 
     [Authorize]
     public class SecretIdentityController : Controller
@@ -15,6 +18,7 @@
             _secretIdentityServices = secretIdentityServices;
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -23,9 +27,14 @@
         [HttpPost]
         public IActionResult Crete(SecretIdentityViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
             _secretIdentityServices.Create(viewModel);
 
-            return View(viewModel);
+            return RedirectToAction("Home","Index");
 
         }
     }

@@ -4,9 +4,14 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
-    using SuperCharactersApp.ViewModels.DTO.ReusableModalModel;
+    using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
+    using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
+    /// <summary>
+    /// Controller responsible for CRUD operation on Character Entity.
+    /// </summary>
 
     [Authorize]
     public class CharacterController : Controller
@@ -15,7 +20,8 @@
         private readonly TeamServices _teamServices;
         private readonly SuperpowerServices _superPowerServices;
 
-        public CharacterController(CharacterServices characterServices,
+        public CharacterController(
+            CharacterServices characterServices,
             TeamServices teamServices,
             SuperpowerServices superPowerServices)
         {
@@ -24,6 +30,7 @@
             _characterServices = characterServices;
         }
 
+        [HttpGet]
         public IActionResult ListCharacters()
         {
             var characters = _characterServices.GetAll();
@@ -31,16 +38,13 @@
             return this.View(characters);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
-            var teams = _teamServices.GetAll().ToList();
-
-            var superpowers = _superPowerServices.GetAll().ToList();
-
-            var characterViewModel = new CharacterViewModel
+            var characterViewModel = new CharacterCreateViewModel
             {
-                Teams = teams,
-                SuperPowers = superpowers
+                Teams = LoadTeams(),
+                SuperPowers = LoadSuperPowers()
             };
 
             return View(characterViewModel);
@@ -50,18 +54,19 @@
         [ValidateAntiForgeryToken]
         public IActionResult Create(CharacterCreateViewModel viewModel)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return this.Json(ModelState.ValidationState.ToString());
-            //}
-
-
+            if (!ModelState.IsValid)
+            {
+                viewModel.Teams = LoadTeams();
+                viewModel.SuperPowers = LoadSuperPowers();
+                return View("Create", viewModel);
+            }
 
             _characterServices.Create(viewModel);
 
-            return this.RedirectToAction("ListCharacters");
+            return RedirectToAction("ListCharacters");
         }
 
+        [HttpGet]
         public IActionResult Edit()
         {
             throw new NotImplementedException();
@@ -95,5 +100,18 @@
                 return Json("Invalid Id.Try again");
             }
         }
+
+        #region loadAdditionalDataMethods
+
+        private ICollection<CreateTeamViewModel> LoadTeams()
+        {
+            return _teamServices.GetAll().ToList();
+        }
+
+        private ICollection<SuperPowersListingViewModel> LoadSuperPowers()
+        {
+            return _superPowerServices.GetAll().ToList();
+        }
+        #endregion
     }
 }

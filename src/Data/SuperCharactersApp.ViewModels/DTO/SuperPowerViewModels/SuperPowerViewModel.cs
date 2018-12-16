@@ -6,8 +6,10 @@
     public class SuperPowerViewModel : IMapTo<SuperPower>, IMapFrom<SuperPower>
     {
         [Required]
-        public string Name { get; set; }
-
+        [Display(Name ="Name of Superpower")]
+        [StringLength(100, MinimumLength = 1)]
+        public string SuperPowerName { get; set; }
+        [Required]
         public string Type { get; set; }
         [Required]
         public double Value { get; set; }

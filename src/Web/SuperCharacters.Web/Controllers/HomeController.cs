@@ -4,9 +4,13 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharacters.Web.Models;
 
+    /// <summary>
+    /// Home controller used to acces the application's Index page.
+    /// </summary>
+
     public class HomeController : Controller
     {
-        
+        [HttpGet]
         public IActionResult Index()
         {
             return View();

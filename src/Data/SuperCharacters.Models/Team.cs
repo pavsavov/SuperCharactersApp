@@ -16,7 +16,7 @@ namespace SuperCharacters.Models
         public string Id { get; set; } = Guid.NewGuid().ToString();
         [Required]
         [StringLength(100, MinimumLength = 1)]
-        public string Name { get; set; }
+        public string TeamName { get; set; }
         public Score Score { get; set; }
         public virtual ICollection<Character> TeamMembers { get; set; }
     }

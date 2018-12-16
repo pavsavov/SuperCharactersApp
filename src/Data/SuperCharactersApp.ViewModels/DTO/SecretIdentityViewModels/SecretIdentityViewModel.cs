@@ -1,14 +1,21 @@
-﻿using SuperCharacters.Models;
-using SuperCharacters.Services.Mapping.Contracts;
-
-namespace SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels
+﻿namespace SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels
 {
-    public class SecretIdentityViewModel : IMapTo<SecretIdentity>, IMapFrom<SecretIdentity>
+    using SuperCharacters.Models;
+    using SuperCharacters.Services.Mapping.Contracts;
+    using System.ComponentModel.DataAnnotations;
+
+    public class SecretIdentityViewModel :
+        IMapTo<SecretIdentity>,
+        IMapFrom<SecretIdentity>
     {
-        /*-	First Name: String between 1 and 50
--	Last Name: String between 1 and 50
-*/
+        [Required]
+        [StringLength(50, MinimumLength = 1)]
+        [Display(Name ="First name")]
         public string FirstName { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 1)]
+        [Display(Name = "Last name")]
+
         public string LastName { get; set; }
     }
 }

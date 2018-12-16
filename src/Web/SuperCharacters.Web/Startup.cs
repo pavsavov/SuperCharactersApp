@@ -81,7 +81,7 @@
                 typeof(CharacterCreateViewModel).Assembly,
                 typeof(ListAllCharacters).Assembly,
                 typeof(CreateTeamViewModel).Assembly,
-                typeof(SuperPowerViewModel).Assembly,
+                typeof(SuperPowersListingViewModel).Assembly,
                 typeof(SecretIdentityViewModel).Assembly
                 );
 

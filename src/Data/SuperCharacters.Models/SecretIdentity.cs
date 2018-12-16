@@ -13,6 +13,6 @@
         [Required]
         [StringLength(50, MinimumLength = 1)]
         public string LastName { get; set; }
-        //public virtual Character Character { get; set; }
+        //public virtual ICollection<Character> Characters { get; set; }
     }
 }

@@ -5,7 +5,6 @@
     var cnt = 0;
     string noSecretIdentity = "Too secret to be known.";
     var controller = ViewContext.RouteData.Values["controller"].ToString();
-    //var action = ViewContext.RouteData.Values["action"].ToString(); ;
 }
 
 <table class="table table-striped">
@@ -73,7 +72,7 @@
                     <td>@(character.SecretIdentity.FirstName) @(character.SecretIdentity.LastName)</td>
                 }
                 <td>@character.SuperPowers.Count()</td>
-                <td>@character.Team.Name</td>
+                <td>@character.Team.TeamName</td>
             </tr>
         }
     </tbody>
