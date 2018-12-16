@@ -57,8 +57,8 @@
             {
                 _superpowerServices.DeleteById(id);
 
-                var currentSuperPowers = _superpowerServices.GetAll();
-                return RedirectToAction("ListSuperpowers", currentSuperPowers);
+                var currentSuperPowersList = _superpowerServices.GetAll();
+                return RedirectToAction("ListSuperpowers", currentSuperPowersList);
             }
             else
             {

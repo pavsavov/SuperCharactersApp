@@ -3,11 +3,14 @@
 @{
     ViewData["Title"] = "ListTeams";
     var cnt = 0;
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
+
 }
 
 <table class="table table-striped">
     <thead>
         <tr>
+            <th scope="col">Operations</th>
             <th scope="col">#</th>
             <th scope="col">Team Name</th>
         </tr>
@@ -17,10 +20,34 @@
         {
             cnt++;
 
-            <tr>
-                <th scope="row">@cnt</th>
-                <td>@team.TeamName</td>
-            </tr>
+        <tr>
+            <th>
+                <div class="btn-group" role="group">
+                    <a href="#" class="btn btn-light  btn-sm">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        <span>Edit</span>
+                    </a>
+                    <a href="#" class="btn btn-info  btn-sm">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span>View</span>
+                    </a>
+
+                    <button type="button" class="btn btn-danger btn-sm"
+                            data-toggle="modal" data-target="#modalDelete">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span>Delete</span>
+                    </button>
+                    <partial name="_ReusableDeleteModal"
+                             model='new SuperCharactersApp
+                                                          .ViewModels
+                                                          .DTO.ReusableModalModel
+                                                          .ModalViewModel { Id = team.Id
+                                                          ,Controller= controller};' />
+                </div>
+            </th>   
+            <th scope="row">@cnt</th>
+            <td>@team.TeamName</td>
+        </tr>
         }
     </tbody>
 </table>

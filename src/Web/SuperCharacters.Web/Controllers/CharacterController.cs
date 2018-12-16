@@ -92,8 +92,8 @@
             {
                 _characterServices.DeleteById(id);
 
-                var currentCharacters = _characterServices.GetAll();
-                return RedirectToAction("ListCharacters", currentCharacters);
+                var currentCharactersList = _characterServices.GetAll();
+                return RedirectToAction("ListCharacters", currentCharactersList);
             }
             else
             {

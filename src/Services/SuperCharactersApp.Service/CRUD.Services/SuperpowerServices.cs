@@ -55,7 +55,6 @@
 
         public SuperPowersListingViewModel GetById(string id)
         {
-
             var superPower = _unitOfWork.SuperPowerRepository
                 .GetById(id);
 

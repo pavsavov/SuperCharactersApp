@@ -36,7 +36,13 @@
 
         public bool DeleteById(string id)
         {
-            throw new NotImplementedException();
+            if (id != null)
+            {
+                _unitOfWork.TeamRepository.DeleteById(id);
+                return true;
+            }
+
+            return false;
         }
 
         public IEnumerable<CreateTeamViewModel> GetAll()
@@ -51,7 +57,12 @@
 
         public CreateTeamViewModel GetById(string id)
         {
-            throw new NotImplementedException();
+            var team = _unitOfWork.TeamRepository
+                .GetById(id);
+
+            var mappedTeam = Mapper.Map<CreateTeamViewModel>(team);
+
+            return mappedTeam;
         }
 
         public void Update(CreateTeamViewModel modelToUpdate)

@@ -44,5 +44,26 @@
 
             return this.View(allTeams);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(string formModal)
+        {
+            var id = formModal;
+
+            var superpower = _teamServices.GetById(id);
+
+            if (superpower != null)
+            {
+                _teamServices.DeleteById(id);
+
+                var currentTeamList = _teamServices.GetAll();
+                return RedirectToAction("ListTeams", currentTeamList);
+            }
+            else
+            {
+                return Json("Invalid Id.Try again");
+            }
+        }
     }
 }
