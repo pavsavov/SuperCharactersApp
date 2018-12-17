@@ -7,8 +7,10 @@
 
     /// <summary>
     /// Although EntityFramework itself implements unit of work pattern, this class provide centralized approach 
-    /// on CRUD operations. The level of abstraction that comes from it, guarantees better code maintenance, readability
-    /// and control over application data flow.
+    /// on CRUD operations. The level of abstraction that comes with it, guarantees better code maintenance, readability
+    /// and control over application data flow.Wrapping up all repositories is key role in abstracting the work with database.
+    /// Overall Unit of work pattern duplicates the idea and functionality of the dbcontext. In order to simulate usage of
+    /// dbcontext in such abstract level as the repository does, uni of work class provides 100% security over all operations.
     /// ================================================================================================================
     /// This UnitOfWork class, following unit of work pattern,
     /// is responsible for registering and accessing the main GenericRepository.

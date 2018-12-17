@@ -4,10 +4,9 @@
     using Microsoft.EntityFrameworkCore;
     using SuperCharacters.DataAccess;
 
-
     /// <summary>
     /// Generic Repository with IRepositoryGeneric interface implementation
-    /// for perfoming CRUD operations within Database;
+    /// for perfoming CRUD operations communicating directly the Database;
     /// </summary>
     public class RepositoryGeneric<TEntity> : Account.Contracts.IRepositoryGeneric<TEntity>
         where TEntity : class

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    int maxNumberSuperpowersPerCharacter = 3;
 
 }
 
@@ -54,7 +55,7 @@
 
             <div class="form-group col-md-3">
                 <label asp-for="SuperPowers">Select Superpowers</label>
-                @for (int i = 0; i < 3; i++)
+                @for (int i = 0; i < maxNumberSuperpowersPerCharacter; i++)
                 {
                     <select class="form-control" id="superpowers" name="SuperPowerId">
                         <option value="">Select Superpower...</option>

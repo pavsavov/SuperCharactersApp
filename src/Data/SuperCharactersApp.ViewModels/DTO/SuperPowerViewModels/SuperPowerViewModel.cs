@@ -3,7 +3,9 @@
     using SuperCharacters.Models;
     using SuperCharacters.Services.Mapping.Contracts;
     using System.ComponentModel.DataAnnotations;
-    public class SuperPowerViewModel : IMapTo<SuperPower>, IMapFrom<SuperPower>
+    public class SuperPowerViewModel : 
+        IMapTo<SuperPower>, 
+        IMapFrom<SuperPower>
     {
         [Required]
         [Display(Name ="Name of Superpower")]

@@ -19,7 +19,6 @@
             <th scope="col">Damage</th>
             <th scope="col">HitPoints</th>
             <th scope="col">Secret identity</th>
-            <th scope="col">SuperPowers</th>
             <th scope="col">Team</th>
         </tr>
     </thead>
@@ -71,7 +70,6 @@
                 {
                     <td>@(character.SecretIdentity.FirstName) @(character.SecretIdentity.LastName)</td>
                 }
-                <td>@character.SuperPowers.Count()</td>
                 <td>@character.Team.TeamName</td>
             </tr>
         }

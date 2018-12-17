@@ -12,7 +12,10 @@
     using SuperCharactersApp.ViewModels.Contracts;
 
     /// <summary>
-    /// Business logic for perfoming CRUD operations with the Character DbSet and it's derivatives.
+    /// This class is responsible for all CRUD operations on Characters Entity.
+    /// It receives input from respective controller and forwards parameters to the
+    /// GenericRepository class with registered type in the UnitOfWork class.
+    /// Also when is required, here happens the actual mapping from ViewModel to real Db model using Automapper.
     /// </summary>
     public class CharacterServices : IService<ICharacterViewModel>
     {
@@ -23,7 +26,7 @@
             _unitOfWork = unitOfWork;
         }
 
-        public void Create(ICharacterViewModel model) //Map viewModel to DbModel 
+        public void Create(ICharacterViewModel model) 
         {
             Character character = CharacterMapping(model.CharacterType, model);
 
@@ -61,7 +64,7 @@
                 .ToList();
         }
 
-        public ICharacterViewModel GetById(string Id) //Map DbModel to ViewModel
+        public ICharacterViewModel GetById(string Id) 
         {
             if (Id == null)
             {
@@ -76,7 +79,7 @@
                 .FirstOrDefault();
         }
 
-        public void Update(ICharacterViewModel modelToUpdate)   //Map viewModel to DbModel
+        public void Update(ICharacterViewModel modelToUpdate)   
         {
             throw new NotImplementedException();
         }
@@ -84,6 +87,7 @@
         #region AdditionalServices
         private Character CharacterMapping(string charType, ICharacterViewModel model)
         {
+
             Character character;
             if (charType == "Superhero")
             {

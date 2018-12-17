@@ -45,7 +45,6 @@
         [Required]
         [Display(Name = "Select team")]
         public Team Team { get; set; }
-        public ICollection<string> SuperPowersId { get; set; }
         public ICollection<SuperPowersListingViewModel> SuperPowers { get; set; }
         public ICollection<CreateTeamViewModel> Teams { get; set; }
         public ModalViewModel ModalView { get; set; }
@@ -66,6 +65,7 @@
                                                     : (x is SuperHero
                                                        ? ((SuperHero)x).HitPoints
                                                        : 0D)));
+
         }
     }
 }

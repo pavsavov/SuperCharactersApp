@@ -10,26 +10,28 @@
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
 
-    public class CharacterCreateViewModel : 
-        ICharacterViewModel, 
-        IMapFrom<SuperHero>, 
+    public class CharacterCreateViewModel :
+        ICharacterViewModel,
+        IMapFrom<SuperHero>,
         IMapTo<SuperHero>,
-        IHaveCustomMappings, 
+        IHaveCustomMappings,
         IMapTo<SuperVillain>
     {
         public CharacterCreateViewModel()
         {
-           SuperPowers = new HashSet<SuperPowersListingViewModel>();
+            SuperPowers = new HashSet<SuperPowersListingViewModel>();
             Teams = new HashSet<CreateTeamViewModel>();
+            SuperPowerId = new HashSet<string>();
         }
         public string Id { get; set; }
         [Required]
-        [Display(Name="Character type")]
+        [Display(Name = "Character type")]
         public string CharacterType { get; set; }
         [Required]
-        [Range(100,200)]
-        [Display(Name="Hitpoints")]
+        [Range(100, 200)]
+        [Display(Name = "Hitpoints")]
         public double HitPoints { get; set; }
         [Required]
         [Range(0, 100)]
@@ -44,11 +46,11 @@
         [Required]
         [Display(Name = "Select team")]
         public string TeamId { get; set; }
-        public string SuperPowerId { get; set; }
+        public ICollection<string> SuperPowerId { get; set; }
         public ICollection<SuperPowersListingViewModel> SuperPowers { get; set; }
         public ICollection<CreateTeamViewModel> Teams { get; set; }
         public ModalViewModel ModalView { get; set; }
-        
+
         /// <summary>
         /// Custom mapping which performs casting of Characters into SuperVillain or SuperHero 
         /// in order Automapper to correctly map int to int and double to double.
@@ -65,6 +67,8 @@
                                                     : (x is SuperHero
                                                        ? ((SuperHero)x).HitPoints
                                                        : 0D)));
+
+ 
         }
     }
 }

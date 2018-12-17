@@ -7,7 +7,7 @@
     using System;
   
     /// <summary>
-    /// Controller responsible for CRUD operation on SuperPower Entity.
+    /// Controller responsible for SuperPowers Entity.
     /// </summary>
     [Authorize]
     public class SuperpowerController : Controller

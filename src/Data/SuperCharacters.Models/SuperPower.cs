@@ -1,6 +1,7 @@
 ﻿namespace SuperCharacters.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     public class SuperPower
     {
@@ -11,6 +12,6 @@
 
         public string Type { get; set; }
         public double Value { get; set; }
-        public virtual Character Character { get; set; }
+        public virtual ICollection<SuperPowersCharacters> SuperPowersCharacters { get; set; }
     }
 }

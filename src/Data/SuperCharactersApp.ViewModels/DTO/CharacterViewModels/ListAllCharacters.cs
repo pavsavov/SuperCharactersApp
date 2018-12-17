@@ -7,7 +7,7 @@
     {
         public ListAllCharacters()
         {
-            this.AllCharacters = new List<CharacterViewModel>();
+            this.AllCharacters = new HashSet<CharacterViewModel>();
         }
         public ICollection<CharacterViewModel> AllCharacters { get; set; }
         public ModalViewModel ModalView { get; set;  }

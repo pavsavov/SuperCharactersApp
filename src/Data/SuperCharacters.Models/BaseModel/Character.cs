@@ -17,7 +17,7 @@
         private const int MaxSuperPowersPerCharacter = 3;
         public Character()
         {
-            this.SuperPowers = new HashSet<SuperPower>(MaxSuperPowersPerCharacter);
+            SuperPowersCharacters = new HashSet<SuperPowersCharacters>(MaxSuperPowersPerCharacter);
         }
         [Key]
         public string Id { get; set; } = Guid.NewGuid().ToString();
@@ -33,7 +33,7 @@
         [ForeignKey("SecretIdentity")]
         public string SecretIdentityId { get; set; }
         public virtual SecretIdentity SecretIdentity { get; set; }
-        public virtual ICollection<SuperPower> SuperPowers { get; set; }
+        public virtual ICollection<SuperPowersCharacters> SuperPowersCharacters { get; set; }
         public Score Score { get; set; }
 
         //mapped discriminator to actual CLR property.

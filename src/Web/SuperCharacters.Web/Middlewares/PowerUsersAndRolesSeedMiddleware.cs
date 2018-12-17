@@ -9,6 +9,9 @@
     using System.Threading.Tasks;
     using Microsoft.Extensions.DependencyInjection;
 
+    /// <summary>
+    /// Seeding methods for roles and power users e.g. Creator and Admin
+    /// </summary>
     public class PowerUsersAndRolesSeedMiddleware
     {
         private readonly RequestDelegate next;

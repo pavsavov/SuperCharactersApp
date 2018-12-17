@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
-
-
-namespace SuperCharactersApp.Services.CRUD.Services.Contracts
+﻿namespace SuperCharactersApp.Services.CRUD.Services.Contracts
 {
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Generic interface with all needed methods used for CRUD operations.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IService<T>
     {
         IEnumerable<T> GetAll();

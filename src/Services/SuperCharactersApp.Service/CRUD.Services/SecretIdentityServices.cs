@@ -10,6 +10,12 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// This class is responsible for all CRUD operations on SecretIdentities Entity.
+    /// It receives input from respective controller and forwards parameters to the
+    /// GenericRepository class with registered type in the UnitOfWork class.
+    /// Also when is required, here happens the actual mapping from ViewModel to real Db model using Automapper.
+    /// </summary>
     public class SecretIdentityServices : IService<SecretIdentityViewModel>
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -19,7 +25,7 @@
             _unitOfWork = unitOfWork;
         }
 
-        public void Create(SecretIdentityViewModel model) //Map viewModel to DbModel 
+        public void Create(SecretIdentityViewModel model) 
         {
             if (model.FirstName != null && model.LastName != null)
             {
@@ -50,7 +56,7 @@
                 .ToList();
         }
 
-        public SecretIdentityViewModel GetById(string id) //Map DbModel to ViewModel
+        public SecretIdentityViewModel GetById(string id) 
         {
             if (id == null)
             {
@@ -65,7 +71,7 @@
             return mappedSecretIdentity;
         }
 
-        public void Update(SecretIdentityViewModel modelToUpdate)   //Map viewModel to DbModel
+        public void Update(SecretIdentityViewModel modelToUpdate)  
         {
             throw new NotImplementedException();
         }

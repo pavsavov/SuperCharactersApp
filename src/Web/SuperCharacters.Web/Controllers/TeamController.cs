@@ -4,10 +4,10 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
+  
     /// <summary>
-    /// Controller responsible for CRUD operation on Team Entity.
+    /// Controller responsible for CRUD operation on Teams Entity.
     /// </summary>
-    /// 
     [Authorize]
     public class TeamController : Controller
     {

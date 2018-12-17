@@ -9,10 +9,10 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    /// <summary>
-    /// Controller responsible for CRUD operation on Character Entity.
-    /// </summary>
 
+    /// <summary>
+    /// Controller responsible for Characters Entity.
+    /// </summary>
     [Authorize]
     public class CharacterController : Controller
     {
@@ -61,7 +61,7 @@
                 return View("Create", viewModel);
             }
 
-            _characterServices.Create(viewModel);
+                _characterServices.Create(viewModel);
 
             return RedirectToAction("ListCharacters");
         }

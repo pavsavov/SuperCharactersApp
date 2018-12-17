@@ -38,6 +38,9 @@
                 .WithOne(c => c.Team)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder.Entity<SuperPowersCharacters>()
+                .HasKey(sc => new { sc.CharacterId, sc.SuperPowerId });
+
         }
     }
 }
