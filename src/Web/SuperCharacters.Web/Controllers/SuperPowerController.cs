@@ -64,5 +64,17 @@
                 return Json("Invalid Id.Try again");
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(SuperPowersListingViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
+
+
+        }
     }
 }

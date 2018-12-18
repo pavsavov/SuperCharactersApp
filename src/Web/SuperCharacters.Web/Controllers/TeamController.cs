@@ -66,19 +66,6 @@
             }
         }
 
-        [HttpGet]
-        public IActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var model = _teamServices.GetById(id);
-            return View(model);
-
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(TeamViewModel editModal)

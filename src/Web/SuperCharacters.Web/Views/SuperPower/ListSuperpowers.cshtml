@@ -27,20 +27,20 @@
                 <th width="25%" scope="row">
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-light btn-sm"
-                                data-toggle="modal" data-target="#modalEdit">
+                                data-toggle="modal" data-target="#editModal-@superpower.Id">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             <span>Edit</span>
                         </button>
                         <partial name="Partials/_ViewSuperpowerDetails"
                                  model="superpower">
                         <button type="button" class="btn btn-info btn-sm"
-                                data-toggle="modal" data-target="#modalDetails">
+                                data-toggle="modal" data-target="#detailsModal-@superpower.Id">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             <span>Details</span>
                         </button>
 
                         <button type="button" class="btn btn-danger btn-sm"
-                                data-toggle="modal" data-target="#modalDelete">
+                                data-toggle="modal" data-target="#deleteModal-@superpower.Id">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             <span>Delete</span>
                         </button>

@@ -64,9 +64,13 @@
             return mappedSuperPower;
         }
 
-        public void Edit(SuperPowersListingViewModel modelToUpdate)
+        public void Edit(SuperPowersListingViewModel editModel)
         {
-            throw new NotImplementedException();
+            var superpowerMapped = Mapper.Map<SuperPower>(editModel);
+
+            _unitOfWork.SuperPowerRepository.Edit(superpowerMapped);
+
+            _unitOfWork.Save();
         }
     }
 }
