@@ -9,7 +9,7 @@
     public class SuperPowersListingViewModel :
         IReusableModalViewModel,
         IMapTo<SuperPower>,
-        IMapFrom<SuperPower>
+        IMapFrom<SuperPower>    
         
     {
         public string Id { get; set; }

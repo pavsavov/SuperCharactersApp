@@ -1,6 +1,6 @@
 ﻿@model SuperCharactersApp.ViewModels.DTO.ReusableModalModel.ModalViewModel
 <!-- Modal -->
-<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="deleteModal-@Model.Id" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -23,6 +23,6 @@
         </div>
     </div>
 </div>
-<script>
+@*<script>
     console.log($('#delete-@Model').val());
-    </script>
+    </script>*@

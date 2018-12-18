@@ -21,7 +21,7 @@
 
 
   <ItemGroup>
-    <Content Update="Views\Shared\_AddTeam.cshtml">
+    <Content Update="Views\Character\Partials\_AddTeam.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

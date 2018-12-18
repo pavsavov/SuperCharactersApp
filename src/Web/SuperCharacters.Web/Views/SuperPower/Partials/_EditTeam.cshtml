@@ -1,6 +1,6 @@
 ﻿@model SuperCharactersApp.ViewModels.DTO.TeamViewModels.TeamViewModel
 
-<div class="modal fade" id="editModal-@Model.Id" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,7 +12,6 @@
                         <label asp-for="TeamName">Team name</label>
                         <input asp-for="TeamName" name="TeamName" class="form-control" />
                         <input asp-for="Id" name="Id" type="hidden" class="form-control" />
-                        <span asp-validation-for="TeamName"></span>
                     </div>
                     <div class="col-lg-6">
                         <button type="submit" value="@Model.TeamName" id="edit-@Model.TeamName"  class="btn btn-primary">
