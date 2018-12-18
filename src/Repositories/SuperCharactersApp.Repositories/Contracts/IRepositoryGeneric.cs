@@ -12,7 +12,7 @@
     {
         TEntity GetById(string id);
         void Create(TEntity entity);
-        void Update(TEntity entityToUpdate);
+        void Edit(TEntity entityToEdit);
         void DeleteById(string id);
         IQueryable<TEntity> GetAll();
     }

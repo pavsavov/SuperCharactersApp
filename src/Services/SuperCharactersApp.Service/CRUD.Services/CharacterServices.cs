@@ -38,7 +38,6 @@
 
             _unitOfWork.CharacterRepository.Create(character);
 
-
             _unitOfWork.Save();
 
         }
@@ -79,7 +78,7 @@
                 .FirstOrDefault();
         }
 
-        public void Update(ICharacterViewModel modelToUpdate)   
+        public void Edit(ICharacterViewModel modelToUpdate)   
         {
             throw new NotImplementedException();
         }

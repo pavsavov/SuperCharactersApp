@@ -103,7 +103,7 @@
 
         #region LoadAdditionalData
 
-        private ICollection<CreateTeamViewModel> LoadTeams()
+        private ICollection<TeamViewModel> LoadTeams()
         {
             return _teamServices.GetAll().ToList();
         }

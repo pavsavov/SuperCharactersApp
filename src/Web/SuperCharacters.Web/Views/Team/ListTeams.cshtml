@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SuperCharactersApp.ViewModels.DTO.TeamViewModels.CreateTeamViewModel>
+﻿@model IEnumerable<SuperCharactersApp.ViewModels.DTO.TeamViewModels.TeamViewModel>
  
 @{
     ViewData["Title"] = "ListTeams";
@@ -21,32 +21,43 @@
             cnt++;
 
         <tr>
-            <th>
+            <th width="33%">
                 <div class="btn-group" role="group">
-                    <a href="#" class="btn btn-light  btn-sm">
+                    <button type="button" class="btn btn-light btn-sm"
+                            data-toggle="modal" data-target="#modalEdit">
                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                         <span>Edit</span>
-                    </a>
-                    <a href="#" class="btn btn-info  btn-sm">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        <span>View</span>
-                    </a>
-
-                    <button type="button" class="btn btn-danger btn-sm"
-                            data-toggle="modal" data-target="#modalDelete">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        <span>Delete</span>
                     </button>
-                    <partial name="_ReusableDeleteModal"
-                             model='new SuperCharactersApp
+                    <partial name="Partials/_EditTeam"
+                             model="team">
+
+                        <button type="button" class="btn btn-info btn-sm"
+                                data-toggle="modal" data-target="#modalDetails">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            <span>Details</span>
+                        </button>
+                        <partial name="Partials/_ViewTeamDetails"
+                                 model="team">
+                        @*<a href="#" class="btn btn-info  btn-sm">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            <span>View</span>
+        </a>*@
+
+                        <button type="button" class="btn btn-danger btn-sm"
+                                data-toggle="modal" data-target="#modalDelete">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <span>Delete</span>
+                        </button>
+                        <partial name="_ReusableDeleteModal"
+                                 model='new SuperCharactersApp
                                                           .ViewModels
                                                           .DTO.ReusableModalModel
                                                           .ModalViewModel { Id = team.Id
                                                           ,Controller= controller};' />
-                </div>
+</div>
             </th>   
-            <th scope="row">@cnt</th>
-            <td>@team.TeamName</td>
+            <th width="33%" scope="row">@cnt</th>
+            <td width="33%">@team.TeamName</td>
         </tr>
         }
     </tbody>

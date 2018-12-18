@@ -42,6 +42,7 @@
             if (id != null)
             {
                 _unitOfWork.SecretIdentityRepository.DeleteById(id);
+                _unitOfWork.Save();
                 return true;
             }
 
@@ -71,7 +72,7 @@
             return mappedSecretIdentity;
         }
 
-        public void Update(SecretIdentityViewModel modelToUpdate)  
+        public void Edit(SecretIdentityViewModel modelToUpdate)  
         {
             throw new NotImplementedException();
         }

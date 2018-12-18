@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
-    using System;
   
     /// <summary>
     /// Controller responsible for SuperPowers Entity.

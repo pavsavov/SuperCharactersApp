@@ -38,6 +38,7 @@
             if (id != null)
             {
                 _unitOfWork.SuperPowerRepository.DeleteById(id);
+                _unitOfWork.Save();
                 return true;
             }
 
@@ -63,7 +64,7 @@
             return mappedSuperPower;
         }
 
-        public void Update(SuperPowersListingViewModel modelToUpdate)
+        public void Edit(SuperPowersListingViewModel modelToUpdate)
         {
             throw new NotImplementedException();
         }

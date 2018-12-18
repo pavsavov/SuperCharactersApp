@@ -5,6 +5,11 @@
     using System.ComponentModel.DataAnnotations;
     public class SuperPower
     {
+        public SuperPower()
+        {
+            this.SuperPowersCharacters = new HashSet<SuperPowersCharacters>();
+        }
+
         [Key]
         public string Id { get; set; } = Guid.NewGuid().ToString();
 

@@ -2,13 +2,14 @@
 {
     using SuperCharacters.Models;
     using SuperCharacters.Services.Mapping.Contracts;
+    using SuperCharactersApp.ViewModels.Contracts;
     using System.ComponentModel.DataAnnotations;
 
-    public class CreateTeamViewModel :
+    public class TeamViewModel :
         IMapFrom<Team>,
         IMapTo<Team>
+        
     {
-        [Key]
         public string Id { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 1)]

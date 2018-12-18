@@ -11,7 +11,7 @@
         IEnumerable<T> GetAll();
         T GetById(string id);
         void Create(T model);
-        void Update(T modelToUpdate);
+        void Edit(T modelToUpdate);
         bool DeleteById(string id);
     }
 }

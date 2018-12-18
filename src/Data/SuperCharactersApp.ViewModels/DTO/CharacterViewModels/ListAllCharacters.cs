@@ -3,7 +3,9 @@
     using SuperCharactersApp.ViewModels.Contracts;
     using SuperCharactersApp.ViewModels.DTO.ReusableModalModel;
     using System.Collections.Generic;
-    public class ListAllCharacters : IReusableModalViewModel
+
+    public class ListAllCharacters : 
+        IReusableModalViewModel
     {
         public ListAllCharacters()
         {

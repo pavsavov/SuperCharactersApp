@@ -22,7 +22,7 @@
         public CharacterCreateViewModel()
         {
             SuperPowers = new HashSet<SuperPowersListingViewModel>();
-            Teams = new HashSet<CreateTeamViewModel>();
+            Teams = new HashSet<TeamViewModel>();
             SuperPowerId = new HashSet<string>();
         }
         public string Id { get; set; }
@@ -48,7 +48,7 @@
         public string TeamId { get; set; }
         public ICollection<string> SuperPowerId { get; set; }
         public ICollection<SuperPowersListingViewModel> SuperPowers { get; set; }
-        public ICollection<CreateTeamViewModel> Teams { get; set; }
+        public ICollection<TeamViewModel> Teams { get; set; }
         public ModalViewModel ModalView { get; set; }
 
         /// <summary>

@@ -28,7 +28,6 @@
         public virtual void Create(TEntity entity)
         {
             _dbSet.Add(entity);
-
         }
 
         public virtual void DeleteById(string id)
@@ -36,8 +35,6 @@
             TEntity entityToDelete = _dbSet.Find(id);
 
             _dbContext.Entry(entityToDelete).State = EntityState.Deleted;
-
-            _dbContext.SaveChanges();
         }
 
         public virtual TEntity GetById(string id)
@@ -45,11 +42,10 @@
             return _dbSet.Find(id);
         }
 
-        public virtual void Update(TEntity entityToUpdate)
+        public virtual void Edit(TEntity entityToUpdate)
         {
             _dbSet.Attach(entityToUpdate);
             _dbContext.Entry(entityToUpdate).State = EntityState.Modified;
-            _dbContext.SaveChanges();
         }
     }
 }

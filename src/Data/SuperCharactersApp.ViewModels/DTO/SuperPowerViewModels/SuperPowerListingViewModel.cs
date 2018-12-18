@@ -10,6 +10,7 @@
         IReusableModalViewModel,
         IMapTo<SuperPower>,
         IMapFrom<SuperPower>
+        
     {
         public string Id { get; set; }
         [Required]

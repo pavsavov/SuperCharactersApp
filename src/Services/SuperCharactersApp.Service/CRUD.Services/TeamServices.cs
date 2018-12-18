@@ -5,6 +5,7 @@
     using SuperCharacters.Services.Mapping;
     using SuperCharactersApp.Repository.Contracts;
     using SuperCharactersApp.Services.CRUD.Services.Contracts;
+    using SuperCharactersApp.ViewModels.Contracts;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
     using System;
     using System.Collections.Generic;
@@ -15,7 +16,7 @@
     /// It receives input from respective controller and forwards parameters to the GenericRepository class with registered type
     /// in the UnitOfWork class. Also when needed, here happens the actual mapping from ViewModel to real Db model using Automapper.
     /// </summary>
-    public class TeamServices : IService<CreateTeamViewModel>
+    public class TeamServices : IService<TeamViewModel>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -24,7 +25,7 @@
             _unitOfWork = unitOfWork;
         }
 
-        public void Create(CreateTeamViewModel model)
+        public void Create(TeamViewModel model)
         {
 
             var team = Mapper.Map<Team>(model);
@@ -39,35 +40,41 @@
             if (id != null)
             {
                 _unitOfWork.TeamRepository.DeleteById(id);
+                _unitOfWork.Save();
+
                 return true;
             }
 
             return false;
         }
 
-        public IEnumerable<CreateTeamViewModel> GetAll()
+        public IEnumerable<TeamViewModel> GetAll()
         {
             var teams = _unitOfWork.TeamRepository.GetAll();
 
             return teams.AsQueryable()
-                .To<CreateTeamViewModel>()
+                .To<TeamViewModel>()
                 .ToList();
 
         }
 
-        public CreateTeamViewModel GetById(string id)
+        public TeamViewModel GetById(string id)
         {
             var team = _unitOfWork.TeamRepository
                 .GetById(id);
 
-            var mappedTeam = Mapper.Map<CreateTeamViewModel>(team);
+            var mappedTeam = Mapper.Map<TeamViewModel>(team);
 
             return mappedTeam;
         }
 
-        public void Update(CreateTeamViewModel modelToUpdate)
+        public void Edit(TeamViewModel editModel)
         {
-            throw new NotImplementedException();
+            var teamMapped = Mapper.Map<Team>(editModel);
+
+            _unitOfWork.TeamRepository.Edit(teamMapped);
+
+            _unitOfWork.Save();
         }
     }
 }
