@@ -9,7 +9,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <td align="center"></td>
+            @*<td align="center"></td>*@
             <th scope="col">Operations</th>
             <th scope="col">#</th>
             <th scope="col">Name</th>
@@ -23,29 +23,35 @@
             cnt++;
 
             <tr>
-                <td ></td>
-                <th width="25%" scope="row">
+                @*<td ></td>*@
+                <th width="20%" scope="row">
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-light btn-sm"
-                                data-toggle="modal" data-target="#editModal-@superpower.Id">
+                                data-toggle="modal" data-target="#editSuperpower-@superpower.Id">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             <span>Edit</span>
                         </button>
-                        <partial name="Partials/_ViewSuperpowerDetails"
-                                 model="superpower">
-                        <button type="button" class="btn btn-info btn-sm"
-                                data-toggle="modal" data-target="#detailsModal-@superpower.Id">
-                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                            <span>Details</span>
-                        </button>
 
-                        <button type="button" class="btn btn-danger btn-sm"
-                                data-toggle="modal" data-target="#deleteModal-@superpower.Id">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            <span>Delete</span>
-                        </button>
-                        <partial name="_ReusableDeleteModal"
-                                 model='new SuperCharactersApp
+                        <partial name="Partials/_EditSuperpower"
+                                 model="superpower">
+
+                            <button type="button" class="btn btn-info btn-sm"
+                                    data-toggle="modal" data-target="#detailsSuperpower-@superpower.Id">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                <span>Details</span>
+                            </button>
+
+                            <partial name="Partials/_ViewSuperpowerDetails"
+                                     model="superpower">
+
+                                <button type="button" class="btn btn-danger btn-sm"
+                                        data-toggle="modal" data-target="#deleteModal-@superpower.Id">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    <span>Delete</span>
+                                </button>
+
+                                <partial name="_ReusableDeleteModal"
+                                         model='new SuperCharactersApp
                                                               .ViewModels
                                                               .DTO.ReusableModalModel
                                                               .ModalViewModel { Id = superpower.Id

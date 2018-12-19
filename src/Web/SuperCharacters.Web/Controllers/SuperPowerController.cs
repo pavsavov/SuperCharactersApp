@@ -74,7 +74,9 @@
                 return NotFound();
             }
 
+            _superpowerServices.Edit(viewModel);
 
+            return RedirectToAction("ListSuperpowers", "SuperPower");
         }
     }
 }

@@ -9,6 +9,7 @@
         IMapFrom<SuperPower>
         
     {
+        public string Id { get; set; }
         [Required]
         [Display(Name ="Name of Superpower")]
         [StringLength(100, MinimumLength = 1)]
