@@ -1,6 +1,6 @@
 ﻿@using X.PagedList;
 @using X.PagedList.Mvc.Core;
-@model List<SuperCharactersApp.ViewModels.DTO.CharacterViewModels.CharacterViewModel>
+@model IEnumerable<SuperCharactersApp.ViewModels.DTO.CharacterViewModels.CharacterViewModel>
 
 @{
     ViewData["Title"] = "ListCharacters";
@@ -14,7 +14,6 @@
         <tr>
             <td align="center"></td>
             <th scope="col">Operations</th>
-            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Character type</th>
             <th scope="col">Armour</th>
@@ -60,7 +59,6 @@
 
                     </div>
                 </th>
-                <th scope="row">@cnt</th>
                 <td>@character.Name</td>
                 <td>@character.CharacterType</td>
                 <td>@character.Armour</td>
@@ -80,7 +78,7 @@
         }
     </tbody>
 </table>
-@Html.PagedListPager((IPagedList)Model,pageNumber=>Url.Action("ListSuperpowers", new { pageNumber }),
+@Html.PagedListPager((IPagedList)Model,pageNumber=>Url.Action("ListCharacters", new { pageNumber }),
         new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
         {
             LiElementClasses = new string[] { "page-item" },

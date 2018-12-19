@@ -5,9 +5,7 @@
     using SuperCharacters.Services.Mapping;
     using SuperCharactersApp.Repository.Contracts;
     using SuperCharactersApp.Services.CRUD.Services.Contracts;
-    using SuperCharactersApp.ViewModels.Contracts;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 

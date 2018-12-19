@@ -19,29 +19,34 @@
         private readonly CharacterServices _characterServices;
         private readonly TeamServices _teamServices;
         private readonly SuperpowerServices _superPowerServices;
+        private readonly PaginationServices<CharacterViewModel> _paginationServices;
 
         public CharacterController(
             CharacterServices characterServices,
             TeamServices teamServices,
-            SuperpowerServices superPowerServices)
+            SuperpowerServices superPowerServices,
+            PaginationServices<CharacterViewModel> paginationServices
+            )
         {
+            _paginationServices = paginationServices;
             _superPowerServices = superPowerServices;
             _teamServices = teamServices;
             _characterServices = characterServices;
         }
 
         [HttpGet]
-        public IActionResult ListCharacters()
+        public IActionResult ListCharacters(int? pageNumber)
         {
-            var characters = _characterServices.GetAll();
+            var paginatedCharactersList = _paginationServices.Pagination(pageNumber, _characterServices);
 
-            return this.View(characters);
+            return View(paginatedCharactersList);
+
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            var characterViewModel = new CharacterCreateViewModel
+            var characterViewModel = new CharacterViewModel
             {
                 Teams = LoadTeams(),
                 SuperPowers = LoadSuperPowers()
@@ -52,7 +57,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CharacterCreateViewModel viewModel)
+        public IActionResult Create(CharacterViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {

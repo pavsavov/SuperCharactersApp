@@ -12,7 +12,6 @@
     using SuperCharactersApp.ViewModels.DTO.ReusableModalModel;
 
     public class CharacterViewModel :
-        ICharacterViewModel,
         IMapFrom<SuperHero>,
         IMapTo<SuperHero>,
         IHaveCustomMappings,
@@ -21,6 +20,8 @@
     {
         public CharacterViewModel()
         {
+
+            SuperPowerId = new HashSet<string>();
             SuperPowers = new HashSet<SuperPowersListingViewModel>();
             Teams = new HashSet<TeamViewModel>();
         }
@@ -42,9 +43,11 @@
         [StringLength(100, MinimumLength = 1)]
         public string Name { get; set; }
         public SecretIdentityViewModel SecretIdentity { get; set; }
+        public Team Team { get; set; }
         [Required]
         [Display(Name = "Select team")]
-        public Team Team { get; set; }
+        public string TeamId { get; set; }
+        public ICollection<string> SuperPowerId { get; set; }
         public ICollection<SuperPowersListingViewModel> SuperPowers { get; set; }
         public ICollection<TeamViewModel> Teams { get; set; }
         public ModalViewModel ModalView { get; set; }

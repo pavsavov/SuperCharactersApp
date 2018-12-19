@@ -5,12 +5,11 @@
     using SuperCharacters.Models;
     using SuperCharactersApp.Services.CRUD.Services.Contracts;
     using SuperCharacters.Services.Mapping;
-    using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
     using System.Collections.Generic;
     using AutoMapper;
     using SuperCharactersApp.Repository.Contracts;
     using SuperCharactersApp.ViewModels.Contracts;
-    using X.PagedList;
+    using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
 
     /// <summary>
     /// This class is responsible for all CRUD operations on Characters Entity.
@@ -18,7 +17,7 @@
     /// GenericRepository class with registered type in the UnitOfWork class.
     /// Also when is required, here happens the actual mapping from ViewModel to real Db model using Automapper.
     /// </summary>
-    public class CharacterServices : IService<ICharacterViewModel>
+    public class CharacterServices : IService<CharacterViewModel>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -27,7 +26,7 @@
             _unitOfWork = unitOfWork;
         }
 
-        public void Create(ICharacterViewModel model)
+        public void Create(CharacterViewModel model)
         {
             Character character = CharacterMapping(model.CharacterType, model);
 
@@ -56,7 +55,7 @@
             return false;
         }
 
-        public IEnumerable<ICharacterViewModel> GetAll()
+        public IEnumerable<CharacterViewModel> GetAll()
         {
             return _unitOfWork.CharacterRepository
                 .GetAll()
@@ -64,7 +63,7 @@
                 .ToList();
         }
 
-        public ICharacterViewModel GetById(string Id)
+        public CharacterViewModel GetById(string Id)
         {
             if (Id == null)
             {
@@ -79,13 +78,14 @@
                 .FirstOrDefault();
         }
 
-        public void Edit(ICharacterViewModel modelToUpdate)
+        public void Edit(CharacterViewModel modelToUpdate)
         {
             throw new NotImplementedException();
         }
 
+
         #region AdditionalServices
-        private Character CharacterMapping(string charType, ICharacterViewModel model)
+        private Character CharacterMapping(string charType, CharacterViewModel model)
         {
 
             Character character;

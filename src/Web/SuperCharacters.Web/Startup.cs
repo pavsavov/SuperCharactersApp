@@ -80,8 +80,7 @@
 
             AutoMapperConfig.RegisterMappings(
                 typeof(CharacterViewModel).Assembly,
-                typeof(CharacterCreateViewModel).Assembly,
-                typeof(ListAllCharacters).Assembly,
+                //typeof(CharacterCreateViewModel).Assembly,
                 typeof(TeamViewModel).Assembly,
                 typeof(SuperPowersListingViewModel).Assembly,
                 typeof(SecretIdentityViewModel).Assembly

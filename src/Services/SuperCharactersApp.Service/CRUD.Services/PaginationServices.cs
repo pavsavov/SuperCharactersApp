@@ -1,8 +1,8 @@
 ﻿namespace SuperCharactersApp.Services.CRUD.Services
 {
     using X.PagedList;
-    using System.Linq;
     using SuperCharactersApp.Services.CRUD.Services.Contracts;
+
     /// <summary>
     /// By implementing the IPaginService interface, the following class
     /// </summary>
