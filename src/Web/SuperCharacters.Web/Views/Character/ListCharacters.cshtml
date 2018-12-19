@@ -73,7 +73,7 @@
                 <td>@(character.SecretIdentity.FirstName) @(character.SecretIdentity.LastName)</td>
             }
             <td>@character.Team.TeamName</td>
-            <td>@character.SuperPowers.Select(x=>x.SuperPowerName)</td>
+            <td>@character.SuperPowers.Count()</td>
         </tr>
         }
     </tbody>
