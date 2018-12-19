@@ -30,8 +30,8 @@
         [ForeignKey("Team")]
         public string TeamId { get; set; }
         public virtual Team Team { get; set; }
-        [ForeignKey("SecretIdentity")]
-        public string SecretIdentityId { get; set; }
+        //[ForeignKey("SecretIdentity")]
+        //public string SecretIdentityId { get; set; }
         public virtual SecretIdentity SecretIdentity { get; set; }
         public virtual ICollection<SuperPowersCharacters> SuperPowersCharacters { get; set; }
         public Score Score { get; set; }

@@ -69,6 +69,7 @@
                                                        ? ((SuperHero)x).HitPoints
                                                        : 0D)));
 
+
         }
     }
 }
