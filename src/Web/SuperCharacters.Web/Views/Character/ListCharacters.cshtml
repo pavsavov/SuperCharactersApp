@@ -1,4 +1,6 @@
-﻿@model List<SuperCharactersApp.ViewModels.DTO.CharacterViewModels.CharacterViewModel>
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@model List<SuperCharactersApp.ViewModels.DTO.CharacterViewModels.CharacterViewModel>
 
 @{
     ViewData["Title"] = "ListCharacters";
@@ -29,52 +31,58 @@
             cnt++;
 
 
-        <tr>
-            <td align="center"></td>
-            <th scope="row">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalEdit">
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                        <span>Edit</span>
-                    </button>
+            <tr>
+                <td align="center"></td>
+                <th scope="row">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalEdit">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            <span>Edit</span>
+                        </button>
 
-                    <a href="#" class="btn btn-info  btn-sm">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        <span>View</span>
-                    </a>
+                        <a href="#" class="btn btn-info  btn-sm">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <span>View</span>
+                        </a>
 
-                    <button type="button" class="btn btn-danger btn-sm"
-                            data-toggle="modal" data-target="#modalDelete">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        <span>Delete</span>
-                    </button>
-                    <partial name="_ReusableDeleteModal"
-                             model='new SuperCharactersApp
+                        <button type="button" class="btn btn-danger btn-sm"
+                                data-toggle="modal" data-target="#modalDelete">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <span>Delete</span>
+                        </button>
+                        <partial name="_ReusableDeleteModal"
+                                 model='new SuperCharactersApp
                                                               .ViewModels
                                                               .DTO.ReusableModalModel
                                                               .ModalViewModel { Id = character.Id
                                                               ,Controller= controller};' />
 
 
-                </div>
-            </th>
-            <th scope="row">@cnt</th>
-            <td>@character.Name</td>
-            <td>@character.CharacterType</td>
-            <td>@character.Armour</td>
-            <td>@character.Damage</td>
-            <td>@character.HitPoints</td>
-            @if (character.SecretIdentity == null)
-            {
-                <td>@noSecretIdentity</td>
-            }
-            else
-            {
-                <td>@(character.SecretIdentity.FirstName) @(character.SecretIdentity.LastName)</td>
-            }
-            <td>@character.Team.TeamName</td>
-            <td>@character.SuperPowers.Count()</td>
-        </tr>
+                    </div>
+                </th>
+                <th scope="row">@cnt</th>
+                <td>@character.Name</td>
+                <td>@character.CharacterType</td>
+                <td>@character.Armour</td>
+                <td>@character.Damage</td>
+                <td>@character.HitPoints</td>
+                @if (character.SecretIdentity == null)
+                {
+                    <td>@noSecretIdentity</td>
+                }
+                else
+                {
+                    <td>@(character.SecretIdentity.FirstName) @(character.SecretIdentity.LastName)</td>
+                }
+                <td>@character.Team.TeamName</td>
+                <td>@character.SuperPowers.Count()</td>
+            </tr>
         }
     </tbody>
 </table>
+@Html.PagedListPager((IPagedList)Model,pageNumber=>Url.Action("ListSuperpowers", new { pageNumber }),
+        new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
+        {
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" }
+        })

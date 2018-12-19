@@ -4,7 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
-  
+
     /// <summary>
     /// Controller responsible for SuperPowers Entity.
     /// </summary>
@@ -12,9 +12,15 @@
     public class SuperpowerController : Controller
     {
         private readonly SuperpowerServices _superpowerServices;
+        private readonly PaginationServices<SuperPowersListingViewModel> _paginationServices;
 
-        public SuperpowerController(SuperpowerServices superpowerServices)
+
+        public SuperpowerController(
+            SuperpowerServices superpowerServices,
+            PaginationServices<SuperPowersListingViewModel> paginationServices
+            )
         {
+            _paginationServices = paginationServices;
             _superpowerServices = superpowerServices;
         }
 
@@ -38,11 +44,12 @@
         }
 
         [HttpGet]
-        public IActionResult ListSuperpowers()
+        public IActionResult ListSuperpowers(int? pageNumber)
         {
-            var superpowers = _superpowerServices.GetAll();
+            var paginatedSuperpowersList = _paginationServices.Pagination(pageNumber, _superpowerServices);
 
-            return View(superpowers);
+            return View(paginatedSuperpowersList);
+;
         }
 
         [HttpPost]

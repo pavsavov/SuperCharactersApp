@@ -10,6 +10,7 @@
     using AutoMapper;
     using SuperCharactersApp.Repository.Contracts;
     using SuperCharactersApp.ViewModels.Contracts;
+    using X.PagedList;
 
     /// <summary>
     /// This class is responsible for all CRUD operations on Characters Entity.
@@ -26,7 +27,7 @@
             _unitOfWork = unitOfWork;
         }
 
-        public void Create(ICharacterViewModel model) 
+        public void Create(ICharacterViewModel model)
         {
             Character character = CharacterMapping(model.CharacterType, model);
 
@@ -63,7 +64,7 @@
                 .ToList();
         }
 
-        public ICharacterViewModel GetById(string Id) 
+        public ICharacterViewModel GetById(string Id)
         {
             if (Id == null)
             {
@@ -78,7 +79,7 @@
                 .FirstOrDefault();
         }
 
-        public void Edit(ICharacterViewModel modelToUpdate)   
+        public void Edit(ICharacterViewModel modelToUpdate)
         {
             throw new NotImplementedException();
         }

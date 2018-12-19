@@ -47,11 +47,7 @@
         [HttpGet]
         public IActionResult ListTeams(int? pageNumber)
         {
-            var pageSize = 3;
-            var nextPage = pageNumber ?? 1;
-
-            var allTeams = _teamServices.GetAll();
-            var paginatedTeamsList = allTeams.ToPagedList(nextPage, pageSize);
+            var paginatedTeamsList = _paginationServices.Pagination(pageNumber, _teamServices);
 
             return View(paginatedTeamsList);
         }

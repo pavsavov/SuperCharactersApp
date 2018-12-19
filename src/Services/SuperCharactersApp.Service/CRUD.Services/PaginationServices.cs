@@ -11,11 +11,14 @@
         where T : class
     {
         private const int pageSize = 5;
-        public IPagedList<T> Paginate(IQueryable<T> entity, int? page)
+        public IPagedList<T> Pagination(int? pageNumber, IService<T> entityServices)
         {
-            var pageNumber = page ?? 1;
-            var onePageOfEntityViewModel = entity.ToPagedList(pageNumber, pageSize);
-            return onePageOfEntityViewModel;
+            var nextPage = pageNumber ?? 1;
+
+            var allEntities = entityServices.GetAll();
+            var paginatedEntitiesList = allEntities.ToPagedList(nextPage, pageSize);
+
+            return paginatedEntitiesList;
         }
     }
 }

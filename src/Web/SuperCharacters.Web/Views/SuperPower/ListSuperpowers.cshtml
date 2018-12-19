@@ -1,4 +1,6 @@
-﻿@model IEnumerable<SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowersListingViewModel>
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@model IEnumerable<SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowersListingViewModel>
 
 @{
     ViewData["Title"] = "ListSuperpowers";
@@ -66,4 +68,9 @@
         }
     </tbody>
 </table>
-
+@Html.PagedListPager((IPagedList)Model,pageNumber=>Url.Action("ListSuperpowers", new { pageNumber }),
+        new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
+        {
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" }
+        })
