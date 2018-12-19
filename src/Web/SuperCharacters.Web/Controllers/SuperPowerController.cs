@@ -36,6 +36,7 @@
 
             return RedirectToAction("ListSuperpowers");
         }
+
         [HttpGet]
         public IActionResult ListSuperpowers()
         {
