@@ -9,7 +9,7 @@
     {
         public ListAllCharacters()
         {
-            this.AllCharacters = new HashSet<CharacterViewModel>();
+            AllCharacters = new HashSet<CharacterViewModel>();
         }
         public ICollection<CharacterViewModel> AllCharacters { get; set; }
         public ModalViewModel ModalView { get; set;  }

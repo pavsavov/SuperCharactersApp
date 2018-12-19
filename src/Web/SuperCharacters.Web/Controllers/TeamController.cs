@@ -4,6 +4,8 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
+    using System.Linq;
+    using X.PagedList;
 
     /// <summary>
     /// Controller responsible for CRUD operation on Teams Entity.
@@ -12,9 +14,14 @@
     public class TeamController : Controller
     {
         private readonly TeamServices _teamServices;
-        public TeamController(TeamServices teamServices)
+        private readonly PaginationServices<TeamViewModel> _paginationServices;
+        public TeamController(
+            TeamServices teamServices,
+            PaginationServices<TeamViewModel> paginationServices
+            )
         {
             _teamServices = teamServices;
+            _paginationServices = paginationServices;
         }
 
         [HttpGet]
@@ -38,11 +45,15 @@
         }
 
         [HttpGet]
-        public IActionResult ListTeams()
+        public IActionResult ListTeams(int? pageNumber)
         {
-            var allTeams = _teamServices.GetAll();
+            var pageSize = 3;
+            var nextPage = pageNumber ?? 1;
 
-            return this.View(allTeams);
+            var allTeams = _teamServices.GetAll();
+            var paginatedTeamsList = allTeams.ToPagedList(nextPage, pageSize);
+
+            return View(paginatedTeamsList);
         }
 
         [HttpPost]

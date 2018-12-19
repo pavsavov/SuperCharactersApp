@@ -1,4 +1,7 @@
-﻿@model IEnumerable<SuperCharactersApp.ViewModels.DTO.TeamViewModels.TeamViewModel>
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+
+@model IEnumerable<SuperCharactersApp.ViewModels.DTO.TeamViewModels.TeamViewModel>
 
 @{
     ViewData["Title"] = "ListTeams";
@@ -61,6 +64,12 @@
         }
     </tbody>
 </table>
+@Html.PagedListPager((IPagedList)Model,pageNumber=>Url.Action("ListTeams",new { pageNumber }),
+        new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
+        {
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" }
+        })
 
 
 

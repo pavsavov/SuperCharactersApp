@@ -21,6 +21,7 @@
     using SuperCharactersApp.Repository;
     using SuperCharactersApp.Repository.Contracts;
     using SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels;
+    using SuperCharactersApp.Services.CRUD.Services.Contracts;
 
     public class Startup
     {
@@ -57,15 +58,16 @@
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<SuperCharactersAppDbContext>();
 
-            //// Data repository
+            // Data repository
             services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            ////Services
+            //Services
             services.AddScoped<CharacterServices>();
             services.AddScoped<TeamServices>();
             services.AddScoped<SuperpowerServices>();
             services.AddScoped<SecretIdentity>();
+            services.AddScoped(typeof(PaginationServices<>));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             //services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
@@ -108,6 +110,12 @@
 
             app.UseMvc(routes =>
             {
+                //routes.MapAreaRoute()
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
