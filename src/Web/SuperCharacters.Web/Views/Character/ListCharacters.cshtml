@@ -39,10 +39,13 @@
                             <span>Edit</span>
                         </button>
 
-                        <a href="#" class="btn btn-info  btn-sm">
+                        <button type="button" class="btn btn-info btn-sm"
+                                data-toggle="modal" data-target="#detailsCharacter-@character.Id">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             <span>View</span>
-                        </a>
+                        </button>
+                       <partial name="Partials/_DetailsCharacter"
+                                model="character">
 
                         <button type="button" class="btn btn-danger btn-sm"
                                 data-toggle="modal" data-target="#modalDelete">
@@ -78,6 +81,12 @@
         }
     </tbody>
 </table>
+<script>
+    redirectFunc = function () {
+        location.replace('/Character/Details')
+    }
+</script>
+
 @Html.PagedListPager((IPagedList)Model,pageNumber=>Url.Action("ListCharacters", new { pageNumber }),
         new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
         {

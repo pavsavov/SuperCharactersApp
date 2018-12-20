@@ -1,0 +1,101 @@
+﻿@model SuperCharactersApp.ViewModels.DTO.CharacterViewModels.CharacterViewModel
+@{
+    var maxNumberSuperpowersPerCharacter = 3;
+}
+
+<!-- Modal -->
+<div class="modal fade" id="detailsCharacter-@Model.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Details of Character</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="register-form form-row text-center" name="createCharacter" method="post" asp-controller="Character" asp-action="Create">
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-3 ">
+                            <label asp-for="CharacterType">Character type</label>
+                            <input method="post" list="characterTypes" name="characterType" type="text" class="form-control" placeholder="Character type...">
+                            <datalist id="characterTypes">
+                                <option value="Superhero" name="Superhero"></option>
+                                <option value="Supervillain" name="Supervillain"></option>
+                            </datalist>
+                            <span asp-validation-for="CharacterType" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="Armour"></label>
+                            <input asp-for="Armour" type="number" class="form-control" name="armour" placeholder="Armour...">
+                            <span asp-validation-for="Armour" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="HitPoints">Hitpoints</label>
+                            <input asp-for="HitPoints" type="number" step="0.1" class="form-control" placeholder="Hitpoints...">
+                            <span asp-validation-for="HitPoints" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="Damage"></label>
+                            <input asp-for="Damage" type="number" class="form-control" placeholder="Damage...">
+                            <span asp-validation-for="Damage" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-3">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" type="text" class="form-control" placeholder="Name...">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="Teams">Select Team</label>
+                            <select class="form-control" id="Team" name="TeamId">
+                                <option value="">Select team...</option>
+                                @foreach (var team in @Model.Teams)
+                                {
+                                    <option value="@team.Id" name="TeamId">@team.TeamName</option>
+                                }
+                            </select>
+                            <span asp-validation-for="TeamId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label asp-for="SuperPowers">Select Superpowers</label>
+                            @for (int i = 0; i < maxNumberSuperpowersPerCharacter; i++)
+                            {
+                                <select class="form-control" id="superpowers" name="SuperPowerId">
+                                    <option value="">Select Superpower...</option>
+                                    @foreach (var superpower in @Model.SuperPowers)
+                                    {
+                                        <option value="@superpower.Id" name="SuperPowerId">@superpower.SuperPowerName</option>
+                                    }
+                                </select>
+                            }
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="SecretIdentity">Secret identity names</label>
+                            <div class="col-md-12">
+                                <input asp-for="SecretIdentity.FirstName" type="text" class="form-control" placeholder="First name..." />
+                            </div>
+                            <div class="col-md-12">
+                                <input asp-for="SecretIdentity.LastName" type="text" class="form-control" placeholder="Last name..." />
+                            </div>
+                            <span asp-validation-for="SecretIdentity" class="text-danger"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="cancelForm()" class="btn btn-primary">
+                    Back
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+@*==============*@
+<script>
+    cancelForm = function () {
+        window.location.replace('/Character/ListCharacters')
+    }
+</script>

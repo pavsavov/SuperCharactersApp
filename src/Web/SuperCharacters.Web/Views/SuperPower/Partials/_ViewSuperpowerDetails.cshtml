@@ -19,7 +19,7 @@
                     </div>
                     </row>
                     <div class="col-lg-6">
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" onclick="cancelForm()" class="btn btn-primary">
                             Back
                         </button>
                     </div>
@@ -27,3 +27,8 @@
         </div>
     </div>
 </div>
+<script>
+    cancelForm = function () {
+        window.location.replace('/SuperPower/ListSuperpowers')
+    }
+</script>

@@ -72,18 +72,30 @@
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Details(string id)
         {
-            throw new NotImplementedException();
+
+
+
+            return PartialView("Partials/_DetailsCharacter");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(string viewModel)
-        {
-            throw new NotImplementedException();
+        //[HttpGet]
+        //public IActionResult Edit(string id)
+        //{
 
-        }
+
+
+        //    return PartialView("_EditCharacter");
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Edit()
+        //{
+        //    throw new NotImplementedException();
+
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]

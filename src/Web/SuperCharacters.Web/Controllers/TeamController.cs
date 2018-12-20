@@ -4,8 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharactersApp.ViewModels.DTO.TeamViewModels;
-    using System.Linq;
-    using X.PagedList;
 
     /// <summary>
     /// Controller responsible for CRUD operation on Teams Entity.

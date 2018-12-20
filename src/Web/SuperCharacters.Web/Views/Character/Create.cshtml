@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
-    int maxNumberSuperpowersPerCharacter = 3;
+    var maxNumberSuperpowersPerCharacter = 3;
 
 }
 
@@ -108,14 +108,15 @@
     </div>
     <hr />
     <partial name="Partials/_AddSuperPower"
-             model="new SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowerViewModel()">
+             model="new SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowersListingViewModel()">
 </main>
+<script>
+    cancelForm = function () {
+        window.location.replace('/SuperPower/ListSuperpowers')
+    }
+</script>
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
 }
-<script>
-    cancelForm = function () {
-        window.location.replace('/Home/Index')
-    }
-</script>
+

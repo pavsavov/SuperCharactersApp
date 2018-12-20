@@ -11,8 +11,12 @@
         </div>
     </div>
     <div class="button-holder col-md-1">
-        <button id="addTeam" class="btn btn-outline-secondary">Add</button>
+        <button id="addTeam" onclick="cancelPopUp()"class="btn btn-outline-secondary">Add</button>
     </div>
 </form>
-
+<script>
+    cancelPopUp() = function () {
+        window.location.replace('/Home/Index')
+    }
+</script>
 

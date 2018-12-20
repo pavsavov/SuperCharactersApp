@@ -1,0 +1,100 @@
+﻿@model SuperCharactersApp.ViewModels.DTO.CharacterViewModels.CharacterViewModel
+@{
+    var maxNumberSuperpowersPerCharacter = 3;
+}
+
+<!-- Modal -->
+<div class="modal fade" id="detailsCharacter-@Model.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Details of Character</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="register-form form-row text-center" name="createCharacter">
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-6 ">
+                            <label asp-for="CharacterType">Character type:</label><br/>
+                            <span class="font-weight-light">@Model.CharacterType</span>
+                            <hr />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Armour">Armour:</label><br/>
+                            <span class="font-weight-light">@Model.Armour</span>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-6">
+                            <label asp-for="HitPoints">Hitpoints:</label><br/>
+                            <span class="font-weight-light">@Model.HitPoints</span>
+                            <hr />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Damage">Damage:</label><br/>
+                            <span class="font-weight-light">@Model.Damage</span>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row align-items-center col-md-12">
+                        <div class="row col-md-12">
+                            <div class="form-group col-md-6">
+                                <label asp-for="Name">Character Name:</label><br/>
+                                <span class="font-weight-light">@Model.Name</span>
+                                <hr />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label asp-for="Teams">Name of the team:</label><br/>
+                                <span class="font-weight-light">@Model.Team.TeamName</span>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-6">
+                            <label asp-for="SuperPowers">Select Superpowers:</label><br/>
+                            @for (int i = 0; i < maxNumberSuperpowersPerCharacter; i++)
+                            {
+                                <select class="form-control" id="superpowers" name="SuperPowerId">
+                                    <option value="">Select Superpower...</option>
+                                    @foreach (var superpower in @Model.SuperPowers)
+                                    {
+                                        <option value="@superpower.Id" name="SuperPowerId">@superpower.SuperPowerName</option>
+                                    }
+                                </select>
+                            }
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="SecretIdentity">Secret identity:</label><br/>
+                            @if (Model.SecretIdentity != null)
+                            {
+                                <span class="font-weight-light">@Model.SecretIdentity.FirstName</span>
+                                <span class="font-weight-light">@Model.SecretIdentity.LastName</span>
+                            }
+                            else
+                            {
+                                <span class="font-weight-light">Too secret to be known</span>
+                            }
+                            <hr />
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="cancelForm()" class="btn btn-primary">
+                    Back
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+@*==============*@
+<script>
+    cancelForm = function () {
+        window.location.replace('/Character/ListCharacters')
+    }
+</script>

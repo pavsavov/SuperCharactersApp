@@ -28,7 +28,7 @@
                         <input asp-for="Id" name="Id" type="hidden" class="form-control" />
                 </div>
                 <row>
-                    <button type="submit" id="edit-@Model.SuperPowerName" class="btn btn-primary">
+                    <button type="submit" id="edit-@Model.SuperPowerName" onclick="cancelForm()" class="btn btn-primary">
                         Save changes
                     </button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -38,4 +38,8 @@
     </div>
 </div>
 
-
+<script>
+    cancelForm = function () {
+        window.location.replace('/SuperPower/ListSuperpowers')
+    }
+</script>
