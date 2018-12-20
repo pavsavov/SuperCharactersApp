@@ -1,22 +1,18 @@
 ﻿namespace SuperCharacters.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class SuperPower
     {
-        public SuperPower()
-        {
-            this.SuperPowersCharacters = new HashSet<SuperPowersCharacters>();
-        }
-
         [Key]
         public string Id { get; set; } = Guid.NewGuid().ToString();
-
         public string SuperPowerName { get; set; }
-
         public string Type { get; set; }
         public double Value { get; set; }
-        public virtual ICollection<SuperPowersCharacters> SuperPowersCharacters { get; set; }
+        [ForeignKey("Character")]
+        public string CharacterId { get; set; }
+        public virtual Character Character { get; set; }
     }
 }

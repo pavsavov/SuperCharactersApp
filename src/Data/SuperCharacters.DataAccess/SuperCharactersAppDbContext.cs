@@ -34,13 +34,17 @@
                 .HasValue<SuperVillain>("Supervillain");
 
             builder.Entity<Team>()
-                .HasMany(c => c.TeamMembers)
-                .WithOne(c => c.Team)
+                .HasMany(tm => tm.TeamMembers)
+                .WithOne(t => t.Team)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Entity<SuperPowersCharacters>()
-                .HasKey(sc => new { sc.CharacterId, sc.SuperPowerId });
+            builder.Entity<Character>()
+                .HasOne(si=> si.SecretIdentity)
+                .WithOne(c => c.Character);
 
+            builder.Entity<Character>()
+                .HasMany(sp => sp.SuperPowers)
+                .WithOne(c => c.Character);
         }
     }
 }
