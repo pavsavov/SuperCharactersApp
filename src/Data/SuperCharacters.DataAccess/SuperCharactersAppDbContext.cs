@@ -27,7 +27,7 @@
         {
             base.OnModelCreating(builder);
 
-            //Configured Discriminator using Fluent API
+            //Configure Discriminator using Fluent API
             builder.Entity<Character>()
                 .HasDiscriminator<string>("CharacterType")
                 .HasValue<SuperHero>("Superhero")
@@ -40,11 +40,13 @@
 
             builder.Entity<Character>()
                 .HasOne(si=> si.SecretIdentity)
-                .WithOne(c => c.Character);
+                .WithOne(c => c.Character)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Character>()
                 .HasMany(sp => sp.SuperPowers)
-                .WithOne(c => c.Character);
+                .WithOne(c => c.Character)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

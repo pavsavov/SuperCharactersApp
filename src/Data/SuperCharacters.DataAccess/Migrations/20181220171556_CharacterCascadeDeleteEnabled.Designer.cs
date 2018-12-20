@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuperCharacters.DataAccess;
 
 namespace SuperCharacters.DataAccess.Migrations
 {
     [DbContext(typeof(SuperCharactersAppDbContext))]
-    partial class SuperCharactersAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181220171556_CharacterCascadeDeleteEnabled")]
+    partial class CharacterCascadeDeleteEnabled
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -392,8 +394,7 @@ namespace SuperCharacters.DataAccess.Migrations
                 {
                     b.HasOne("SuperCharacters.Models.Character", "Character")
                         .WithMany("SuperPowers")
-                        .HasForeignKey("CharacterId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("CharacterId");
                 });
 #pragma warning restore 612, 618
         }
