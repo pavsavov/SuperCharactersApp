@@ -12,9 +12,10 @@
     using SuperCharactersApp.ViewModels.DTO.ReusableModalModel;
 
     public class CharacterViewModel :
+        IHaveCustomMappings,
         IMapFrom<SuperHero>,
         IMapTo<SuperHero>,
-        IHaveCustomMappings,
+        IMapFrom<SuperVillain>,
         IMapTo<SuperVillain>
 
     {

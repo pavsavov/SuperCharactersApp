@@ -26,7 +26,7 @@
         public virtual Team Team { get; set; }
         public virtual SecretIdentity SecretIdentity { get; set; }
         public virtual ICollection<SuperPower> SuperPowers { get; set; }
-        public virtual Score Score { get; set; }
+        //public virtual Score Score { get; set; }
         //mapped discriminator to actual CLR property.
         public string CharacterType { get; set; }
     }

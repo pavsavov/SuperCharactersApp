@@ -31,17 +31,13 @@
 
             //Creates Secret identity for the Superhero/villain if there is such input
             CreateCharacterSecretIdentityIfAny(character);
-            
+
             foreach (var superpowerId in model.SuperPowerId)
             {
-                if (superpowerId != null)
-                {
-                    var superpower = _unitOfWork.SuperPowerRepository.GetById(superpowerId);
-                    character.SuperPowers.Add(superpower);
-                }
-
-            } 
-
+                var superpower = _unitOfWork.SuperPowerRepository.GetById(superpowerId);
+                character.SuperPowers.Add(superpower);
+            }
+            
             var team = _unitOfWork.TeamRepository.GetById(character.TeamId);
             character.Team = team;
 
@@ -122,7 +118,7 @@
             {
 
                 _unitOfWork.SecretIdentityRepository.Create(character.SecretIdentity);
-                _unitOfWork.Save();
+                //_unitOfWork.Save();
                 createdCharacter = true;
             }
             else
