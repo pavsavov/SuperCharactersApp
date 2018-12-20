@@ -4,7 +4,7 @@
 }
 
 <!-- Modal -->
-<div class="modal fade" id="detailsCharacter-@Model.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="editCharacter-@Model.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -14,53 +14,53 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="register-form form-row text-center" name="createCharacter" method="post" asp-controller="Character" asp-action="Create">
+                <form class="register-form form-row text-center" name="createCharacter" method="post" asp-controller="Character" asp-action="Edit">
                     <div class="row col-md-12">
-                        <div class="form-group col-md-3 ">
-                            <label asp-for="CharacterType">Character type</label>
-                            <input method="post" list="characterTypes" name="characterType" type="text" class="form-control" placeholder="Character type...">
-                            <datalist id="characterTypes">
-                                <option value="Superhero" name="Superhero"></option>
-                                <option value="Supervillain" name="Supervillain"></option>
-                            </datalist>
+                        <div class="form-group col-md-6">
+                            <label asp-for="CharacterType">Character type:</label><br />
+                            <input asp-for="CharacterType" method="post" value="@Model.CharacterType" name="characterType" type="text" class="form-control" placeholder="Character type...">
                             <span asp-validation-for="CharacterType" class="text-danger"></span>
+                            <hr />
                         </div>
-                        <div class="form-group col-md-3">
-                            <label asp-for="Armour"></label>
-                            <input asp-for="Armour" type="number" class="form-control" name="armour" placeholder="Armour...">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Armour">Armour:</label><br />
+                            <input asp-for="Armour" type="number" value="@Model.Armour" class="form-control" name="armour" placeholder="Armour...">
                             <span asp-validation-for="Armour" class="text-danger"></span>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label asp-for="HitPoints">Hitpoints</label>
-                            <input asp-for="HitPoints" type="number" step="0.1" class="form-control" placeholder="Hitpoints...">
-                            <span asp-validation-for="HitPoints" class="text-danger"></span>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label asp-for="Damage"></label>
-                            <input asp-for="Damage" type="number" class="form-control" placeholder="Damage...">
-                            <span asp-validation-for="Damage" class="text-danger"></span>
+                            <hr />
                         </div>
                     </div>
                     <div class="row col-md-12">
-                        <div class="form-group col-md-3">
-                            <label asp-for="Name"></label>
-                            <input asp-for="Name" type="text" class="form-control" placeholder="Name...">
+                        <div class="form-group col-md-6">
+                            <label asp-for="HitPoints">Hitpoints:</label><br />
+                            <input asp-for="HitPoints" type="number" value="@Model.HitPoints" step="0.1" class="form-control" placeholder="Hitpoints...">
+                            <span asp-validation-for="HitPoints" class="text-danger"></span>
+                        </div>
+                        <hr />
+                        <div class="form-group col-md-6">
+                            <label asp-for="Damage">Damage:</label><br />
+                            <input asp-for="Damage" type="number" value="@Model.Damage" class="form-control" placeholder="Damage...">
+                            <span asp-validation-for="Damage" class="text-danger"></span>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Name">Name:</label><br />
+                            <input asp-for="Name" type="text" value="@Model.Name" class="form-control" placeholder="Character Name...">
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label asp-for="Teams">Select Team</label>
-                            <select class="form-control" id="Team" name="TeamId">
-                                <option value="">Select team...</option>
-                                @foreach (var team in @Model.Teams)
-                                {
-                                    <option value="@team.Id" name="TeamId">@team.TeamName</option>
-                                }
-                            </select>
-                            <span asp-validation-for="TeamId" class="text-danger"></span>
+                        <hr />
+                        <div class="form-group col-md-6">
+                            <label asp-for="Team">Select Team</label><br />
+                            <input asp-for="Team" type="text" value="@Model.Team.TeamName" class="form-control" placeholder="Team Name...">
+                            <input asp-for="@Model.Team.Id" name="Id" type="hidden" class="form-control" />
+                            <span asp-validation-for="Team" class="text-danger"></span>
                         </div>
-
-                        <div class="form-group col-md-3">
-                            <label asp-for="SuperPowers">Select Superpowers</label>
+                        <hr />
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-6">
+                            <label asp-for="SuperPowers">Select Superpowers:</label><br />
                             @for (int i = 0; i < maxNumberSuperpowersPerCharacter; i++)
                             {
                                 <select class="form-control" id="superpowers" name="SuperPowerId">
@@ -72,28 +72,46 @@
                                 </select>
                             }
                         </div>
-                        <div class="form-group col-md-3">
-                            <label asp-for="SecretIdentity">Secret identity names</label>
-                            <div class="col-md-12">
-                                <input asp-for="SecretIdentity.FirstName" type="text" class="form-control" placeholder="First name..." />
-                            </div>
-                            <div class="col-md-12">
-                                <input asp-for="SecretIdentity.LastName" type="text" class="form-control" placeholder="Last name..." />
-                            </div>
-                            <span asp-validation-for="SecretIdentity" class="text-danger"></span>
+                        <hr />
+                        <div class="form-group col-md-6">
+                            <label asp-for="SecretIdentity">Secret identity:</label><br />
+                            @if (Model.SecretIdentity != null)
+                            {
+                                <input asp-for="Team" type="text" value="@Model.SecretIdentity.FirstName" class="form-control" placeholder="First Name...">
+                                <input asp-for="Team" type="text" value="@Model.SecretIdentity.LastName" class="form-control" placeholder="Last Name...">
+
+                            }
+                            else
+                            {
+                                <div class="col-md-12">
+                                    <input asp-for="SecretIdentity.FirstName" type="text" class="form-control" placeholder="First name..." />
+                                </div>
+                                <div class="col-md-12">
+                                    <input asp-for="SecretIdentity.LastName" type="text" class="form-control" placeholder="Last name..." />
+                                </div>
+                                <span asp-validation-for="SecretIdentity" class="text-danger"></span>
+                            }
                         </div>
+                        <hr />
+                        <input asp-for="Id" name="Id" type="hidden" class="form-control" />
                     </div>
+                    <row>
+                    <button type="button" onclick="cancelForm()" class="btn btn-primary">
+                        Back
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Save changes
+                    </button>
+                        </row>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" onclick="cancelForm()" class="btn btn-primary">
-                    Back
-                </button>
+
             </div>
         </div>
     </div>
 </div>
-@*==============*@
+
 <script>
     cancelForm = function () {
         window.location.replace('/Character/ListCharacters')

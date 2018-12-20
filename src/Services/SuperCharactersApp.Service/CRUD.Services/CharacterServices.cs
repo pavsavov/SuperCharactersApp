@@ -80,7 +80,11 @@
 
         public void Edit(CharacterViewModel modelToUpdate)
         {
-            throw new NotImplementedException();
+            var characterMapped = Mapper.Map<Character>(modelToUpdate);
+
+            _unitOfWork.CharacterRepository.Edit(characterMapped);
+
+            _unitOfWork.Save();
         }
 
 

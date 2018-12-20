@@ -80,22 +80,21 @@
             return PartialView("Partials/_DetailsCharacter");
         }
 
-        //[HttpGet]
-        //public IActionResult Edit(string id)
-        //{
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(CharacterViewModel editModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
 
+            _characterServices.Edit(editModel);
 
-        //    return PartialView("_EditCharacter");
-        //}
+            return RedirectToAction("ListCharacters", "Character");
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Edit()
-        //{
-        //    throw new NotImplementedException();
-
-        //}
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]

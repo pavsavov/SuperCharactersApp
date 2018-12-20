@@ -34,26 +34,27 @@
                 <td align="center"></td>
                 <th scope="row">
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalEdit">
+                        <button type="button" class="btn btn-light btn-sm" data-toggle="modal"
+                                data-target="#editCharacter-@character.Id">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             <span>Edit</span>
                         </button>
-
-                        <button type="button" class="btn btn-info btn-sm"
-                                data-toggle="modal" data-target="#detailsCharacter-@character.Id">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            <span>View</span>
-                        </button>
-                       <partial name="Partials/_DetailsCharacter"
-                                model="character">
-
-                        <button type="button" class="btn btn-danger btn-sm"
-                                data-toggle="modal" data-target="#modalDelete">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            <span>Delete</span>
-                        </button>
-                        <partial name="_ReusableDeleteModal"
-                                 model='new SuperCharactersApp
+                        <partial name="Partials/_EditCharacter"
+                                 model="character">
+                            <button type="button" class="btn btn-info btn-sm"
+                                    data-toggle="modal" data-target="#detailsCharacter-@character.Id">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                <span>View</span>
+                            </button>
+                            <partial name="Partials/_DetailsCharacter"
+                                     model="character">
+                                <button type="button" class="btn btn-danger btn-sm"
+                                        data-toggle="modal" data-target="#modalDelete">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    <span>Delete</span>
+                                </button>
+                                <partial name="_ReusableDeleteModal"
+                                         model='new SuperCharactersApp
                                                               .ViewModels
                                                               .DTO.ReusableModalModel
                                                               .ModalViewModel { Id = character.Id
@@ -81,11 +82,6 @@
         }
     </tbody>
 </table>
-<script>
-    redirectFunc = function () {
-        location.replace('/Character/Details')
-    }
-</script>
 
 @Html.PagedListPager((IPagedList)Model,pageNumber=>Url.Action("ListCharacters", new { pageNumber }),
         new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
