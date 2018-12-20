@@ -8,7 +8,6 @@
     using System.Collections.Generic;
     using AutoMapper;
     using SuperCharactersApp.Repository.Contracts;
-    using SuperCharactersApp.ViewModels.Contracts;
     using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
 
     /// <summary>
@@ -30,10 +29,20 @@
         {
             Character character = CharacterMapping(model.CharacterType, model);
 
+            //Creates Secret identity for the Superhero/villain if there is such input
             CreateCharacterSecretIdentityIfAny(character);
+            
+            foreach (var superpowerId in model.SuperPowerId)
+            {
+                if (superpowerId != null)
+                {
+                    var superpower = _unitOfWork.SuperPowerRepository.GetById(superpowerId);
+                    character.SuperPowers.Add(superpower);
+                }
+
+            } 
 
             var team = _unitOfWork.TeamRepository.GetById(character.TeamId);
-
             character.Team = team;
 
             _unitOfWork.CharacterRepository.Create(character);
