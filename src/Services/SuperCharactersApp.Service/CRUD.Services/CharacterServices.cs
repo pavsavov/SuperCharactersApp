@@ -85,6 +85,11 @@
 
         public void Edit(CharacterViewModel modelToUpdate)
         {
+            //if(modelToUpdate.TeamId == null)
+            //{
+
+            //}
+
             var characterMapped = Mapper.Map<Character>(modelToUpdate);
 
             _unitOfWork.CharacterRepository.Edit(characterMapped);

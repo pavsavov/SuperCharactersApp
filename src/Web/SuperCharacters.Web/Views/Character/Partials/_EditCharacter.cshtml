@@ -1,7 +1,7 @@
 ﻿@model SuperCharactersApp.ViewModels.DTO.CharacterViewModels.CharacterViewModel
-@{
+@*@{
     var maxNumberSuperpowersPerCharacter = 3;
-}
+}*@
 
 <!-- Modal -->
 <div class="modal fade" id="editCharacter-@Model.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -61,14 +61,18 @@
                     <div class="row col-md-12">
                         <div class="form-group col-md-6">
                             <label asp-for="SuperPowers">Select Superpowers:</label><br />
+                            @foreach (var superpower in Model.SuperPowers)
+                            {
+                                <input asp-for="@superpower.Id" value="@superpower.SuperPowerName"
+                                       name="SuperPowerId" class="form-control">
+                            }
+                            @if (Model.SuperPowers.Count() == 0)
+                            {
+                                <input name="SuperPowerId" class="form-control">
+                                <input name="SuperPowerId" class="form-control">
+                                <input name="SuperPowerId" class="form-control">
 
-                                @for(var superpower = 0; superpower<Model.SuperPowers.Count; superpower++)
-                                {
-
-                                    <input asp-for="@Model.SuperPowerId" name="SuperPowers" class="form-control">
-                                }
-                                    @*<option value="@superpower.Id" name="SuperPowerId">@superpower.SuperPowerName</option>*@
-                                
+                            }
 
                         </div>
                         <hr />
@@ -95,11 +99,11 @@
                         <input asp-for="Id" name="Id" type="hidden" class="form-control" />
                     </div>
                     <row>
-                        <button type="button" onclick="cancelForm()" class="btn btn-primary">
-                            Back
-                        </button>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-outline-primary">
                             Save changes
+                        </button>
+                        <button type="button" onclick="cancelForm()" class="btn btn-outline-secondary">
+                            Back
                         </button>
                     </row>
                 </form>

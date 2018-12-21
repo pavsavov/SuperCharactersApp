@@ -25,7 +25,6 @@
 
         public void Create(TeamViewModel model)
         {
-
             var team = Mapper.Map<Team>(model);
 
             _unitOfWork.TeamRepository.Create(team);
@@ -50,10 +49,11 @@
         {
             var teams = _unitOfWork.TeamRepository.GetAll();
 
-            return teams.AsQueryable()
-                .To<TeamViewModel>()
-                .ToList();
+            var mappedTeams = teams.AsQueryable()
+               .To<TeamViewModel>()
+               .ToList();
 
+            return mappedTeams;
         }
 
         public TeamViewModel GetById(string id)

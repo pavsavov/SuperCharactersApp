@@ -13,9 +13,9 @@
                 Are you sure? Think again!
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
                 <form method="post"  asp-controller="@Model.Controller" asp-action="Delete" id="formModal">
-                    <button type="submit" value="@Model.Id" id="delete-@Model.Id" name="formModal" class="btn btn-primary">
+                    <button type="submit" value="@Model.Id" id="delete-@Model.Id" name="formModal" class="btn btn-outline-primary">
                         Delete
                     </button>
                 </form>
