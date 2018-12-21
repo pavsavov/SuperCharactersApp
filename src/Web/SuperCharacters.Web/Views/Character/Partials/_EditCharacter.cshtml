@@ -52,8 +52,8 @@
                         <hr />
                         <div class="form-group col-md-6">
                             <label asp-for="Team">Select Team</label><br />
-                            <input asp-for="Team" type="text" value="@Model.Team.TeamName" class="form-control" placeholder="Team Name...">
-                            <input asp-for="@Model.Team.Id" name="TeamId" type="hidden" class="form-control" />
+                            <input asp-for="Team.TeamName" type="text" value="@Model.Team.TeamName" class="form-control" placeholder="Team Name...">
+                            @*<input asp-for="@Model.Team.Id" name="TeamId" type="hidden" class="form-control" />*@
                             <span asp-validation-for="Team" class="text-danger"></span>
                         </div>
                         <hr />

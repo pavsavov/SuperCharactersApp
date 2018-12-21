@@ -1,6 +1,5 @@
 ﻿namespace SuperCharactersApp.ViewModels.DTO.CharacterViewModels
 {
-    using SuperCharactersApp.ViewModels.Contracts;
     using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -45,7 +44,7 @@
         public string Name { get; set; }
         public SecretIdentityViewModel SecretIdentity { get; set; }
         public Team Team { get; set; }
-        [Required]
+        
         [Display(Name = "Select team")]
         public string TeamId { get; set; }
         public ICollection<string> SuperPowerId { get; set; }

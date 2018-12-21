@@ -21,7 +21,6 @@
     using SuperCharactersApp.Repository;
     using SuperCharactersApp.Repository.Contracts;
     using SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels;
-    using SuperCharactersApp.Services.CRUD.Services.Contracts;
 
     public class Startup
     {
@@ -76,11 +75,11 @@
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             /*Registration of types which implement IMapFrom <> and IMapTo<> interfaces
-            assemblies in order to be mapped automatically by convention.*/
+            assemblies in order to be mapped automatically by convention.
+            This way creating profiles is not needed.*/
 
             AutoMapperConfig.RegisterMappings(
                 typeof(CharacterViewModel).Assembly,
-                //typeof(CharacterCreateViewModel).Assembly,
                 typeof(TeamViewModel).Assembly,
                 typeof(SuperPowersListingViewModel).Assembly,
                 typeof(SecretIdentityViewModel).Assembly

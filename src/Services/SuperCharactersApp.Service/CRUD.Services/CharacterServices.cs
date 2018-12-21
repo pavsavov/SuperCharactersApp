@@ -37,7 +37,7 @@
                 var superpower = _unitOfWork.SuperPowerRepository.GetById(superpowerId);
                 character.SuperPowers.Add(superpower);
             }
-            
+
             var team = _unitOfWork.TeamRepository.GetById(character.TeamId);
             character.Team = team;
 
@@ -85,14 +85,26 @@
 
         public void Edit(CharacterViewModel modelToUpdate)
         {
-            //if(modelToUpdate.TeamId == null)
-            //{
-
-            //}
 
             var characterMapped = Mapper.Map<Character>(modelToUpdate);
 
-            _unitOfWork.CharacterRepository.Edit(characterMapped);
+            var character = _unitOfWork.CharacterRepository.GetById(characterMapped.Id);
+
+            character.CharacterType = characterMapped.CharacterType;
+            character.Name = characterMapped.Name;
+            character.Damage = characterMapped.Damage;
+            character.Armour = characterMapped.Armour;
+            character.SecretIdentity = characterMapped.SecretIdentity;
+            character.SuperPowers = characterMapped.SuperPowers;
+            character.Team = characterMapped.Team;
+
+            //var teamMapped = Mapper.Map<Team>(modelToUpdate.Team);
+            //_unitOfWork.TeamRepository.Edit(teamMapped);
+
+
+            //_unitOfWork.CharacterRepository.Edit(characterMapped);
+
+
 
             _unitOfWork.Save();
         }
