@@ -14,8 +14,6 @@
         [Required]
         [StringLength(50, MinimumLength = 1)]
         public string LastName { get; set; }
-        [ForeignKey("Character")]
-        public string CharacterId { get; set; }
         public virtual Character Character { get; set; }
     }
 }

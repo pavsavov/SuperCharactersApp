@@ -39,13 +39,18 @@
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Character>()
-                .HasOne(si=> si.SecretIdentity)
+                .HasOne(si => si.SecretIdentity)
                 .WithOne(c => c.Character)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Character>()
                 .HasMany(sp => sp.SuperPowers)
                 .WithOne(c => c.Character)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            builder.Entity<SecretIdentity>()
+                .HasOne(si => si.Character)
+                .WithOne(c => c.SecretIdentity)
                 .OnDelete(DeleteBehavior.SetNull);
         }
     }

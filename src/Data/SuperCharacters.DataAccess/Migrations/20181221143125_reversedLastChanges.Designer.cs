@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuperCharacters.DataAccess;
 
 namespace SuperCharacters.DataAccess.Migrations
 {
     [DbContext(typeof(SuperCharactersAppDbContext))]
-    partial class SuperCharactersAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181221143125_reversedLastChanges")]
+    partial class reversedLastChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,15 +145,9 @@ namespace SuperCharacters.DataAccess.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("SecretIdentityId");
-
                     b.Property<string>("TeamId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SecretIdentityId")
-                        .IsUnique()
-                        .HasFilter("[SecretIdentityId] IS NOT NULL");
 
                     b.HasIndex("TeamId");
 
@@ -195,6 +191,8 @@ namespace SuperCharacters.DataAccess.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("CharacterId");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(50);
@@ -204,6 +202,10 @@ namespace SuperCharacters.DataAccess.Migrations
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CharacterId")
+                        .IsUnique()
+                        .HasFilter("[CharacterId] IS NOT NULL");
 
                     b.ToTable("SecretIdentities");
                 });
@@ -359,11 +361,6 @@ namespace SuperCharacters.DataAccess.Migrations
 
             modelBuilder.Entity("SuperCharacters.Models.Character", b =>
                 {
-                    b.HasOne("SuperCharacters.Models.SecretIdentity", "SecretIdentity")
-                        .WithOne("Character")
-                        .HasForeignKey("SuperCharacters.Models.Character", "SecretIdentityId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("SuperCharacters.Models.Team", "Team")
                         .WithMany("TeamMembers")
                         .HasForeignKey("TeamId")
@@ -383,6 +380,14 @@ namespace SuperCharacters.DataAccess.Migrations
                     b.HasOne("SuperCharacters.Models.Team", "TeamScore")
                         .WithOne("Score")
                         .HasForeignKey("SuperCharacters.Models.Score", "TeamScoreId");
+                });
+
+            modelBuilder.Entity("SuperCharacters.Models.SecretIdentity", b =>
+                {
+                    b.HasOne("SuperCharacters.Models.Character", "Character")
+                        .WithOne("SecretIdentity")
+                        .HasForeignKey("SuperCharacters.Models.SecretIdentity", "CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SuperCharacters.Models.SuperPower", b =>

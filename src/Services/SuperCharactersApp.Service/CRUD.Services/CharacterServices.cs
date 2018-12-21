@@ -90,23 +90,35 @@
 
             var character = _unitOfWork.CharacterRepository.GetById(characterMapped.Id);
 
+            character.Id = characterMapped.Id;
             character.CharacterType = characterMapped.CharacterType;
             character.Name = characterMapped.Name;
             character.Damage = characterMapped.Damage;
             character.Armour = characterMapped.Armour;
+
+            
             character.SecretIdentity = characterMapped.SecretIdentity;
+
+
+            //var secretidentityDb = _unitOfWork.SecretIdentityRepository.GetById()
+
+            //if ()
             character.SuperPowers = characterMapped.SuperPowers;
             character.Team = characterMapped.Team;
 
+            //_unitOfWork.CharacterRepository.DeleteById(character.Id);
+
+          //  _unitOfWork.CharacterRepository.Create(character);
+            _unitOfWork.Save();
             //var teamMapped = Mapper.Map<Team>(modelToUpdate.Team);
             //_unitOfWork.TeamRepository.Edit(teamMapped);
 
 
-            //_unitOfWork.CharacterRepository.Edit(characterMapped);
+            //_unitOfWork.CharacterRepository.Edit(character);
 
 
 
-            _unitOfWork.Save();
+           
         }
 
 

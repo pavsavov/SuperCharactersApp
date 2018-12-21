@@ -53,7 +53,6 @@
                         <div class="form-group col-md-6">
                             <label asp-for="Team">Select Team</label><br />
                             <input asp-for="Team.TeamName" type="text" value="@Model.Team.TeamName" class="form-control" placeholder="Team Name...">
-                            @*<input asp-for="@Model.Team.Id" name="TeamId" type="hidden" class="form-control" />*@
                             <span asp-validation-for="Team" class="text-danger"></span>
                         </div>
                         <hr />
@@ -63,8 +62,8 @@
                             <label asp-for="SuperPowers">Select Superpowers:</label><br />
                             @foreach (var superpower in Model.SuperPowers)
                             {
-                                <input asp-for="@superpower.Id" value="@superpower.SuperPowerName"
-                                       name="SuperPowerId" class="form-control">
+                                <input asp-for="@superpower" value="@superpower.SuperPowerName"
+                                        class="form-control">
                             }
                             @if (Model.SuperPowers.Count() == 0)
                             {
@@ -80,8 +79,8 @@
                             <label asp-for="SecretIdentity">Secret identity:</label><br />
                             @if (Model.SecretIdentity != null)
                             {
-                                <input asp-for="Team" type="text" value="@Model.SecretIdentity.FirstName" class="form-control" placeholder="First Name...">
-                                <input asp-for="Team" type="text" value="@Model.SecretIdentity.LastName" class="form-control" placeholder="Last Name...">
+                                <input asp-for="SecretIdentity.FirstName" type="text" value="@Model.SecretIdentity.FirstName" class="form-control" placeholder="First Name...">
+                                <input asp-for="SecretIdentity.LastName" type="text" value="@Model.SecretIdentity.LastName" class="form-control" placeholder="Last Name...">
 
                             }
                             else
