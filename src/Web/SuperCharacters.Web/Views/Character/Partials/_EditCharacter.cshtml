@@ -1,7 +1,7 @@
 ﻿@model SuperCharactersApp.ViewModels.DTO.CharacterViewModels.CharacterViewModel
-@*@{
+@{
     var maxNumberSuperpowersPerCharacter = 3;
-}*@
+}
 
 <!-- Modal -->
 <div class="modal fade" id="editCharacter-@Model.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -58,24 +58,8 @@
                         <hr />
                     </div>
                     <div class="row col-md-12">
-                        <div class="form-group col-md-6">
-                            <label asp-for="SuperPowers">Select Superpowers:</label><br />
-                            @foreach (var superpower in Model.SuperPowers)
-                            {
-                                <input asp-for="@superpower" value="@superpower.SuperPowerName"
-                                        class="form-control">
-                            }
-                            @if (Model.SuperPowers.Count() == 0)
-                            {
-                                <input name="SuperPowerId" class="form-control">
-                                <input name="SuperPowerId" class="form-control">
-                                <input name="SuperPowerId" class="form-control">
-
-                            }
-
-                        </div>
                         <hr />
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label asp-for="SecretIdentity">Secret identity:</label><br />
                             @if (Model.SecretIdentity != null)
                             {
@@ -108,7 +92,6 @@
                 </form>
             </div>
             <div class="modal-footer">
-
             </div>
         </div>
     </div>

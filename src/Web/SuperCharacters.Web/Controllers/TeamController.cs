@@ -37,9 +37,17 @@
                 return View(viewModel);
             }
 
-            _teamServices.Create(viewModel);
+            var success = _teamServices.Create(viewModel);
+            if (success)
+            {
+                return this.RedirectToAction("Create", "Character");
 
-            return this.RedirectToAction("Create", "Character");
+            }
+            else
+            {
+                return View("Team with that name already exists. Use your imagination more efficient!");
+            }
+
         }
 
         [HttpGet]

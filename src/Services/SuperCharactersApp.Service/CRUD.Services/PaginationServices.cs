@@ -17,9 +17,10 @@
         where T : class
     {
         private const int pageSize = 5;
+        private const int firstPage = 1;
         public IPagedList<T> Pagination(int? pageNumber, IService<T> entityServices)
         {
-            var nextPage = pageNumber ?? 1;
+            var nextPage = pageNumber ?? firstPage;
 
             var allEntities = entityServices.GetAll();
             var paginatedEntitiesList = allEntities.ToPagedList(nextPage, pageSize);

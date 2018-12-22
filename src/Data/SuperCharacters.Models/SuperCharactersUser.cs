@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-
-namespace SuperCharacters.Models
+﻿namespace SuperCharacters.Models
 {
+    using Microsoft.AspNetCore.Identity;
     public class SuperCharactersUser : IdentityUser
     {
-        public  Score Score { get; set; }
+        public Score Score { get; set; }
     }
 }

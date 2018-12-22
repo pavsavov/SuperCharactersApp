@@ -23,13 +23,23 @@
             _unitOfWork = unitOfWork;
         }
 
-        public void Create(TeamViewModel model)
+        public bool Create(TeamViewModel model)
         {
             var team = Mapper.Map<Team>(model);
+            var success = _unitOfWork.TeamRepository.Create(team);
 
-            _unitOfWork.TeamRepository.Create(team);
+            if (success)
+            {
+                _unitOfWork.Save();
+                return true;
+            }
 
-            _unitOfWork.Save();
+
+            else
+            {
+                return false;
+            }
+
         }
 
         public bool DeleteById(string id)

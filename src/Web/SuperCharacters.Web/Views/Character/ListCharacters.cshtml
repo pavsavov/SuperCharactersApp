@@ -5,7 +5,7 @@
 @{
     ViewData["Title"] = "ListCharacters";
     var cnt = 0;
-    string noSecretIdentity = "Too secret to be known.";
+    var noSecretIdentity = "Too secret to be known.";
     var controller = ViewContext.RouteData.Values["controller"].ToString();
 }
 
@@ -39,20 +39,25 @@
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             <span>Edit</span>
                         </button>
+
                         <partial name="Partials/_EditCharacter"
-                                 model="character">
+                                 model=" character">
+
                             <button type="button" class="btn btn-info btn-sm"
                                     data-toggle="modal" data-target="#detailsCharacter-@character.Id">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 <span>View</span>
                             </button>
+
                             <partial name="Partials/_DetailsCharacter"
                                      model="character">
+
                                 <button type="button" class="btn btn-danger btn-sm"
                                         data-toggle="modal" data-target="#deleteModal-@character.Id">
                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                     <span>Delete</span>
                                 </button>
+
                                 <partial name="_ReusableDeleteModal"
                                          model='new SuperCharactersApp
                                                               .ViewModels
@@ -77,11 +82,19 @@
                     <td>@(character.SecretIdentity.FirstName) @(character.SecretIdentity.LastName)</td>
                 }
                 <td>@character.Team.TeamName</td>
-                <td>@character.SuperPowers.Count()</td>
+                <td onclick="redirectToPartial()">
+                    <input type="button" class=" btn btn-link"
+                           value="@character.SuperPowers.Count()" />
+                </td>
             </tr>
         }
     </tbody>
 </table>
+<script>
+    redirectToPartial = function () {
+        window.location.replace('/Character/LoadPartialView')
+    }
+</script>
 
 @Html.PagedListPager((IPagedList)Model,pageNumber=>Url.Action("ListCharacters", new { pageNumber }),
         new X.PagedList.Mvc.Common.PagedListRenderOptionsBase

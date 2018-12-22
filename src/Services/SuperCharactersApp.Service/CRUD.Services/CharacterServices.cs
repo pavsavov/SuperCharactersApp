@@ -25,7 +25,7 @@
             _unitOfWork = unitOfWork;
         }
 
-        public void Create(CharacterViewModel model)
+        public bool Create(CharacterViewModel model)
         {
             Character character = CharacterMapping(model.CharacterType, model);
 
@@ -45,6 +45,7 @@
 
             _unitOfWork.Save();
 
+            return true;
         }
 
         public bool DeleteById(string id)
@@ -85,40 +86,12 @@
 
         public void Edit(CharacterViewModel modelToUpdate)
         {
-
             var characterMapped = Mapper.Map<Character>(modelToUpdate);
 
-            var character = _unitOfWork.CharacterRepository.GetById(characterMapped.Id);
+            ManuallyPassValueToEachProperty(characterMapped);
 
-            character.Id = characterMapped.Id;
-            character.CharacterType = characterMapped.CharacterType;
-            character.Name = characterMapped.Name;
-            character.Damage = characterMapped.Damage;
-            character.Armour = characterMapped.Armour;
-
-            
-            character.SecretIdentity = characterMapped.SecretIdentity;
-
-
-            //var secretidentityDb = _unitOfWork.SecretIdentityRepository.GetById()
-
-            //if ()
-            character.SuperPowers = characterMapped.SuperPowers;
-            character.Team = characterMapped.Team;
-
-            //_unitOfWork.CharacterRepository.DeleteById(character.Id);
-
-          //  _unitOfWork.CharacterRepository.Create(character);
             _unitOfWork.Save();
-            //var teamMapped = Mapper.Map<Team>(modelToUpdate.Team);
-            //_unitOfWork.TeamRepository.Edit(teamMapped);
 
-
-            //_unitOfWork.CharacterRepository.Edit(character);
-
-
-
-           
         }
 
 
@@ -157,6 +130,20 @@
             }
 
             return createdCharacter;
+        }
+
+        private void ManuallyPassValueToEachProperty(Character characterMapped)
+        {
+            var character = _unitOfWork.CharacterRepository.GetById(characterMapped.Id);
+
+            character.Id = characterMapped.Id;
+            character.CharacterType = characterMapped.CharacterType;
+            character.Name = characterMapped.Name;
+            character.Damage = characterMapped.Damage;
+            character.Armour = characterMapped.Armour;
+            character.SecretIdentity = characterMapped.SecretIdentity;
+            character.SuperPowers = characterMapped.SuperPowers;
+            character.Team = characterMapped.Team;
         }
         #endregion
     }

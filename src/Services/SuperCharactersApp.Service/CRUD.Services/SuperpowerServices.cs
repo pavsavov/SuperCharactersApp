@@ -1,6 +1,5 @@
 ﻿namespace SuperCharactersApp.Services.CRUD.Services
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
@@ -24,13 +23,15 @@
             _unitOfWork = unitOfWork;
         }
 
-        public void Create(SuperPowersListingViewModel model)
+        public bool Create(SuperPowersListingViewModel model)
         {
             var superpower = Mapper.Map<SuperPower>(model);
 
             _unitOfWork.SuperPowerRepository.Create(superpower);
 
             _unitOfWork.Save();
+
+            return true;
         }
 
         public bool DeleteById(string id)

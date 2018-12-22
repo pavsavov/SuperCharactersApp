@@ -66,7 +66,7 @@
                 return View("Create", viewModel);
             }
 
-                _characterServices.Create(viewModel);
+            _characterServices.Create(viewModel);
 
             return RedirectToAction("ListCharacters");
         }
@@ -117,6 +117,15 @@
             }
         }
 
+        #region AdditionalControllerLoadPartialName
+        public IActionResult LoadPartialView()
+        {
+            var superpowers = _superPowerServices.GetAll();
+
+            return PartialView("Partials/_EditCharacterSuperPowers",superpowers);
+        }
+        #endregion
+
         #region LoadAdditionalData
 
         private ICollection<TeamViewModel> LoadTeams()
@@ -128,6 +137,7 @@
         {
             return _superPowerServices.GetAll().ToList();
         }
+
 
         #endregion
     }

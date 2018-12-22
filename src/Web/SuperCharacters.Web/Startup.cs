@@ -17,7 +17,7 @@
     using SuperCharactersApp.Services.CRUD.Services;
     using SuperCharacters.DataAccess;
     using SuperCharacters.Models;
-    using SuperCharactersApp.Repository.Account.Contracts;
+    using SuperCharactersApp.Repository.Contracts;
     using SuperCharactersApp.Repository;
     using SuperCharactersApp.Repository.Contracts;
     using SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels;

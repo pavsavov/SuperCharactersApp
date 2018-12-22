@@ -25,7 +25,7 @@
             _unitOfWork = unitOfWork;
         }
 
-        public void Create(SecretIdentityViewModel model) 
+        public bool Create(SecretIdentityViewModel model) 
         {
             if (model.FirstName != null && model.LastName != null)
             {
@@ -34,6 +34,12 @@
                 _unitOfWork.SecretIdentityRepository.Create(secretIdentity);
 
                 _unitOfWork.Save();
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

@@ -1,4 +1,4 @@
-﻿namespace SuperCharactersApp.Repository.Account.Contracts
+﻿namespace SuperCharactersApp.Repository.Contracts
 {
     using System.Linq;
 
@@ -11,7 +11,7 @@
         where TEntity : class
     {
         TEntity GetById(string id);
-        void Create(TEntity entity);
+        bool Create(TEntity entity);
         void Edit(TEntity entityToEdit);
         void DeleteById(string id);
         IQueryable<TEntity> GetAll();

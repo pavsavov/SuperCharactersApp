@@ -3,12 +3,13 @@
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
     using SuperCharacters.DataAccess;
+    using SuperCharactersApp.Repository.Contracts;
 
     /// <summary>
     /// Generic Repository with IRepositoryGeneric interface implementation
     /// for perfoming CRUD operations communicating directly the Database;
     /// </summary>
-    public class RepositoryGeneric<TEntity> : Account.Contracts.IRepositoryGeneric<TEntity>
+    public class RepositoryGeneric<TEntity> : IRepositoryGeneric<TEntity>
         where TEntity : class
     {
         private readonly SuperCharactersAppDbContext _dbContext;
@@ -25,9 +26,19 @@
             return this._dbSet.OfType<TEntity>();
         }
 
-        public virtual void Create(TEntity entity)
+        //TODO: Need to make sure unique teamname values are stored in Db.
+        public virtual bool Create(TEntity entity)
         {
-            _dbSet.Add(entity);
+            var IfExists = _dbSet.Any(x => x.Equals(entity));
+            if (!IfExists)
+            {
+                _dbSet.Add(entity);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public virtual void DeleteById(string id)

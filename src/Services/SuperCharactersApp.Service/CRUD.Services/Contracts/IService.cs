@@ -10,7 +10,7 @@
     {
         IEnumerable<T> GetAll();
         T GetById(string id);
-        void Create(T model);
+        bool Create(T model);
         void Edit(T modelToUpdate);
         bool DeleteById(string id);
     }
