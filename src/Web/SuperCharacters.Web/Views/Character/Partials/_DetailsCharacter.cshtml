@@ -54,13 +54,12 @@
                         </div>
                     </div>
                     <div class="row col-md-12">
-                        <div class="form-group col-md-6">
-       
+                        <div class="form-group col-md-6">       
 
                                 <label asp-for="Name">Superpower Name:</label><br />
                                 @foreach (var superpower in @Model.SuperPowers)
                                 {
-                                    <span class="font-weight-light">@superpower.SuperPowerName</span>
+                                    <span class="font-weight-light">@superpower.SuperPowerName;</span>
                                 }
 
                         <hr/>

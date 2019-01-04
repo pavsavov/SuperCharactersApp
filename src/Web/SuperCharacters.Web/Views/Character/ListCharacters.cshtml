@@ -7,6 +7,7 @@
     var cnt = 0;
     var noSecretIdentity = "Too secret to be known.";
     var controller = ViewContext.RouteData.Values["controller"].ToString();
+
 }
 
 <table class="table table-striped">
@@ -41,7 +42,7 @@
                         </button>
 
                         <partial name="Partials/_EditCharacter"
-                                 model=" character">
+                                 model="character">
 
                             <button type="button" class="btn btn-info btn-sm"
                                     data-toggle="modal" data-target="#detailsCharacter-@character.Id">
@@ -82,8 +83,10 @@
                     <td>@(character.SecretIdentity.FirstName) @(character.SecretIdentity.LastName)</td>
                 }
                 <td>@character.Team.TeamName</td>
-                <td onclick="redirectToPartial()">
-                    <input type="button" class=" btn btn-link"
+
+                <td>
+                    <input type="button" class=" btn btn-link" data-toggle="modal"
+                           data-target="#editCharacterSuperpowers-@character.Id"
                            value="@character.SuperPowers.Count()" />
                 </td>
             </tr>

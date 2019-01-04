@@ -75,8 +75,6 @@
         public IActionResult Details(string id)
         {
 
-
-
             return PartialView("Partials/_DetailsCharacter");
         }
 
@@ -85,11 +83,6 @@
         [ValidateAntiForgeryToken]
         public IActionResult Edit(CharacterViewModel editModel)
         {
-            if (!ModelState.IsValid)
-            {
-                return NotFound();
-            }
-
             _characterServices.Edit(editModel);
 
             return RedirectToAction("ListCharacters", "Character");
@@ -117,14 +110,24 @@
             }
         }
 
-        #region AdditionalControllerLoadPartialName
-        public IActionResult LoadPartialView()
+        [HttpGet]
+        public IActionResult EditCharacterSuperpowers()
         {
             var superpowers = _superPowerServices.GetAll();
 
-            return PartialView("Partials/_EditCharacterSuperPowers",superpowers);
+            return PartialView("Partials/_EditCharacterSuperPowers", superpowers);
         }
-        #endregion
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditCharacterSuperpowers(string id, ICollection<SuperPowersListingViewModel> superpowers)
+        {
+            var character = _characterServices.GetById(id);
+            character.SuperPowers = superpowers;
+            _characterServices.Edit(character);
+            return RedirectToAction("ListCharacters", "Character");
+
+        }
 
         #region LoadAdditionalData
 
@@ -137,7 +140,6 @@
         {
             return _superPowerServices.GetAll().ToList();
         }
-
 
         #endregion
     }

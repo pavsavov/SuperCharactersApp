@@ -1,34 +1,30 @@
-﻿
-
-<h3>Under contruction.SuperPowerEdit </h3>
-
-@*@model IEnumerable<SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowersListingViewModel>
+﻿@model IEnumerable<SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels.SuperPowersListingViewModel>
 @{
     var maxNumberSuperpowersPerCharacter = 3;
 }
+
 <div class="form-group row col-md-12">
-    <span>Add new Superpowers: </span>
-    @foreach (var superpower in Model.SuperPowers)
-    {
-        <input asp-for="@superpower" value="@superpower.SuperPowerName"
-               class="form-control">
-    }
-    @if (Model.SuperPowers.Count() == 0)
-    {
-        <label asp-for="SuperPowers">Available Superpowers:</label>
+    <form method="post">
+        <span>Choose new set of superpowers:</span>
         @for (int i = 0; i < maxNumberSuperpowersPerCharacter; i++)
         {
+
             <select class="form-control" id="superpowers" name="SuperPowerId">
                 <option value="" disabled selected>Select Superpower...</option>
-                @foreach (var superpower in @Model.SuperPowers)
+                @foreach (var superpower in Model)
                 {
                     <option value="@superpower.Id" name="SuperPowerId">@superpower.SuperPowerName</option>
                 }
             </select>
         }
-
-    }
+        @*@foreach (var superpower in Model)
+            {
+                <input asp-for="@superpower.SuperPowerName" value="@superpower.SuperPowerName"
+                       class="form-control">
+            }*@
+    </form>
 </div>
+
 <row>
     <button type="submit" class="btn btn-outline-primary">
         Save changes
@@ -41,4 +37,4 @@
     cancelForm = function () {
         window.location.replace('/Character/ListCharacters')
     }
-</script>*@
+</script>
