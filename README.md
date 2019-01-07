@@ -11,9 +11,9 @@ Repository pattern with Unit of Work.
 * ASP.NET CORE v2.2   
 * EF Core
 * X.PagedList - Used for pagination -> https://github.com/dncuug/X.PagedList
-* Shouldly - Used in my unit tests  -> [https://github.com/shouldly/shouldly]
-* AutoMapper - used to map DTO to models and vice versa -> [https://github.com/AutoMapper/AutoMapper]
-* XUnit - framework for unit testing -> [https://xunit.github.io/]
+* Shouldly - Used in my unit tests  -> https://github.com/shouldly/shouldly
+* AutoMapper - used to map DTO to models and vice versa -> https://github.com/AutoMapper/AutoMapper
+* XUnit - framework for unit testing -> https://xunit.github.io/
 
 
 Used InMemory Db instead mocking for the unit tests.
