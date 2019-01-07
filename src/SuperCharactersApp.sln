@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.ViewMode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.Services", "Services\SuperCharactersApp.Service\SuperCharactersApp.Services.csproj", "{3404789F-A57F-449E-AB09-916FDCC50A92}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCharactersApp.Tests", "Test\SuperCharactersApp.Tests\SuperCharactersApp.Tests.csproj", "{AFADBD41-6E96-46AD-A11D-976F78A0B9B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{3404789F-A57F-449E-AB09-916FDCC50A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3404789F-A57F-449E-AB09-916FDCC50A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3404789F-A57F-449E-AB09-916FDCC50A92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFADBD41-6E96-46AD-A11D-976F78A0B9B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFADBD41-6E96-46AD-A11D-976F78A0B9B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFADBD41-6E96-46AD-A11D-976F78A0B9B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFADBD41-6E96-46AD-A11D-976F78A0B9B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{BEF0A99D-8591-42B1-8F10-07ED59DAD62B} = {0F0603BF-3BAD-47B1-9182-A2650E9B484A}
 		{FC472564-45DC-48A9-9FBE-CD9A119F9BB0} = {D59CF691-56A3-4D56-91A1-4CD1E8F16540}
 		{3404789F-A57F-449E-AB09-916FDCC50A92} = {82D9F0C3-D314-45DE-8720-3464EB96FFD4}
+		{AFADBD41-6E96-46AD-A11D-976F78A0B9B9} = {6D065335-3DE7-4616-A959-4ADEC110CC68}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EC18AB92-79B7-4F48-B534-8B79393965E4}

@@ -21,6 +21,7 @@
     using SuperCharactersApp.Repository;
     using SuperCharactersApp.Repository.Contracts;
     using SuperCharactersApp.ViewModels.DTO.SecretIdentityViewModels;
+    using SuperCharactersApp.Services.CRUD.Services.Contracts;
 
     public class Startup
     {
@@ -69,7 +70,7 @@
             services.AddScoped(typeof(PaginationServices<>));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
+            //services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN"); //future use for ajax calls
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

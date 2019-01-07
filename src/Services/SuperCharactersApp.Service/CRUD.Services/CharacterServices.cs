@@ -9,6 +9,7 @@
     using AutoMapper;
     using SuperCharactersApp.Repository.Contracts;
     using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
+    using Microsoft.EntityFrameworkCore;
 
     /// <summary>
     /// This class is responsible for all CRUD operations on Characters Entity.
@@ -32,10 +33,13 @@
             //Creates Secret identity for the Superhero/villain if there is such input
             CreateCharacterSecretIdentityIfAny(character);
 
-            foreach (var superpowerId in model.SuperPowerId)
+            if (model.SuperPowerId != null)
             {
-                var superpower = _unitOfWork.SuperPowerRepository.GetById(superpowerId);
-                character.SuperPowers.Add(superpower);
+                foreach (var superpowerId in model.SuperPowerId)
+                {
+                    var superpower = _unitOfWork.SuperPowerRepository.GetById(superpowerId);
+                    character.SuperPowers.Add(superpower);
+                }
             }
 
             var team = _unitOfWork.TeamRepository.GetById(character.TeamId);
@@ -45,6 +49,8 @@
 
             _unitOfWork.Save();
 
+            /*If Character was not created successfully _unitOfWork will throw exception
+             and will not return true */
             return true;
         }
 
