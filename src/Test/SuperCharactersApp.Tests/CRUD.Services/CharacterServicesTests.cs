@@ -34,7 +34,7 @@ namespace SuperCharactersApp.Tests
             var service = new ServiceCollection();
 
             service.AddDbContext<SuperCharactersAppDbContext>(options =>
-                options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
+                options.UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()));
             service.AddScoped<CharacterServices>();
             service.AddScoped<SuperpowerServices>();
             service.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -55,6 +55,7 @@ namespace SuperCharactersApp.Tests
             _characterData = CharacterDataSeed();
             _superpowerData = SuperpowerDataSeed();
         }
+
         [Fact]
         public void CreateNewCharacterShouldReturnTrueIfSucceeded()
         {
@@ -66,6 +67,7 @@ namespace SuperCharactersApp.Tests
 
         }
 
+        //Create method testing
         [Fact]
         public void CreateNewCharacterShouldBeFoundInDb()
         {
@@ -77,9 +79,9 @@ namespace SuperCharactersApp.Tests
             var result = _characterSevices.GetById(currentCharacter.Id);
 
             result.Id.ShouldBeSameAs(currentCharacter.Id);
-
         }
 
+        //DeleteById method testing
         [Fact]
         public void DeleteByIdShouldReturnTrueIfSuccessfull()
         {
@@ -90,6 +92,17 @@ namespace SuperCharactersApp.Tests
 
             result.ShouldBeTrue();
         }
+
+        [Fact]
+        public void DeleteByIdShouldReturnFalseWhenIdIsNull()
+        {
+            string id = null;
+
+            var result = _characterSevices.DeleteById(id);
+
+            result.ShouldBeFalse();
+        }
+
         [Fact]
         public void DeletetedEntityShouldNotBeFoundIfDeletedSuccessfully()
         {
@@ -103,6 +116,7 @@ namespace SuperCharactersApp.Tests
             deletedEntity.ShouldBeNull();
         }
 
+        //GetAll method testing
         [Fact]
         public void GetAllShouldReturnAllCharactersFromDb()
         {
@@ -111,6 +125,17 @@ namespace SuperCharactersApp.Tests
             result.ShouldNotBeNull();
         }
 
+        //GetById method testing
+        [Fact]
+        public void GetByIdShouldThrowArgumentNullException()
+        {
+            string id = null;
+
+            Should.Throw<ArgumentNullException>(() =>
+                _characterSevices.GetById(id));
+        }
+
+        //Edit method testing
         [Fact]
         public void EditMethodShouldChangeEntityNameIfSucceeded()
         {
@@ -124,6 +149,7 @@ namespace SuperCharactersApp.Tests
 
             character.Name.ShouldBeSameAs(editedCharacterFromDb.Name);
         }
+
         #region TestDataSeed
         public List<CharacterViewModel> CharacterDataSeed()
         {

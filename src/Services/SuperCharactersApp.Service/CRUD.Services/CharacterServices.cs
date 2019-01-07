@@ -3,13 +3,13 @@
     using System;
     using System.Linq;
     using SuperCharacters.Models;
-    using SuperCharactersApp.Services.CRUD.Services.Contracts;
+    using Contracts;
     using SuperCharacters.Services.Mapping;
     using System.Collections.Generic;
     using AutoMapper;
     using SuperCharactersApp.Repository.Contracts;
-    using SuperCharactersApp.ViewModels.DTO.CharacterViewModels;
-    using Microsoft.EntityFrameworkCore;
+    using ViewModels.DTO.CharacterViewModels;
+
 
     /// <summary>
     /// This class is responsible for all CRUD operations on Characters Entity.
@@ -126,7 +126,7 @@
             {
 
                 _unitOfWork.SecretIdentityRepository.Create(character.SecretIdentity);
-                //_unitOfWork.Save();
+                
                 createdCharacter = true;
             }
             else
