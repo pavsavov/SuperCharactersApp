@@ -1,5 +1,5 @@
 # SuperCharacterApp
-##The application mimics sort of RPG game.
+### The application mimics sort of RPG game.
 
 **Currently CRUD operations implemented only.**
 
