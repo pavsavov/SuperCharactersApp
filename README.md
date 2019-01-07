@@ -5,7 +5,7 @@
 
 Repository pattern with Unit of Work.
 
-1 Used 3rd party libraries and other technology stack information:
+#### Used third party libraries and other technology stack information:
 
     
 * ASP.NET CORE v2.2   
