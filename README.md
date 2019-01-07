@@ -5,12 +5,11 @@
 
 Repository pattern with Unit of Work.
 
-*Used 3rd party libraries and other technology stack information:
+1 Used 3rd party libraries and other technology stack information:
 
-   > ASP.NET CORE v2.2
-   
-   > EF Core
-
+    
+* ASP.NET CORE v2.2   
+* EF Core
 * X.PagedList - Used for pagination -> https://github.com/dncuug/X.PagedList
 * Shouldly - Used in my unit tests  -> [https://github.com/shouldly/shouldly]
 * AutoMapper - used to map DTO to models and vice versa -> [https://github.com/AutoMapper/AutoMapper]
