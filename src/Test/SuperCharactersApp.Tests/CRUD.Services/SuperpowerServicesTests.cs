@@ -14,7 +14,6 @@ namespace SuperCharactersApp.Tests.CRUD.Services
     using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using Shouldly;
 
     [Collection("ServicesTests")]
