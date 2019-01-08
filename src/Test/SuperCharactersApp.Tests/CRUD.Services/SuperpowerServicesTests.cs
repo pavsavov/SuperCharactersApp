@@ -1,19 +1,17 @@
-﻿using System.Linq;
-using AutoMapper;
-using SuperCharacters.Models;
-using SuperCharactersApp.Repository;
-using SuperCharactersApp.Services.CRUD.Services.Contracts;
-using Xunit;
-
-namespace SuperCharactersApp.Tests.CRUD.Services
+﻿namespace SuperCharactersApp.Tests.CRUD.Services
 {
+    using System.Linq;
+    using AutoMapper;
+    using Repository;
+    using SuperCharactersApp.Services.CRUD.Services.Contracts;
+    using Xunit;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using SuperCharacters.DataAccess;
     using SuperCharacters.Services.Mapping;
-    using SuperCharactersApp.Repository.Contracts;
+    using Repository.Contracts;
     using SuperCharactersApp.Services.CRUD.Services;
-    using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
+    using ViewModels.DTO.SuperPowerViewModels;
     using System;
     using System.Collections.Generic;
     using Shouldly;
@@ -44,7 +42,6 @@ namespace SuperCharactersApp.Tests.CRUD.Services
 
             Mapper.Reset();
 
-
             AutoMapperConfig.RegisterMappings(
                 typeof(SuperPowersListingViewModel).Assembly
             );
@@ -53,6 +50,7 @@ namespace SuperCharactersApp.Tests.CRUD.Services
 
         }
 
+        //GetById method tests
         [Fact]
         public void GetByIdShouldReturnObjectOfTypeSuperpowersListingVieModel()
         {
@@ -66,6 +64,7 @@ namespace SuperCharactersApp.Tests.CRUD.Services
             result.ShouldBeOfType<SuperPowersListingViewModel>();
         }
 
+        //DeleteById method tests
         [Fact]
         public void DeleteByIdShouldReturnFalseWhenIdIsNull()
         {
@@ -80,7 +79,7 @@ namespace SuperCharactersApp.Tests.CRUD.Services
         public void DeleteByIdShouldReturnTrueIfEntityDeletedSuccesfull()
         {
             var superpower = _superpowerData[2];
-            
+
             _superpowerSevices.Create(superpower);
 
             var result = _superpowerSevices.DeleteById(superpower.Id);
@@ -88,22 +87,24 @@ namespace SuperCharactersApp.Tests.CRUD.Services
             result.ShouldBeTrue();
         }
 
-
+        //Edit method tests
         [Fact]
         public void EditMethodShouldChangeSuperpowerNameIfSucceeded()
-        {     
+        {
             var superpower = _superpowerData[2];
             _superpowerSevices.Create(superpower);
             var superpowerNewName = "GoGoPower";
             superpower.SuperPowerName = superpowerNewName;
             _superpowerSevices.Edit(superpower);
-            
 
-            var editedSuperpower =_superpowerSevices.GetById(superpower.Id);
+
+            var editedSuperpower = _superpowerSevices.GetById(superpower.Id);
 
             superpower.SuperPowerName.ShouldBeSameAs(editedSuperpower.SuperPowerName);
         }
 
+
+        //GetAll method tests
         [Fact]
         public void GetAllShouldRetrieve()
         {
@@ -147,4 +148,3 @@ namespace SuperCharactersApp.Tests.CRUD.Services
         #endregion
     }
 }
- 

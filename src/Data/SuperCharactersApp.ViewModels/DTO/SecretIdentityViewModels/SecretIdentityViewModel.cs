@@ -2,7 +2,6 @@
 {
     using SuperCharacters.Models;
     using SuperCharacters.Services.Mapping.Contracts;
-    using SuperCharactersApp.ViewModels.Contracts;
     using System.ComponentModel.DataAnnotations;
 
     public class SecretIdentityViewModel :
@@ -10,6 +9,8 @@
         IMapFrom<SecretIdentity>
         
     {
+        public string Id { get; set; }
+
         [StringLength(50, MinimumLength = 1)]
         [Display(Name ="First name")]
         public string FirstName { get; set; }

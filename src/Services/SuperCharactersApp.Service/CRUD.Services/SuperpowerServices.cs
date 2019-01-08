@@ -6,8 +6,8 @@
     using SuperCharacters.Models;
     using SuperCharacters.Services.Mapping;
     using SuperCharactersApp.Repository.Contracts;
-    using SuperCharactersApp.Services.CRUD.Services.Contracts;
-    using SuperCharactersApp.ViewModels.DTO.SuperPowerViewModels;
+    using Contracts;
+    using ViewModels.DTO.SuperPowerViewModels;
 
     /// <summary>
     /// This class is responsible for all CRUD operations on SuperPowers Entity.

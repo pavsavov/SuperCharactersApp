@@ -34,12 +34,7 @@
                 return true;
             }
 
-
-            else
-            {
-                return false;
-            }
-
+            return false;
         }
 
         public bool DeleteById(string id)
@@ -80,9 +75,21 @@
         {
             var teamMapped = Mapper.Map<Team>(editModel);
 
-            _unitOfWork.TeamRepository.Edit(teamMapped);
+            ManuallyPassValueToEachProperty(teamMapped);
 
             _unitOfWork.Save();
         }
+
+        #region SupportiveMethodsForCRUDoperations
+
+        public void ManuallyPassValueToEachProperty(Team teamMapped)
+        {
+            var team = _unitOfWork.TeamRepository.GetById(teamMapped.Id);
+
+            team.Id = teamMapped.Id;
+            team.TeamName = teamMapped.TeamName;
+
+        }
+        #endregion
     }
 }
