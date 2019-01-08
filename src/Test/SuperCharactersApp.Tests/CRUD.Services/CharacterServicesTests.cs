@@ -28,7 +28,6 @@ namespace SuperCharactersApp.Tests
         private readonly IServiceProvider _serviceProvider;
         private readonly IService<CharacterViewModel> _characterSevices;
         private readonly IService<SuperPowersListingViewModel> _superpowerSevices;
-        //private readonly SuperCharactersAppDbContext _dbContext;
         private readonly IList<CharacterViewModel> _characterData;
         private readonly IList<SuperPowersListingViewModel> _superpowerData;
 
@@ -44,13 +43,11 @@ namespace SuperCharactersApp.Tests
 
             _serviceProvider = service.BuildServiceProvider();
 
-            //_dbContext = _serviceProvider.GetService<SuperCharactersAppDbContext>();
             _unitOfWork = _serviceProvider.GetService<IUnitOfWork>();
             _characterSevices = _serviceProvider.GetService<CharacterServices>();
             _superpowerSevices = _serviceProvider.GetService<SuperpowerServices>();
 
             Mapper.Reset();
-
 
                 AutoMapperConfig.RegisterMappings(
                     typeof(CharacterViewModel).Assembly

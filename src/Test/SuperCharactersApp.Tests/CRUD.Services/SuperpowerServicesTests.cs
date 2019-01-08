@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
+using SuperCharacters.Models;
 using SuperCharactersApp.Repository;
 using SuperCharactersApp.Services.CRUD.Services.Contracts;
 using Xunit;
@@ -47,8 +49,6 @@ namespace SuperCharactersApp.Tests.CRUD.Services
                 typeof(SuperPowersListingViewModel).Assembly
             );
 
-
-
             _superpowerData = SuperpowerDataSeed();
 
         }
@@ -56,7 +56,6 @@ namespace SuperCharactersApp.Tests.CRUD.Services
         [Fact]
         public void GetByIdShouldReturnObjectOfTypeSuperpowersListingVieModel()
         {
- 
 
             var superpower = _superpowerData[0];
 
@@ -67,6 +66,52 @@ namespace SuperCharactersApp.Tests.CRUD.Services
             result.ShouldBeOfType<SuperPowersListingViewModel>();
         }
 
+        [Fact]
+        public void DeleteByIdShouldReturnFalseWhenIdIsNull()
+        {
+            string id = null;
+
+            var result = _superpowerSevices.DeleteById(id);
+
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void DeleteByIdShouldReturnTrueIfEntityDeletedSuccesfull()
+        {
+            var superpower = _superpowerData[2];
+            
+            _superpowerSevices.Create(superpower);
+
+            var result = _superpowerSevices.DeleteById(superpower.Id);
+
+            result.ShouldBeTrue();
+        }
+
+
+        [Fact]
+        public void EditMethodShouldChangeSuperpowerNameIfSucceeded()
+        {     
+            var superpower = _superpowerData[2];
+            _superpowerSevices.Create(superpower);
+            var superpowerNewName = "GoGoPower";
+            superpower.SuperPowerName = superpowerNewName;
+            _superpowerSevices.Edit(superpower);
+            
+
+            var editedSuperpower =_superpowerSevices.GetById(superpower.Id);
+
+            superpower.SuperPowerName.ShouldBeSameAs(editedSuperpower.SuperPowerName);
+        }
+
+        [Fact]
+        public void GetAllShouldRetrieve()
+        {
+            var result = _superpowerSevices.GetAll().ToList();
+
+            result.ShouldNotBeNull();
+        }
+
         #region TestDataSeed
 
         public List<SuperPowersListingViewModel> SuperpowerDataSeed()
@@ -75,17 +120,24 @@ namespace SuperCharactersApp.Tests.CRUD.Services
             {
                 new SuperPowersListingViewModel
                 {
-                    Id = "1",
+                    Id = "1c",
                     SuperPowerName = "Flying Dutchman",
                     Type = "Damage",
                     Value = 133
                 },
                 new SuperPowersListingViewModel
                 {
-                    Id="123",
+                    Id="123b",
                     SuperPowerName = "Jack Sparrow",
                     Type = "Heal",
                     Value = 23
+                },
+                new SuperPowersListingViewModel
+                {
+                    Id="4a",
+                    SuperPowerName = "Jack Sparrow The Great",
+                    Type = "Armour",
+                    Value = 1223
                 }
             };
 

@@ -69,9 +69,22 @@
         {
             var superpowerMapped = Mapper.Map<SuperPower>(editModel);
 
-            _unitOfWork.SuperPowerRepository.Edit(superpowerMapped);
+            ManuallyPassValueToEachProperty(superpowerMapped);
 
             _unitOfWork.Save();
         }
+
+        #region SupportiveMethodsForCRUDoperations
+
+        public void ManuallyPassValueToEachProperty(SuperPower superpowerMapped)
+        {
+            var superpower = _unitOfWork.SuperPowerRepository.GetById(superpowerMapped.Id);
+
+            superpower.Id = superpowerMapped.Id;
+            superpower.SuperPowerName = superpowerMapped.SuperPowerName;
+            superpower.Type = superpowerMapped.Type;
+            superpower.Value = superpowerMapped.Value;
+        }
+        #endregion
     }
 }
