@@ -1,3 +1,5 @@
+using SuperCharactersApp.Tests.CRUD.Services;
+
 namespace SuperCharactersApp.Tests
 {
     using AutoMapper;
@@ -19,19 +21,20 @@ namespace SuperCharactersApp.Tests
     using Xunit;
     using ViewModels.DTO.SuperPowerViewModels;
 
-    public class CharacterServicesTests
+    [Collection("ServicesTests")]
+    public class CharacterServicesTests 
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IServiceProvider _serviceProvider;
         private readonly IService<CharacterViewModel> _characterSevices;
         private readonly IService<SuperPowersListingViewModel> _superpowerSevices;
-        private readonly SuperCharactersAppDbContext _dbContext;
+        //private readonly SuperCharactersAppDbContext _dbContext;
         private readonly IList<CharacterViewModel> _characterData;
         private readonly IList<SuperPowersListingViewModel> _superpowerData;
 
         public CharacterServicesTests()
         {
-            var service = new ServiceCollection();
+            var service = new ServiceCollection();  
 
             service.AddDbContext<SuperCharactersAppDbContext>(options =>
                 options.UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()));
@@ -41,22 +44,25 @@ namespace SuperCharactersApp.Tests
 
             _serviceProvider = service.BuildServiceProvider();
 
-            _dbContext = _serviceProvider.GetService<SuperCharactersAppDbContext>();
-            _unitOfWork = new UnitOfWork(_dbContext);
+            //_dbContext = _serviceProvider.GetService<SuperCharactersAppDbContext>();
+            _unitOfWork = _serviceProvider.GetService<IUnitOfWork>();
             _characterSevices = _serviceProvider.GetService<CharacterServices>();
             _superpowerSevices = _serviceProvider.GetService<SuperpowerServices>();
 
             Mapper.Reset();
 
-            AutoMapperConfig.RegisterMappings(
-                 typeof(CharacterViewModel).Assembly
-                 );
+
+                AutoMapperConfig.RegisterMappings(
+                    typeof(CharacterViewModel).Assembly
+                );
+     
 
             _characterData = CharacterDataSeed();
             _superpowerData = SuperpowerDataSeed();
         }
 
         [Fact]
+        
         public void CreateNewCharacterShouldReturnTrueIfSucceeded()
         {
             var result = _characterSevices.Create(_characterData[0]);
@@ -129,6 +135,7 @@ namespace SuperCharactersApp.Tests
         [Fact]
         public void GetByIdShouldThrowArgumentNullException()
         {
+
             string id = null;
 
             Should.Throw<ArgumentNullException>(() =>
@@ -216,5 +223,6 @@ namespace SuperCharactersApp.Tests
             return superpowers;
         }
         #endregion
+
     }
 }
