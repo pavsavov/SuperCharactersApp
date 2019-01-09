@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuperCharacters.DataAccess;
 
 namespace SuperCharacters.DataAccess.Migrations
 {
     [DbContext(typeof(SuperCharactersAppDbContext))]
-    partial class SuperCharactersAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190109120237_BattleTableAdded")]
+    partial class BattleTableAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,48 +131,6 @@ namespace SuperCharacters.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SuperCharacters.Models.Battle", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("StatusId");
-
-                    b.Property<string>("SuperHeroId");
-
-                    b.Property<string>("SuperVillainId");
-
-                    b.Property<string>("WinnerId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StatusId")
-                        .IsUnique()
-                        .HasFilter("[StatusId] IS NOT NULL");
-
-                    b.HasIndex("SuperHeroId");
-
-                    b.HasIndex("SuperVillainId");
-
-                    b.HasIndex("WinnerId");
-
-                    b.ToTable("Battles");
-                });
-
-            modelBuilder.Entity("SuperCharacters.Models.BattleStatus", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Completed");
-
-                    b.Property<string>("InProgress");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BattleStatus");
-                });
-
             modelBuilder.Entity("SuperCharacters.Models.Character", b =>
                 {
                     b.Property<string>("Id")
@@ -229,7 +189,7 @@ namespace SuperCharacters.DataAccess.Migrations
                         .IsUnique()
                         .HasFilter("[TeamScoreId] IS NOT NULL");
 
-                    b.ToTable("Scores");
+                    b.ToTable("Score");
                 });
 
             modelBuilder.Entity("SuperCharacters.Models.SecretIdentity", b =>
@@ -397,25 +357,6 @@ namespace SuperCharacters.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("SuperCharacters.Models.Battle", b =>
-                {
-                    b.HasOne("SuperCharacters.Models.BattleStatus", "Status")
-                        .WithOne("Battle")
-                        .HasForeignKey("SuperCharacters.Models.Battle", "StatusId");
-
-                    b.HasOne("SuperCharacters.Models.Character", "SuperHero")
-                        .WithMany()
-                        .HasForeignKey("SuperHeroId");
-
-                    b.HasOne("SuperCharacters.Models.Character", "SuperVillain")
-                        .WithMany()
-                        .HasForeignKey("SuperVillainId");
-
-                    b.HasOne("SuperCharacters.Models.Character", "Winner")
-                        .WithMany()
-                        .HasForeignKey("WinnerId");
                 });
 
             modelBuilder.Entity("SuperCharacters.Models.Character", b =>

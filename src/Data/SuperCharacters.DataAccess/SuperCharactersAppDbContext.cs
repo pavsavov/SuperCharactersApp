@@ -6,12 +6,13 @@
 
     public class SuperCharactersAppDbContext : IdentityDbContext<SuperCharactersUser>
     {
-        //public DbSet<Score> Scores { get; set; }
+        public DbSet<Score> Scores { get; set; }
         public DbSet<SecretIdentity> SecretIdentities { get; set; }
         public DbSet<SuperCharactersUser> AppUsers { get; set; }
         public DbSet<Character> Characters { get; set; }
         public DbSet<SuperPower> SuperPowers { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Battle> Battles { get; set; }
 
         public SuperCharactersAppDbContext()
         {
