@@ -66,7 +66,7 @@ namespace SuperCharactersApp.Tests.CRUD.Services
         public void GetAllShouldRetrieveAllSecretIdentitiesFromDb()
         {
             var result = _secretIdentityServices.GetAll().ToList();
-
+ 
             result.ShouldNotBeNull();
         }
 
@@ -83,7 +83,30 @@ namespace SuperCharactersApp.Tests.CRUD.Services
             result.ShouldNotBeNull();
         }
 
+        //Delete method tests
+        [Fact]
+        public void DeleteByIdShouldReturnTrueIfSucceeded()
+        {
+            var secretIdentity = _secretIdentityData[0];
 
+            _secretIdentityServices.Create(secretIdentity);
+
+            var result = _secretIdentityServices.DeleteById(secretIdentity.Id);
+
+            result.ShouldBeTrue();
+
+        }
+
+        [Fact]
+        public void DeleteByIdShouldFalseIfNoDeleteionWasPerformed()
+        {
+            string id = null;
+
+            var result = _secretIdentityServices.DeleteById(id);
+
+            result.ShouldBeFalse();
+
+        }
         #region TestDataSeed
         public List<SecretIdentityViewModel> SecretIdentityDataSeed()
         {
