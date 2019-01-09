@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SuperCharactersApp.Services.Battle.Services.Contracts
+﻿namespace SuperCharactersApp.Services.Battle.Services.Contracts
 {
-    class Class1
+    public interface IBattle
     {
+        void Attack();
+        
     }
 }

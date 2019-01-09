@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SuperCharactersApp.Services.Battle.Services
+﻿namespace SuperCharactersApp.Services.Battle.Services
 {
-    class Battle
+    using System;
+    using Contracts;
+    public class BattleServices : IBattle
     {
+        public void Attack()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
